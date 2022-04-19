@@ -21,15 +21,20 @@ public class Item {
 
     private int cost;
 
-    private String img_url;
+    @Column(name = "img_url")
+    private String imgUrl;
 
-    private String img_description_url;
+    @Column(name = "description_url")
+    private String descriptionUrl;
 
-    private String etr_txt;
+    @Column(name = "etr_txt")
+    private String etrTxt;
 
-    private Date create_date;
+    @Column(name = "create_date")
+    private Date createDate;
 
-    private Date update_date;
+    @Column(name = "update_date")
+    private Date updateDate;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

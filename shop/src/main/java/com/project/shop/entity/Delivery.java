@@ -12,11 +12,13 @@ public class Delivery {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String zip_code;
+    @Column(name = "zip_code")
+    private String zipCode;
 
     private String address;
 
-    private Date create_date;
+    @Column(name = "create_date")
+    private Date createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

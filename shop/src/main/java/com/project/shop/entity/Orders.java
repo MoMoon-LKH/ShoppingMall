@@ -22,9 +22,11 @@ public class Orders {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    private Date create_date;
+    @Column(name = "create_date")
+    private Date createDate;
 
-    private Date update_date;
+    @Column(name = "update_date")
+    private Date updateDate;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

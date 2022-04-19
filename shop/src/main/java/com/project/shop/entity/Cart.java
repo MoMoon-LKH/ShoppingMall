@@ -18,7 +18,8 @@ public class Cart {
 
     private int cost;
 
-    private Date create_date;
+    @Column(name = "create_date")
+    private Date createDate;
 
 
     @OneToMany(mappedBy = "cart")

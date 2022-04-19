@@ -1,6 +1,7 @@
 package com.project.shop.entity;
 
 import com.project.shop.entity.enums.Gender;
+import com.project.shop.entity.enums.MemberStatus;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -16,7 +17,7 @@ public class Member {
     private Long id;
 
     @Column(unique = true)
-    private String user_id;
+    private String memberId;
 
     private String password;
 
@@ -28,9 +29,14 @@ public class Member {
 
     private Date birthday;
 
-    private Date create_date;
+    @Column(name = "create_date")
+    private Date createDate;
 
-    private Date update_date;
+    @Column(name = "update_date")
+    private Date updateDate;
+
+    @Enumerated(EnumType.STRING)
+    private MemberStatus status;
 
 
     @OneToMany(mappedBy = "member")

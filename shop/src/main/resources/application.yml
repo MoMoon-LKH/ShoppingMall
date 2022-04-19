@@ -17,4 +17,6 @@ spring:
     init:
       mode: always
 
+logging:
+  config: classpath:log4j2.xml
 
