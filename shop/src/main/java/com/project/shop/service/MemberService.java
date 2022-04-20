@@ -6,16 +6,19 @@ import com.project.shop.exceptions.AlreadyExistIdException;
 import com.project.shop.exceptions.NoSuchMemberException;
 import com.project.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
     private final MemberRepository memberRepository;
 

@@ -1,5 +1,6 @@
 package com.project.shop.entity;
 
+import com.project.shop.entity.dto.JoinDto;
 import com.project.shop.entity.enums.Gender;
 import com.project.shop.entity.enums.MemberStatus;
 import lombok.Getter;
@@ -47,5 +48,34 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Cart> carts = new ArrayList<>();
+
+
+    private Member(String memberId, String password, String nickname, Gender gender, String phone, Date birthday) {
+        this.memberId = memberId;
+        this.password = password;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.createDate = new Date();
+        this.updateDate = new Date();
+        this.status = MemberStatus.ALIVE;
+    }
+
+    public Member() {
+
+    }
+
+    public static Member createMember(JoinDto joinDto) {
+        Gender gender;
+
+        if (joinDto.getGender() == 0) {
+            gender = Gender.MALE;
+        } else {
+            gender = Gender.FEMALE;
+        }
+
+        return new Member(joinDto.getMemberId(), joinDto.getPw(), joinDto.getNickname(), gender, joinDto.getPhone(), joinDto.getBirthday());
+    }
 
 }
