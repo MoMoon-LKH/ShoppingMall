@@ -1,13 +1,12 @@
 package com.project.shop.controller;
 
 
-import com.project.shop.entity.Member;
-import com.project.shop.entity.dto.JoinDto;
+import com.project.shop.domain.Member;
+import com.project.shop.domain.dto.JoinDto;
 import com.project.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,9 +18,11 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/signup")
     public ResponseEntity<?> join(@Valid @RequestBody JoinDto joinDto) {
+        joinDto.setPw(passwordEncoder.encode(joinDto.getPw()));
         Long saveId = memberService.save(Member.createMember(joinDto));
 
         return ResponseEntity.ok(saveId);

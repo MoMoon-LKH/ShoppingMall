@@ -1,4 +1,4 @@
-package com.project.shop.entity.enums;
+package com.project.shop.domain.enums;
 
 public enum Gender {
     MALE, FEMALE

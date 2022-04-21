@@ -1,26 +1,32 @@
-package com.project.shop.entity;
+package com.project.shop.domain;
 
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
-public class Delivery {
+public class Cart {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "zip_code")
-    private String zipCode;
+    private int count;
 
-    private String address;
+    private int cost;
 
     @Column(name = "create_date")
     private Date createDate;
 
+
+    @OneToMany(mappedBy = "cart")
+    private List<Cart_Item> cart_items = new ArrayList<>();
+
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
     private Member member;
+
 }

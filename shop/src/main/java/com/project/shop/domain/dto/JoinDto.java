@@ -1,7 +1,6 @@
-package com.project.shop.entity.dto;
+package com.project.shop.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.project.shop.entity.enums.Gender;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
 package com.project.shop.service;
 
-import com.project.shop.entity.Member;
-import com.project.shop.entity.enums.MemberStatus;
+import com.project.shop.domain.Member;
+import com.project.shop.domain.enums.MemberStatus;
 import com.project.shop.exceptions.AlreadyExistIdException;
 import com.project.shop.exceptions.NoSuchMemberException;
 import com.project.shop.repository.MemberRepository;

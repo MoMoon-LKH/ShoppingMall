@@ -1,7 +1,6 @@
-package com.project.shop.entity;
+package com.project.shop.domain;
 
 import lombok.Getter;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 import java.util.ArrayList;

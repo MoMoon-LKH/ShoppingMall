@@ -1,6 +1,6 @@
-package com.project.shop.entity;
+package com.project.shop.domain;
 
-import com.project.shop.entity.enums.OrderStatus;
+import com.project.shop.domain.enums.OrderStatus;
 import lombok.Getter;
 
 import javax.persistence.*;

@@ -1,7 +1,7 @@
 package com.project.shop.repository;
 
-import com.project.shop.entity.Member;
-import com.project.shop.entity.enums.MemberStatus;
+import com.project.shop.domain.Member;
+import com.project.shop.domain.enums.MemberStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member,Long> {
 
-    Optional<Member> findByMemberId(String memberId);
+    Optional<Member> findByMemberId(@Param("memberId") String memberId);
 
     Optional<Member> findByMemberIdAndStatus(String userId, MemberStatus memberStatus);
 

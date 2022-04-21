@@ -1,8 +1,8 @@
-package com.project.shop.entity;
+package com.project.shop.domain;
 
-import com.project.shop.entity.dto.JoinDto;
-import com.project.shop.entity.enums.Gender;
-import com.project.shop.entity.enums.MemberStatus;
+import com.project.shop.domain.dto.JoinDto;
+import com.project.shop.domain.enums.Gender;
+import com.project.shop.domain.enums.MemberStatus;
 import lombok.Getter;
 
 import javax.persistence.*;

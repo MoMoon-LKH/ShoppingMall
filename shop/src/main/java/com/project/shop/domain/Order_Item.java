@@ -1,4 +1,4 @@
-package com.project.shop.entity;
+package com.project.shop.domain;
 
 import lombok.Getter;
 

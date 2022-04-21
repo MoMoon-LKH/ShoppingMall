@@ -1,4 +1,4 @@
-package com.project.shop.entity.enums;
+package com.project.shop.domain.enums;
 
 public enum OrderStatus {
     ITEM_READY, DELIVERY_READY, DELIVERY, COMPLETE, CANCEL
