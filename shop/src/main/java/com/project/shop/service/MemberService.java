@@ -19,7 +19,6 @@ public class MemberService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
     private final MemberRepository memberRepository;
 
 

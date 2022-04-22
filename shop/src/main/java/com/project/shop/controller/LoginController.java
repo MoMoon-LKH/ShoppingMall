@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,7 +38,7 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
-        return ResponseEntity.ok(true);
+        return ResponseEntity.ok(loginMember);
     }
 
     @PostMapping("/logout")
@@ -52,21 +54,20 @@ public class LoginController {
     }
 
 
-    public Member getSessionMember(HttpServletRequest request) {
+
+    @GetMapping("/check")
+    public ResponseEntity<?> getSessionMember(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
 
-        if (session == null) {
-            return null;
-        }
 
         Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
 
-        if (loginMember == null) {
+        if (loginMember == null || session == null) {
             return null;
         }
 
-        return loginMember;
 
+        return ResponseEntity.ok(loginMember.getNickname());
     }
 
 

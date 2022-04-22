@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+
+</head>
+<body>
+<div class="joinForm">
+    <div class="wrapDiv">
+        <span>아이디: </span>
+        <input id="memberId" type="text"/>
+    </div>
+    <div class="wrapDiv">
+        <span>비밀번호: </span>
+        <input id="password" type="password"/>
+    </div>
+    <div class="wrapDiv">
+        <span>닉네임: </span>
+        <input id="nickname" type="text"/>
+    </div>
+    <div class="wrapDiv">
+        <span>성별: </span>
+        <input id="male" name="gender" value="MALE" type="radio" checked/>
+        <label for="male">남성</label>
+        <input id="female" name="gender" value="FEMALE" type="radio" />
+        <label for="female">여성</label>
+
+    </div>
+    <div class="wrapDiv">
+        <span>전화번호: </span>
+        <input id="phone" type="text"/>
+    </div>
+    <div class="wrapDiv">
+        <span>생년월일: </span>
+        <input id="birthday" type="date"/>
+    </div>
+    <input value="가입" type="button" id="sendJoin">
+
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/join.js" ></script>
+</html>

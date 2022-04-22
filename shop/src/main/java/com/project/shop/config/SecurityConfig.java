@@ -22,13 +22,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
+
                 .authorizeHttpRequests()
+                .antMatchers("/", "/member/**").permitAll()
+                .antMatchers("/templates/**", "/js/**").permitAll()
                 .antMatchers("/api/member/signup").permitAll()
                 .antMatchers("/api/member/login").permitAll()
+                .antMatchers("/api/member/check").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
-                .csrf().disable();
-
+                .formLogin()
+                .loginPage("/member/login")
+                .defaultSuccessUrl("/", true);
     }
 }

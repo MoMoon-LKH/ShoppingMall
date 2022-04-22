@@ -1,5 +1,6 @@
 package com.project.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.project.shop.domain.dto.JoinDto;
 import com.project.shop.domain.enums.Gender;
 import com.project.shop.domain.enums.MemberStatus;
@@ -20,10 +21,12 @@ public class Member {
     @Column(unique = true)
     private String memberId;
 
+
     private String password;
 
     private String nickname;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private String phone;
