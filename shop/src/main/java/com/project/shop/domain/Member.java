@@ -7,9 +7,7 @@ import com.project.shop.domain.enums.MemberStatus;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Getter
@@ -52,8 +50,15 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Cart> carts = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "member_authoriy",
+            joinColumns = {@JoinColumn(name = "memberId", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "authoriyId", referencedColumnName = "id")}
+    )
+    private Set<Authority> authorities;
 
-    private Member(String memberId, String password, String nickname, Gender gender, String phone, Date birthday) {
+    private Member(String memberId, String password, String nickname, Gender gender, String phone, Date birthday, Authority authority) {
         this.memberId = memberId;
         this.password = password;
         this.nickname = nickname;
@@ -63,13 +68,15 @@ public class Member {
         this.createDate = new Date();
         this.updateDate = new Date();
         this.status = MemberStatus.ALIVE;
+        this.authorities = Collections.singleton(authority);
+
     }
 
     public Member() {
 
     }
 
-    public static Member createMember(JoinDto joinDto) {
+    public static Member createMember(JoinDto joinDto, Authority authority) {
         Gender gender;
 
         if (joinDto.getGender() == 0) {
@@ -78,7 +85,7 @@ public class Member {
             gender = Gender.FEMALE;
         }
 
-        return new Member(joinDto.getMemberId(), joinDto.getPw(), joinDto.getNickname(), gender, joinDto.getPhone(), joinDto.getBirthday());
+        return new Member(joinDto.getMemberId(), joinDto.getPw(), joinDto.getNickname(), gender, joinDto.getPhone(), joinDto.getBirthday(), authority);
     }
 
 }

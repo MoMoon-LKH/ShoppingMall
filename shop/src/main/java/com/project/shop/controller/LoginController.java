@@ -41,6 +41,7 @@ public class LoginController {
         return ResponseEntity.ok(loginMember);
     }
 
+
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -52,7 +53,6 @@ public class LoginController {
 
         return ResponseEntity.ok(false);
     }
-
 
 
     @GetMapping("/check")
@@ -69,7 +69,6 @@ public class LoginController {
 
         return ResponseEntity.ok(loginMember.getNickname());
     }
-
 
 
 }
