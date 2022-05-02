@@ -1,32 +1,33 @@
 package com.project.shop.controller;
 
-
-import com.project.shop.domain.Authority;
-import com.project.shop.domain.Member;
-import com.project.shop.domain.dto.JoinDto;
-import com.project.shop.repository.AuthorityRepository;
-import com.project.shop.service.AuthorityService;
-import com.project.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-@RestController
-@RequestMapping("/api/member")
+@Controller
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberService memberService;
-    private final AuthorityService authorityService;
-    private final PasswordEncoder passwordEncoder;
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> join(@Valid @RequestBody JoinDto joinDto) {
-        joinDto.setPw(passwordEncoder.encode(joinDto.getPw()));
-        return ResponseEntity.ok(memberService.save(Member.createMember(joinDto, authorityService.getUserAuthority())));
+    @GetMapping("/")
+    public String indexPage(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        return "main";
     }
+
+    @GetMapping("/member/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/member/join")
+    public String joinPage() {
+        return "join";
+    }
+
 
 }

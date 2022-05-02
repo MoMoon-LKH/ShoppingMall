@@ -1,5 +1,7 @@
 package com.project.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.shop.domain.enums.OrderStatus;
 import lombok.Getter;
 
@@ -10,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Orders {
 
     @Id

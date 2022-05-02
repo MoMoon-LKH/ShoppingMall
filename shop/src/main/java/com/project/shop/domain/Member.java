@@ -1,6 +1,8 @@
 package com.project.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.shop.domain.dto.JoinDto;
 import com.project.shop.domain.enums.Gender;
 import com.project.shop.domain.enums.MemberStatus;
@@ -11,6 +13,7 @@ import java.util.*;
 
 @Entity
 @Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

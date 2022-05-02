@@ -20,8 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = MemberController.class)
-class MemberControllerTest {
+@WebMvcTest(controllers = MemberApiController.class)
+class MemberApiControllerTest {
 
     @Autowired
     private MockMvc mvc;

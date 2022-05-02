@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>main</title>
+
 </head>
 <body>
-<div class="not_login" style="display: block">
+
+<div th:if="${session.loginMember} == null" class="not_login" style="display: block">
     <a href="/member/login">로그인</a>
     <a href="/member/join">회원가입</a>
 </div>
-<div class="on_login" style="display: none">
-    <div id="user_nickname">해당 유저 닉네임</div>
+<div th:unless="${session.loginMember} == null" class="on_login" style="display: block">
+    <div id="user_nickname" th:text="${session.loginMember.getNickname()}">해당 유저 닉네임</div>
     <input type="button" value="로그아웃" id="logout_Btn" onclick="logout()"/>
 </div>
 </body>

@@ -45,29 +45,16 @@ public class LoginController {
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
+        System.out.println("session = " + session + "로그아웃");
 
         if (session != null) {
+            System.out.println("session if = " + session + "로그아웃");
+
             session.invalidate();
             return ResponseEntity.ok(true);
         }
 
         return ResponseEntity.ok(false);
-    }
-
-
-    @GetMapping("/check")
-    public ResponseEntity<?> getSessionMember(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-
-
-        Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
-
-        if (loginMember == null || session == null) {
-            return null;
-        }
-
-
-        return ResponseEntity.ok(loginMember.getNickname());
     }
 
 
