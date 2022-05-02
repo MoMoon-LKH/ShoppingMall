@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+
+</head>
+<body>
+
+<div th:if="${session.loginMember} == null" class="not_login" style="display: block">
+    <a href="/">MAIN</a>
+    <a href="/member/login"> 로그인 </a>
+    <a href="/member/join"> 회원가입 </a>
+</div>
+<div th:unless="${session.loginMember} == null" class="on_login" style="display: block">
+    <a href="/">MAIN</a>
+    <span id="user_nickname" th:text="${session.loginMember.getNickname()}">해당 유저 닉네임 </span>
+    <input type="button" value="로그아웃" id="logout_Btn" onclick="logout()"/>
+    <a href="/sell/my">판매 관리</a>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/header.js"></script>
+</html>

@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/member/**").permitAll()
                 .antMatchers("/api/member/signup").permitAll()
                 .antMatchers("/api/member/login", "/api/member/logout").permitAll()
+                .antMatchers("/sell/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
@@ -50,7 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .logout()
-                .logoutUrl("/api/member/logout")
                 .logoutSuccessUrl("/");
 
 

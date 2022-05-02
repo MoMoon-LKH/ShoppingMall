@@ -56,13 +56,33 @@ public class Item {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Item() {
+    }
+
+    private Item(ItemDto itemDto, Member member, Category category, String imgUrl, String descriptionUrl) {
+        this.name = itemDto.getName();
+        this.count = itemDto.getCount();
+        this.cost = itemDto.getCost();
+        this.imgUrl = imgUrl;
+        this.descriptionUrl = descriptionUrl;
+        this.etrTxt = itemDto.getEtrTxt();
+        this.createDate = new Date();
+        this.updateDate = new Date();
+        this.member = member;
+        this.category = category;
+    }
+
+    public static Item createItem(ItemDto itemDto, Member member, Category category ,String imgUrl, String descriptionUrl) {
+        return new Item(itemDto, member, category, imgUrl, descriptionUrl);
+    }
+
 
     public void update(ItemDto itemDto) {
         this.name = itemDto.getName();
         this.count = itemDto.getCount();
         this.cost = itemDto.getCost();
-        this.imgUrl = itemDto.getImgUrl();
-        this.descriptionUrl = itemDto.getDescriptionUrl();
+        this.imgUrl = itemDto.getImgUrl().getName();
+        this.descriptionUrl = itemDto.getDescriptionUrl().getName();
         this.etrTxt = itemDto.getEtrTxt();
         this.updateDate = new Date();
     }

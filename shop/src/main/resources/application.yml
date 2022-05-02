@@ -27,3 +27,5 @@ server:
       tracking-modes: cookie
       timeout: 1800
 
+
+imagePath: D:\MyProject\personal_project\ShoppingMall\shop\src\main\resources\static\img
