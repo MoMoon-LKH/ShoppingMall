@@ -62,12 +62,14 @@ public class ItemController {
 
         String imgUrl = " ";
         String descriptionImg = " ";
+        int ran = (int) (Math.random()*10000);
+
 
         if(!itemDto.getImgUrl().isEmpty())
-            imgUrl = transferImg(itemDto.getImgUrl(), 0);
+            imgUrl = transferImg(itemDto.getImgUrl(), ran,0);
 
         if(!itemDto.getDescriptionUrl().isEmpty())
-            descriptionImg = transferImg(itemDto.getDescriptionUrl(), 1);
+            descriptionImg = transferImg(itemDto.getDescriptionUrl(), ran, 1);
 
         Member member = memberService.findById(itemDto.getMemberId());
         Category category = categoryService.findById(itemDto.getCategoryId());
@@ -79,11 +81,11 @@ public class ItemController {
         return "redirect:/sell/my";
     }
 
-    public String transferImg(MultipartFile file, int type) throws IOException {
+    public String transferImg(MultipartFile file,int ran, int type) throws IOException {
         String originName = file.getOriginalFilename();
         String ext = originName.substring(originName.lastIndexOf("."));
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-        int ran = (int) (Math.random()*10000);
+
 
         String fname = "";
 
@@ -93,7 +95,7 @@ public class ItemController {
         } else{
             fname = dateFormat.format(new Date()) + "_" + ran + "d" + ext;
         }
-        file.transferTo(new File( imgPath+ "/" + fname));
+        file.transferTo(new File( imgPath + "/" + fname));
 
         return fname;
     }

@@ -59,11 +59,16 @@ public class ItemService {
     }
 
     public List<Item> findByMemberId(Long memberId , Pageable pageable) {
-        return itemRepository.findByMember_MemberIdOrderByCreateDateDesc(memberId, pageable);
+        return itemRepository.findAllByMember_Id(memberId, pageable);
     }
 
     public List<Item> findByCategory(Long categoryId, Pageable pageable) {
-        return itemRepository.findByCategory_IdOrderByCreateDateDesc(categoryId, pageable);
+        return itemRepository.findAllByCategory_IdOrderByCreateDateDesc(categoryId, pageable);
+    }
+
+
+    public Integer getTotalCount(Long memberId) {
+        return itemRepository.countByMember_Id(memberId).intValue();
     }
 
 

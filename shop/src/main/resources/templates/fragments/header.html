@@ -15,6 +15,7 @@
 <div th:unless="${session.loginMember} == null" class="on_login" style="display: block">
     <a href="/">MAIN</a>
     <span id="user_nickname" th:text="${session.loginMember.getNickname()}">해당 유저 닉네임 </span>
+    <input type="hidden" id="memberId" th:value="${session.loginMember.getId()}">
     <input type="button" value="로그아웃" id="logout_Btn" onclick="logout()"/>
     <a href="/sell/my">판매 관리</a>
 </div>

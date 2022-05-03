@@ -7,12 +7,14 @@ import com.project.shop.domain.dto.JoinDto;
 import com.project.shop.domain.enums.Gender;
 import com.project.shop.domain.enums.MemberStatus;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
 @Getter
+@NoArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Member {
 
@@ -75,9 +77,6 @@ public class Member {
 
     }
 
-    public Member() {
-
-    }
 
     public static Member createMember(JoinDto joinDto, Authority authority) {
         Gender gender;

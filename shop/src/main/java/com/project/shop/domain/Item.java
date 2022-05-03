@@ -1,6 +1,7 @@
 package com.project.shop.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.shop.domain.dto.ItemDto;
 import com.project.shop.exceptions.NotEnoughItemException;
@@ -44,6 +45,7 @@ public class Item {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @JsonIgnore
     private Member member;
 
     @OneToMany(mappedBy = "item")
@@ -54,6 +56,7 @@ public class Item {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
+    @JsonIgnore
     private Category category;
 
     public Item() {

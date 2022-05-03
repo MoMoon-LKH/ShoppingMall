@@ -6,6 +6,7 @@
     <title>상품 등록</title>
 </head>
 <body>
+<div th:replace="fragments/header"></div>
 
 <form th:action="@{/sell/new}" th:object="${itemDto}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:value="${session.loginMember.getId()}" th:name="memberId">
