@@ -1,5 +1,5 @@
 let currentPage = 0;
-const dataPerPage = 10;
+const dataPerPage = 5;
 let memberId;
 let total;
 
@@ -9,7 +9,6 @@ $(document).ready(function () {
 
     if (total !== 0) {
         getList(currentPage, dataPerPage);
-        paging(total);
     }
 
 
@@ -20,8 +19,7 @@ function getTotal(memberId) {
         url: "/api/item/total/" + memberId,
         type: "GET",
         success: function (result) {
-            console.log("total = " + result);
-            total = result;
+            paging(result);
         },
     })
 }
@@ -41,19 +39,19 @@ function getList(page, size) {
     });
 }
 
-function paging(currentPage) {
+function paging(total) {
 
     const pageCount = 5;
-
+    const now = currentPage + 1;
     const totalPage = Math.ceil(total / dataPerPage);
-    const pageGroup = Math.ceil(currentPage / pageCount);
+    const pageGroup = Math.ceil(now / pageCount);
 
     let last = pageGroup * pageCount;
     if (last > totalPage) {
         last = totalPage;
     }
 
-    let first = last - (pageCount - 1);
+    let first = last - (pageCount - 1) <= 0 ? 1 : last - (pageCount - 1)
 
     const nextNum = last + 1;
     const prevNum = first - 1;
@@ -62,19 +60,21 @@ function paging(currentPage) {
         first = last;
     }
 
-    const pages = $("pages");
+    const pages = $("#pages");
     pages.empty();
 
-    if (first > 5) {
-        pages.append("<li class='page_prev_btn' onclick='prev_btn(first - 1)'>이전</li>")
-    }
 
-    for (let i = first; i <= last; i++) {
-        pages.append("<li class='page_num' onclick='getList(i - 1, dataPerPage)'>" + i + "</li>")
+    if (first > 5) {
+        pages.append("<li class='page_prev_btn' onclick='prev_btn(this.value)' value='"+ (first - 1) + "'>이전</li>")
+    }
+    if(last > 0) {
+        for (var i = first; i <= last; i++) {
+            pages.append("<li class='page_num' onclick='getList(this.value, dataPerPage)' value='"+ (i - 1) + "'>" + i + "</li>")
+        }
     }
 
     if (last < totalPage) {
-        pages.append("<li class='page_next_btn' onclick='next_btn(last + 1)'>다음</li>")
+        pages.append("<li class='page_next_btn' onclick='next_btn(this.value)' value='"+ last + 1 +"'>다음</li>")
     }
 
 }
@@ -101,7 +101,6 @@ function list_rendering(result) {
 
         for (let i = 0; i < result.length; i++) {
             let object = result[i]
-            console.log("object : " + object);
 
             table.append(
                 "<tr>" +
