@@ -19,10 +19,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -40,7 +37,6 @@ public class ItemController {
     private final CategoryService categoryService;
     private final MemberService memberService;
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${imagePath}")
     private String imgPath;
@@ -81,6 +77,17 @@ public class ItemController {
 
         return "redirect:/sell/my";
     }
+
+
+    @GetMapping("/item/{itemId}")
+    public String getItem(@PathVariable("itemId") Long itemId, Model model) {
+        Item item = itemService.findById(itemId);
+
+        model.addAttribute("item", item);
+
+        return "/seller/itemInfo";
+    }
+
 
     public String transferImg(MultipartFile file,int ran, int type) throws IOException {
         String originName = file.getOriginalFilename();

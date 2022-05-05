@@ -19,6 +19,7 @@ function getTotal(memberId) {
         url: "/api/item/total/" + memberId,
         type: "GET",
         success: function (result) {
+            total = result;
             paging(result);
         },
     })
@@ -47,11 +48,12 @@ function paging(total) {
     const pageGroup = Math.ceil(now / pageCount);
 
     let last = pageGroup * pageCount;
+    let first = last - (pageCount - 1) <= 0 ? 1 : last - (pageCount - 1);
+
     if (last > totalPage) {
         last = totalPage;
     }
 
-    let first = last - (pageCount - 1) <= 0 ? 1 : last - (pageCount - 1)
 
     const nextNum = last + 1;
     const prevNum = first - 1;
@@ -59,36 +61,37 @@ function paging(total) {
     if (totalPage < 1) {
         first = last;
     }
+    
 
     const pages = $("#pages");
     pages.empty();
 
 
     if (first > 5) {
-        pages.append("<li class='page_prev_btn' onclick='prev_btn(this.value)' value='"+ (first - 1) + "'>이전</li>")
+        pages.append("<li class='page_prev_btn' onclick='prev_btn(this.value)' value='" + (first - 1) + "'>이전</li>");
     }
     if(last > 0) {
         for (var i = first; i <= last; i++) {
-            pages.append("<li class='page_num' onclick='getList(this.value, dataPerPage)' value='"+ (i - 1) + "'>" + i + "</li>")
+            pages.append("<li class='page_num' onclick='getList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
         }
     }
 
     if (last < totalPage) {
-        pages.append("<li class='page_next_btn' onclick='next_btn(this.value)' value='"+ last + 1 +"'>다음</li>")
+        pages.append("<li class='page_next_btn' onclick='next_btn(this.value)' value='" + (last) + "'>다음</li>");
     }
 
 }
 
-function prev_btn(first) {
-    currentPage = first;
+function prev_btn(num) {
+    currentPage = num - 1;
     paging(total);
-    getList(first, dataPerPage);
+    getList(num, dataPerPage);
 }
 
-function next_btn(last) {
-    currentPage = last;
+function next_btn(num) {
+    currentPage = num;
     paging(total);
-    getList(last, dataPerPage);
+    getList(num, dataPerPage);
 }
 
 
