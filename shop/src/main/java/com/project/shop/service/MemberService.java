@@ -41,7 +41,7 @@ public class MemberService {
                 .orElseThrow(NoSuchMemberException::new);
     }
 
-    public Member findByUserId(String memberId) {
+    public Member findByMemberId(String memberId) {
         return memberRepository.findByMemberIdAndStatus(memberId, MemberStatus.ALIVE)
                 .orElseThrow(NoSuchMemberException::new);
 

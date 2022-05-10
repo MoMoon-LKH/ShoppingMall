@@ -15,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class JoinDto {
 
-    private Long id;
 
     @NotNull
     private String memberId;
@@ -33,7 +32,7 @@ public class JoinDto {
     @NotNull
     private String phone;
 
-
+    @NotNull
     private Date birthday;
 
 

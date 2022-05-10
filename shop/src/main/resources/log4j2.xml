@@ -3,7 +3,7 @@
     <!--변수 설정-->
     <Properties>
         <Property name="BASE_DIR">./logs</Property> <!--로그 파일 경로-->
-        <Property name="LOG_FORMAT">[%date{yyyy-MM-dd HH:mm:ss}][%level][%file:%line] %msg%n</Property><!--로그 출력 형태-->
+        <Property name="LOG_FORMAT">[%date{yyyy-MM-dd HH:mm:ss}][%level][%file:%line] %m%n</Property><!--로그 출력 형태-->
     </Properties>
 
     <Appenders>
@@ -29,13 +29,9 @@
     </Appenders>
 
     <Loggers>
-        <Root level="INFO">
+        <Root level="info" additivity="true">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Root>
-        <Logger name="com.example.logdemo" level="WARN" additivity="false">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="File"/>
-        </Logger>
     </Loggers>
 </Configuration>

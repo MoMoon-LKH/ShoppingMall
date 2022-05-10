@@ -1,15 +1,10 @@
 package com.project.shop.config;
 
 import com.project.shop.service.CustomUserService;
-import com.project.shop.session.CustomProvider;
-import com.project.shop.session.SessionConfig;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,12 +17,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CustomProvider customProvider;
+    private final CustomUserService customUserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,18 +36,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeHttpRequests()
                 .antMatchers("/", "/member/**").permitAll()
-                .antMatchers("/api/member/signup").permitAll()
-                .antMatchers("/api/member/login", "/api/member/logout").permitAll()
-                .antMatchers("/sell/**", "/api/item/**").permitAll()
+                .antMatchers("/api/member/**").permitAll()
+                .antMatchers("/sell/**", "/api/item/**").authenticated()
                 .anyRequest().authenticated()
 
                 .and()
                 .formLogin()
                 .loginPage("/member/login")
+                .loginProcessingUrl("/api/member/login")
+                .usernameParameter("memberId")
+                .passwordParameter("password")
                 .defaultSuccessUrl("/")
 
                 .and()
                 .logout()
+                .logoutUrl("/api/member/logout")
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/");
 
 
@@ -62,5 +63,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/./templates/**");
     }
 
-
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserService)
+                .passwordEncoder(passwordEncoder());
+    }
 }

@@ -2,6 +2,7 @@ package com.project.shop.repository;
 
 
 import com.project.shop.domain.Item;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

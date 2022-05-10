@@ -80,14 +80,21 @@ public class Item {
     }
 
 
-    public void update(ItemDto itemDto) {
-        this.name = itemDto.getName();
-        this.count = itemDto.getCount();
-        this.cost = itemDto.getCost();
-        this.imgUrl = itemDto.getImgUrl().getName();
-        this.descriptionUrl = itemDto.getDescriptionUrl().getName();
-        this.etrTxt = itemDto.getEtrTxt();
+    public void update(Item item, String imgUrl, String descriptionUrl) {
+        this.name = item.getName();
+        this.count = item.getCount();
+        this.cost = item.getCost();
+        this.etrTxt = item.getEtrTxt();
         this.updateDate = new Date();
+
+        if (!imgUrl.isEmpty()) {
+            this.imgUrl = imgUrl;
+        }
+
+        if (!descriptionUrl.isEmpty()) {
+            this.descriptionUrl = descriptionUrl;
+        }
+
     }
 
     public void addCount(int count) {
@@ -97,6 +104,7 @@ public class Item {
 
     public void removeCount(int orderCount) {
         int result = this.count - orderCount;
+
         if (result < 0) {
             throw new NotEnoughItemException();
         }

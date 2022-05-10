@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -26,10 +27,9 @@ public class ItemService {
     }
 
     @Transactional
-    public boolean update(ItemDto itemDto) {
+    public boolean update(Item item, String img, String descriptionImg) {
         try {
-            Item item = itemRepository.findById(itemDto.getId()).orElseThrow(NoSuchItemException::new);
-            item.update(itemDto);
+            item.update(item, img, descriptionImg);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,9 +49,19 @@ public class ItemService {
     }
 
     @Transactional
-    public Item purchaseItem(Item item, int count) {
+    public Item addStock(Item item, int count) {
+        item.addCount(count);
+        return item;
+    }
+
+    @Transactional
+    public Item removeItem(Item item, int count) {
         item.removeCount(count);
         return item;
+    }
+
+    public List<Item> findAll(Pageable pageable) {
+        return itemRepository.findAll(pageable).getContent();
     }
 
     public Item findById(Long itemId) {

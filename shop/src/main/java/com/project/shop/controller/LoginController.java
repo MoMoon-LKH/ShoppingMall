@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -25,37 +26,10 @@ public class LoginController {
     private final LoginService loginService;
 
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginDto loginDto, HttpServletRequest request) {
+    /*@GetMapping("usernick")
+    public ResponseEntity<?> getUserNickname(Principal principal) {
 
-        Member loginMember = loginService.login(loginDto.getLoginId(), loginDto.getPassword());
-
-        if (loginMember == null) {
-            return ResponseEntity.ok(false);
-        }
-
-        // 세션 있으면 있는 세션 반환, 없으면 신규 세션을 생성
-        HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
-
-        return ResponseEntity.ok(loginMember);
     }
-
-
-    @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        System.out.println("session = " + session + "로그아웃");
-
-        if (session != null) {
-            System.out.println("session if = " + session + "로그아웃");
-
-            session.invalidate();
-            return ResponseEntity.ok(true);
-        }
-
-        return ResponseEntity.ok(false);
-    }
-
+*/
 
 }

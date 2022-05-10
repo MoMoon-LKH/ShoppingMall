@@ -4,18 +4,13 @@ import com.project.shop.domain.Category;
 import com.project.shop.domain.Item;
 import com.project.shop.domain.Member;
 import com.project.shop.domain.dto.ItemDto;
-import com.project.shop.repository.CategoryRepository;
+import com.project.shop.domain.dto.StockDto;
 import com.project.shop.service.CategoryService;
 import com.project.shop.service.ItemService;
 import com.project.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.apache.bcel.util.ClassPath;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -84,12 +79,40 @@ public class ItemController {
         Item item = itemService.findById(itemId);
 
         model.addAttribute("item", item);
+        model.addAttribute("stock", new StockDto());
 
         return "/seller/itemInfo";
     }
 
 
-    public String transferImg(MultipartFile file,int ran, int type) throws IOException {
+    @PostMapping("/item/update") //api 고려
+    public String updateItem(@Valid ItemDto itemDto) throws IOException{
+        String img = "";
+        String descriptionImg = "";
+        int ran = (int) (Math.random()*10000);
+
+        Item item = itemService.findById(itemDto.getId());
+
+        if (!itemDto.getImgUrl().isEmpty()) {
+            imgDelete(item.getImgUrl());
+            img = transferImg(itemDto.getImgUrl(), ran, 0);
+        }
+
+        if (!itemDto.getDescriptionUrl().isEmpty()) {
+            imgDelete(item.getDescriptionUrl());
+            descriptionImg = transferImg(itemDto.getDescriptionUrl(), ran, 1);
+        }
+
+        boolean update = itemService.update(item, img, descriptionImg);
+
+        return "redirect:/seller/itemInfo";
+    }
+
+
+
+
+    public String transferImg(MultipartFile file, int ran, int type) throws IOException {
+
         String originName = file.getOriginalFilename();
         String ext = originName.substring(originName.lastIndexOf("."));
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -100,11 +123,23 @@ public class ItemController {
 
         if (type == 0) {
             fname = dateFormat.format(new Date()) + "_" + ran + ext;
-        } else{
+        } else {
             fname = dateFormat.format(new Date()) + "_" + ran + "d" + ext;
         }
-        file.transferTo(new File( imgPath + "/" + fname));
+        file.transferTo(new File(imgPath + "/" + fname));
 
         return fname;
     }
+
+    public void imgDelete(String img) {
+        if (!imgPath.isEmpty()) {
+            File file = new File(imgPath + img);
+
+            if (file.exists()) {
+                file.delete();
+            }
+        }
+    }
+
+
 }

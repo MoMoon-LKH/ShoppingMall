@@ -1,11 +1,10 @@
 let currentPage = 0;
 const dataPerPage = 5;
-let memberId;
+const id = memberId;
 let total;
 
 $(document).ready(function () {
-    memberId = document.getElementById('memberId').value;
-    getTotal(memberId);
+    getTotal(id);
 
     if (total !== 0) {
         getList(currentPage, dataPerPage);
@@ -28,7 +27,7 @@ function getTotal(memberId) {
 function getList(page, size) {
 
     $.ajax({
-        url: "/api/item/" + memberId +"?page="+ page + "&size=" + size,
+        url: "/api/item/" + id +"?page="+ page + "&size=" + size,
         type: "GET",
         success: function (result) {
             list_rendering(result);
@@ -61,14 +60,14 @@ function paging(total) {
     if (totalPage < 1) {
         first = last;
     }
-    
+
 
     const pages = $("#pages");
     pages.empty();
 
 
     if (first > 5) {
-        pages.append("<li class='page_prev_btn' onclick='prev_btn(this.value)' value='" + (first - 1) + "'>이전</li>");
+        pages.append("<li class='page_num' onclick='prev_btn(this.value)' value='" + (first - 1) + "'>이전</li>");
     }
     if(last > 0) {
         for (var i = first; i <= last; i++) {
@@ -77,7 +76,7 @@ function paging(total) {
     }
 
     if (last < totalPage) {
-        pages.append("<li class='page_next_btn' onclick='next_btn(this.value)' value='" + (last) + "'>다음</li>");
+        pages.append("<li class='page_num' onclick='next_btn(this.value)' value='" + (last) + "'>다음</li>");
     }
 
 }
@@ -106,7 +105,7 @@ function list_rendering(result) {
             let object = result[i]
 
             table.append(
-                "<tr>" +
+                "<tr onclick='getItemPage(" + object.id +")'>" +
                     "<td>" + object.id + "</td>" +
                     "<td>" + object.name + "</td>" +
                     "<td>" + object.cost + "</td>" +
@@ -120,4 +119,8 @@ function list_rendering(result) {
         table.append("<tr><td>데이터가 없습니다.</td></tr>")
     }
 
+}
+
+function getItemPage(id) {
+    location.href = "/sell/item/" + id;
 }
