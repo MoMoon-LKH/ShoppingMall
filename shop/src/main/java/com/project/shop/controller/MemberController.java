@@ -1,7 +1,10 @@
 package com.project.shop.controller;
 
+import com.project.shop.domain.userDetails.Account;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +16,13 @@ public class MemberController {
 
 
     @GetMapping("/")
-    public String indexPage(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
+    public String indexPage(@AuthenticationPrincipal Account account, Model model) {
+        try {
+            model.addAttribute("id", account.getId());
+            model.addAttribute("nickname", account.getNickname());
+        } catch (Exception ignored) {
 
+        }
         return "main";
     }
 

@@ -9,7 +9,7 @@
 <div th:replace="fragments/header"></div>
 
 <form th:action="@{/sell/new}" th:object="${itemDto}" method="post" enctype="multipart/form-data">
-    <input type="hidden" th:value="${session.loginMember.getId()}" th:name="memberId">
+    <input type="hidden" th:value="${id}" th:name="memberId">
     <div class="form-div">
         <label th:for="category">카테고리</label>
         <select name="category" th:field="*{categoryId}">

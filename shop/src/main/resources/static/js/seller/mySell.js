@@ -1,6 +1,6 @@
 let currentPage = 0;
 const dataPerPage = 5;
-const id = memberId;
+let id = document.getElementById("get_memberId").value;
 let total;
 
 $(document).ready(function () {
@@ -23,6 +23,7 @@ function getTotal(memberId) {
         },
     })
 }
+
 
 function getList(page, size) {
 

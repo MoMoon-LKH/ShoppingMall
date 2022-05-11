@@ -3,10 +3,12 @@ package com.project.shop.controller;
 
 import com.project.shop.domain.Member;
 import com.project.shop.domain.dto.JoinDto;
+import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.AuthorityService;
 import com.project.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,17 +36,17 @@ public class MemberApiController {
     }
 
     @GetMapping("/usernickname")
-    public ResponseEntity<?> currentMember(Principal principal) {
+    public ResponseEntity<?> currentMember(@AuthenticationPrincipal Account account) {
         try {
-            Member member = memberService.findByMemberId(principal.getName());
             Map<String, Object> map = new HashMap<>();
-            map.put("id", member.getId());
-            map.put("nickname", member.getNickname());
+            map.put("id", account.getId());
+            map.put("nickname", account.getNickname());
 
             return ResponseEntity.ok(map);
         } catch (Exception e) {
             return ResponseEntity.ok(null);
         }
+
     }
 
 }

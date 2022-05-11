@@ -5,12 +5,14 @@ import com.project.shop.domain.Item;
 import com.project.shop.domain.Member;
 import com.project.shop.domain.dto.ItemDto;
 import com.project.shop.domain.dto.StockDto;
+import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.CategoryService;
 import com.project.shop.service.ItemService;
 import com.project.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -37,13 +40,16 @@ public class ItemController {
     private String imgPath;
 
     @GetMapping("/my")
-    public String sellMain() {
+    public String sellMain(@AuthenticationPrincipal Account account, Model model) {
+        model.addAttribute("id", account.getId());
+
         return "/seller/mySell";
     }
 
     @GetMapping("/new")
-    public String registerPage(Model model) {
+    public String registerPage(@AuthenticationPrincipal Account account, Model model) {
 
+        model.addAttribute("id", account.getId());
         model.addAttribute("itemDto", new ItemDto());
         model.addAttribute("category", categoryService.findAll());
         return "/seller/registerItem";

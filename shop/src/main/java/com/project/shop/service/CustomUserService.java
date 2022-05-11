@@ -2,6 +2,7 @@ package com.project.shop.service;
 
 
 import com.project.shop.domain.Member;
+import com.project.shop.domain.userDetails.Account;
 import com.project.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,18 +30,18 @@ public class CustomUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
-        System.out.println("memberId = " + memberId);
         return memberRepository.findByMemberId(memberId)
-                .map(this::createUser)
+                .map(this::createAccount)
                 .orElseThrow(() -> new UsernameNotFoundException(memberId + " -> 찾을 수 없는 아이디 입니다."));
 
     }
 
-    private User createUser(Member member) {
+    private Account createAccount(Member member) {
         List<GrantedAuthority> grantedAuthorityList = member.getAuthorities()
                 .stream().map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
                 .collect(Collectors.toList());
         System.out.println("grantedAuthorityList = " + Arrays.toString(grantedAuthorityList.toArray()));
-        return new User(member.getMemberId(), member.getPassword(), grantedAuthorityList);
+        return new Account(member.getMemberId(), member.getPassword(), grantedAuthorityList, member.getId(), member.getNickname());
     }
+
 }

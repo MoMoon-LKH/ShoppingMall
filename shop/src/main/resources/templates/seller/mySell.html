@@ -7,6 +7,7 @@
 </head>
 <body>
 <div th:replace="fragments/header"></div>
+<input type="hidden" id="get_memberId" th:value="${id}"/>
 <a href="/sell/new">상품 등록</a>
 <div class="list_container">
     <div class="div_list">
@@ -23,7 +24,6 @@
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="/js/variable.js"></script>
 <script src="/js/seller/mySell.js"></script>
 </body>
 </html>

@@ -8,20 +8,17 @@ $(document).ready(function () {
         contentType: "application/json"
     }).done(function (result) {
         if(!result) {
-            not_login_header.style.display = 'block';
-            login_header.style.display = 'none';
 
         }else{
-            not_login_header.style.display = 'none';
-            login_header.style.display = 'block';
             document.getElementById("memberId").value = result["id"];
             document.getElementById("user_nickname").textContent = result["nickname"];
-            memberId = result["id"];
+            id = result["id"];
         }
     }).error(function (error) {
 
     });
 });
+
 
 function logout() {
     $.ajax({
