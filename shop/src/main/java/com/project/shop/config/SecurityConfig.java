@@ -37,6 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeHttpRequests()
                 .antMatchers("/", "/member/**").permitAll()
                 .antMatchers("/api/member/**").permitAll()
+                .antMatchers("/item/**").permitAll()
+                .antMatchers( "/api/item/total", "/api/item/list", "/api/item/category/**}").permitAll()
                 .antMatchers("/sell/**").hasAuthority("ADMIN")
                 .antMatchers( "/api/item/**").authenticated()
                 .anyRequest().authenticated()
@@ -47,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/api/member/login")
                 .usernameParameter("memberId")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/", true)
 
                 .and()
                 .logout()
@@ -62,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
         web.ignoring().antMatchers("/./templates/**");
+        web.ignoring().antMatchers("/img/**");
     }
 
     @Override

@@ -4,10 +4,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>main</title>
     <link type="text/css" rel="stylesheet" href="/css/paging.css">
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+
 </head>
 <body>
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
+<div class="table_container" style="margin-top: 50px; text-align: center">
+    <div>
+        <table style="border-spacing: 40px">
+            <tbody id="item_list" >
+
+            </tbody>
+        </table>
+    </div>
+    <div class="wrapper-pages">
+        <ul class="paging-num" id="pages">
+
+        </ul>
+    </div>
+</div>
 
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

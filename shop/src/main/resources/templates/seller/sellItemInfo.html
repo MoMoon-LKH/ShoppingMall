@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 정보</title>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div class="item_container">
+    <div class="item_top">
+        <input type="hidden" th:value="${item.id}"/>
+        <img src="/./static/img/error.png" class="itemImg" onerror="onerror=null; src='/./static/img/error.png'" th:src="|/./static/img/${item.imgUrl}|" style="display: inline-block">
+        <div class="item_txt" style="display: inline-block">
+            <div class="txt_wrapper">
+                <label th:for="name">상품명: </label>
+                <span th:name="name" th:text="${item.name}"></span>
+            </div>
+            <div class="txt_wrapper">
+                <label th:for="cost">가격: </label>
+                <span th:name="cost" th:text="${item.cost}"></span>
+            </div>
+            <div class="txt_wrapper">
+                <label th:for="count">재고량: </label>
+                <span th:name="count" th:text="${item.count}"></span>
+            </div>
+            <div class="txt_wrapper">
+                <input id="stock_count" type="number" placeholder="수정할 재고수량을 입력해주세요"/>
+                <div class="stock_btns">
+                    <button onclick="">추가</button><button onclick="">감소</button><button onclick="">재고 수정</button>
+                </div>
+            </div>
+            <div class="txt_wrapper">
+                <a href="">상품 수정</a>
+            </div>
+        </div>
+    </div>
+    <div class="item_bottom">
+        <div class="item_tab">
+            <span class="item_details">
+                상품 안내
+            </span>
+        </div>
+        <div class="item_bottom_content">
+            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/./static/img/${item.descriptionUrl}|">
+            <div id="item_etr" th:text="${item.etrTxt}"></div>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/seller/sellItemInfo.js"></script>
+</body>
+</html>

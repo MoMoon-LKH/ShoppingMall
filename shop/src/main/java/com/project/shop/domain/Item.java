@@ -49,9 +49,11 @@ public class Item {
     private Member member;
 
     @OneToMany(mappedBy = "item")
+    @JsonIgnore
     private List<Order_Item> order_items = new ArrayList<>();
 
     @OneToMany(mappedBy = "item")
+    @JsonIgnore
     private List<Cart_Item> cart_items = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)

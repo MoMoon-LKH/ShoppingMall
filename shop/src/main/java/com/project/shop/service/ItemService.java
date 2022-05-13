@@ -77,8 +77,12 @@ public class ItemService {
     }
 
 
-    public Integer getTotalCount(Long memberId) {
-        return itemRepository.countByMember_Id(memberId).intValue();
+    public Integer getTotalCount() {
+        return itemRepository.countAllBy().intValue();
+    }
+
+    public Integer getCategoryTotal(Long categoryId) {
+        return itemRepository.countAllByCategory_Id(categoryId).intValue();
     }
 
 

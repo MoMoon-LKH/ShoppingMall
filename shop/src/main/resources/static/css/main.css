@@ -1,0 +1,19 @@
+a{
+    text-decoration: none;
+}
+
+.item_el{
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#item_name{
+    font-size: 18px;
+    color: #808080;
+}
+
+#item_cost {
+    font-size: 21px;
+    color: indianred;
+
+}

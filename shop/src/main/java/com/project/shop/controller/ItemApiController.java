@@ -32,18 +32,25 @@ public class ItemApiController {
         return ResponseEntity.ok(itemService.findByMemberId(memberId, pageable));
     }
 
-    @GetMapping("total/{memberId}")
-    public ResponseEntity<?> getTotalCount(@PathVariable("memberId") Long memberId) {
-        return ResponseEntity.ok(itemService.getTotalCount(memberId));
+    @GetMapping("/total")
+    public ResponseEntity<?> getTotal() {
+        return ResponseEntity.ok(itemService.getTotalCount());
     }
 
-    @GetMapping("/item/list")
+
+    @GetMapping("/category/total/{categoryId}")
+    public ResponseEntity<?> getCategoryTotal(@PathVariable("categoryId") Long categoryId) {
+        return ResponseEntity.ok(itemService.getCategoryTotal(categoryId));
+    }
+
+
+    @GetMapping("/list")
     public ResponseEntity<List<Item>> getItemList(
-            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC)Pageable pageable) {
+            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(itemService.findAll(pageable));
     }
 
-    @GetMapping("/item/list/{categoryId}")
+    @GetMapping("/category/list/{categoryId}")
     public ResponseEntity<List<Item>> getItemListByCategory(
             @PathVariable("categoryId") Long categoryId,
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC)Pageable pageable) {

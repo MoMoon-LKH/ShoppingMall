@@ -4,6 +4,7 @@ package com.project.shop.repository;
 import com.project.shop.domain.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,5 +19,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findAllByCategory_IdOrderByCreateDateDesc(@Param("categoryId") Long categoryId, Pageable pageable);
 
-    Long countByMember_Id(@Param("memberId") Long memberId);
+    Long countAllBy();
+
+    Long countAllByCategory_Id(@Param("categoryId") Long categoryIJd);
 }

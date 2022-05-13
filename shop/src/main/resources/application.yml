@@ -4,7 +4,9 @@ spring:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     username: root
     password: 123123
-
+  servlet:
+    multipart:
+      max-file-size: 10MB
 
   jpa:
     hibernate:
@@ -26,6 +28,5 @@ server:
     session:
       tracking-modes: cookie
       timeout: 1800
-
 
 imagePath: D:\MyProject\personal_project\ShoppingMall\shop\src\main\resources\static\img

@@ -54,7 +54,6 @@ function paging(total) {
         last = totalPage;
     }
 
-
     const nextNum = last + 1;
     const prevNum = first - 1;
 
