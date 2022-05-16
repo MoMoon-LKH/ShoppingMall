@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>main</title>
+    <title>SHOP</title>
     <link type="text/css" rel="stylesheet" href="/css/paging.css">
     <link type="text/css" rel="stylesheet" href="/css/main.css">
 
@@ -10,9 +10,11 @@
 <body>
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
-<div class="table_container" style="margin-top: 50px; text-align: center">
+<div class="table_container" style="margin-top: 50px; width: 80%" >
+    <div style="font-size: 20px; font-weight: bold">전체 상품</div>
     <div>
-        <table style="border-spacing: 40px">
+        <hr style="border: 1px solid black">
+        <table id="item_table" >
             <tbody id="item_list" >
 
             </tbody>

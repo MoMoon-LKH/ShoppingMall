@@ -1,0 +1,50 @@
+
+.item_container{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.item_bottom{
+    margin-top: 50px;
+}
+
+.item_tab{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.item_details{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.txt_wrapper{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: lighter;
+}
+
+#item_name{
+    font-size: 33px;
+    font-weight: bold;
+}
+
+#item_cost{
+    font-size: 23px;
+    color: orangered;
+    font-weight: bold;
+}
+
+
+#purchase_count{
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+#descriptionImg {
+    width: 100%;
+
+}
+

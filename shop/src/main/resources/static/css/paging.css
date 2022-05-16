@@ -2,10 +2,13 @@
     border: 0px;
     padding: 0px;
     list-style: none;
-    align-content: center;
+    text-align: center;
 }
 
 .page_num{
-    float: left;
-    margin-left: 7px;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    padding-left: 4px;
+    padding-right: 4px;
 }

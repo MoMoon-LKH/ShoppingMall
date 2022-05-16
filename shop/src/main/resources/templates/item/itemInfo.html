@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SHOP</title>
+    <link type="text/css" rel="stylesheet" href="/css/itemInfo.css">
 </head>
 <body>
-아이템 인포
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+<div class="item_container" style="margin-top: 100px">
+    <div class="item_top">
+        <input type="hidden" th:value="${item.id}"/>
+        <img class="itemImg" onerror="onerror=null; src='/./img/error.png'" th:src="|/./img/${item.imgUrl}|" style="float: left; width: 500px; height: 600px; ">
+        <div class="item_txt" style="display: inline-block; margin-left: 20px">
+            <div class="txt_wrapper">
+                <span id="item_name" class="wrapper_content" type="text" th:name="name" th:text="${item.name}"></span>
+                <hr style="border: solid 1px black; margin-top: 5px; margin-bottom: 30px">
+            </div>
+            <div class="txt_wrapper">
+                <label th:for="cost">판매가격: </label>
+                <span class="wrapper_content" id="item_cost" th:text="${item.cost}"></span><span id="item_cost_txt">원</span>
+            </div>
+            <div class="txt_wrapper">
+               <label>배송비:</label>
+               <span class="wrapper_content">주문 시 결제</span>
+            </div>
+            <div class="txt_wrapper" style="margin-top: 15px">
+                <div >구매수량</div>
+                <input id="purchase_count" type="number" min="1" value="1" style="width: 50px">
+            </div>
+            <div class="txt_wrapper">
+                <button id="basket_btn">장바구니</button>
+                <button id="purchase_btn">구매하기</button>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    <div class="item_bottom">
+        <hr style="border: solid 1px gray;">
+        <div class="item_tab">
+            <div class="item_details">
+                상품 안내
+            </div>
+        </div>
+        <hr style="border: solid 1px gray;">
+        <div class="item_bottom_content">
+            <div id="item_etr" th:text="${item.etrTxt}"></div>
+            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/./img/${item.descriptionUrl}|">
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>main</title>
-
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
 </head>
 <body>
 
@@ -15,10 +15,11 @@
 </div>
 <div class="on_login" sec:authorize="isAuthenticated()">
     <a href="/">MAIN</a>
-    <span id="user_nickname" >해당 유저 닉네임 </span>
+    <span id="user_nickname" > </span>
     <input type="hidden" id="memberId"  >
     <input type="button" value="로그아웃" id="logout_Btn" onclick="logout()"/>
     <a href="/sell/my" sec:authorize="hasAuthority('ADMIN')">판매 관리</a>
+    <a href="/member/basket" sec:authorize="hasAnyAuthority('USER')">장바구니</a>
 </div>
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

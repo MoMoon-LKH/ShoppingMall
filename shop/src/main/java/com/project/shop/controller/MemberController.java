@@ -7,9 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -36,5 +33,14 @@ public class MemberController {
         return "join";
     }
 
+    @GetMapping("/member/basket")
+    public String basketPage(@AuthenticationPrincipal Account account, Model model) {
+        try {
+            model.addAttribute("id", account.getId());
+        } catch (Exception ignored) {
 
+        }
+
+        return "/member/basket";
+    }
 }

@@ -9,15 +9,15 @@
 <div class="item_container">
     <div class="item_top">
         <input type="hidden" th:value="${item.id}"/>
-        <img src="/./static/img/error.png" class="itemImg" onerror="onerror=null; src='/./static/img/error.png'" th:src="|/./static/img/${item.imgUrl}|" style="display: inline-block">
+        <img class="itemImg" onerror="onerror=null; src='/./img/error.png'" th:src="|/./img/${item.imgUrl}|" style="display: inline-block; width: 250px; height: 300px">
         <div class="item_txt" style="display: inline-block">
             <div class="txt_wrapper">
                 <label th:for="name">상품명: </label>
-                <span th:name="name" th:text="${item.name}"></span>
+                <input type="text" th:name="name" th:value="${item.name}">
             </div>
             <div class="txt_wrapper">
                 <label th:for="cost">가격: </label>
-                <span th:name="cost" th:text="${item.cost}"></span>
+                <input type="number" th:name="cost" th:value="${item.cost}">
             </div>
             <div class="txt_wrapper">
                 <label th:for="count">재고량: </label>
@@ -41,8 +41,8 @@
             </span>
         </div>
         <div class="item_bottom_content">
-            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/./static/img/${item.descriptionUrl}|">
             <div id="item_etr" th:text="${item.etrTxt}"></div>
+            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/./img/${item.descriptionUrl}|" style="width: 500px">
         </div>
     </div>
 </div>
