@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link type="text/css" rel="stylesheet" href="/css/paging.css">
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+
+<div class="table_container" style="margin-top: 50px; width: 80%" >
+    <input type="hidden" id="categoryId" th:value="${category.id}"/>
+    <div style="font-size: 20px; font-weight: bold" th:text="${category.name}"></div>
+    <div>
+        <hr style="border: 1px solid black">
+        <table id="item_table" >
+            <tbody id="item_list" >
+
+            </tbody>
+        </table>
+    </div>
+    <div class="wrapper-pages">
+        <ul class="paging-num" id="pages">
+
+        </ul>
+    </div>
+</div>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/item/categoryItem.js"></script>
+</html>

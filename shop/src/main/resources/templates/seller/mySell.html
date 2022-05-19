@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <title>나의 판매 정보</title>
     <link rel="stylesheet" type="text/css" href="/css/paging.css">
+    <link rel="stylesheet" type="text/css" href="/css/seller/mySell.css">
+
 </head>
 <body>
 <div th:replace="fragments/header"></div>
-<input type="hidden" id="get_memberId" th:value="${id}"/>
-<a href="/sell/new">상품 등록</a>
-<div class="list_container">
-    <div class="div_list">
-        <table  border="1">
-            <tbody id="item_list">
+<div class="container">
+    <input type="hidden" id="get_memberId" th:value="${id}"/>
+    <a href="/sell/new">상품 등록</a>
+    <div class="list_container">
+        <div class="div_list">
+            <table  border="1">
+                <tbody id="item_list">
 
-            </tbody>
-        </table>
-    </div>
-    <div class="wrapper-pages">
-        <ul class="paging-num" id="pages">
+                </tbody>
+            </table>
+        </div>
+        <div class="wrapper-pages">
+            <ul class="paging-num" id="pages">
 
-        </ul>
+            </ul>
+        </div>
     </div>
 </div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

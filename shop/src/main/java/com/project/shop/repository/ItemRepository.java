@@ -17,9 +17,9 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findAllByMember_Id(@Param("memberId") Long memberId, Pageable pageable);
 
-    List<Item> findAllByCategory_IdOrderByCreateDateDesc(@Param("categoryId") Long categoryId, Pageable pageable);
+    List<Item> findAllByCategory_Id(@Param("categoryId") Long categoryId, Pageable pageable);
 
     Long countAllBy();
 
-    Long countAllByCategory_Id(@Param("categoryId") Long categoryIJd);
+    Long countAllByCategory_Id(@Param("categoryId") Long categoryId);
 }

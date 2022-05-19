@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 function getTotal(memberId) {
     $.ajax({
-        url: "/api/item/total/" + memberId,
+        url: "/api/item/total",
         type: "GET",
         success: function (result) {
             total = result;
@@ -84,7 +84,7 @@ function paging(total) {
 function prev_btn(num) {
     currentPage = num - 1;
     paging(total);
-    getList(num, dataPerPage);
+    getList(currentPage, dataPerPage);
 }
 
 function next_btn(num) {

@@ -1,0 +1,18 @@
+table{
+    margin: auto;
+}
+
+tr {
+    cursor: pointer;
+}
+
+.container{
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+.list_container{
+    text-align: center;
+}
+

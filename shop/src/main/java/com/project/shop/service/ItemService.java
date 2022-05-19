@@ -73,7 +73,7 @@ public class ItemService {
     }
 
     public List<Item> findByCategory(Long categoryId, Pageable pageable) {
-        return itemRepository.findAllByCategory_IdOrderByCreateDateDesc(categoryId, pageable);
+        return itemRepository.findAllByCategory_Id(categoryId, pageable);
     }
 
 
