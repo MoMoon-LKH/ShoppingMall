@@ -12,6 +12,8 @@ public class Cart_Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int count;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;

@@ -17,10 +17,6 @@ public class Cart {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int count;
-
-    private int cost;
-
     @Column(name = "create_date")
     private Date createDate;
 
@@ -32,4 +28,16 @@ public class Cart {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
+    public Cart() {
+
+    }
+
+    private Cart(Member member) {
+        this.createDate = new Date();
+        this.member = member;
+    }
+
+    public static Cart createCart( Member member) {
+        return new Cart(member);
+    }
 }

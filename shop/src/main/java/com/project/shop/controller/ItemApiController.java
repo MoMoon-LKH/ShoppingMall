@@ -25,6 +25,7 @@ public class ItemApiController {
 
     private final ItemService itemService;
 
+
     @GetMapping("/{memberId}")
     public ResponseEntity<?> getItemsByMemberId(@PathVariable("memberId") Long memberId,
                                                 @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable) {
@@ -32,10 +33,12 @@ public class ItemApiController {
         return ResponseEntity.ok(itemService.findByMemberId(memberId, pageable));
     }
 
+
     @GetMapping("/total")
     public ResponseEntity<?> getTotal() {
         return ResponseEntity.ok(itemService.getTotalCount());
     }
+
 
 
     @GetMapping("/category/total/{categoryId}")
@@ -44,11 +47,13 @@ public class ItemApiController {
     }
 
 
+
     @GetMapping("/list")
     public ResponseEntity<List<Item>> getItemList(
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(itemService.findAll(pageable));
     }
+
 
     @GetMapping("/category/list/{categoryId}")
     public ResponseEntity<List<Item>> getItemListByCategory(
@@ -57,15 +62,18 @@ public class ItemApiController {
         return ResponseEntity.ok(itemService.findByCategory(categoryId, pageable));
     }
 
+
     @PostMapping("/stock/add")
     public ResponseEntity<?> addStock(@Valid StockDto stockDto) {
         Item item = itemService.findById(stockDto.getItemId());
         return ResponseEntity.ok(itemService.addStock(item, stockDto.getCount()).getCount());
     }
 
+
     @PostMapping("/stock/remove")
     public ResponseEntity<?> removeStock(@Valid StockDto stockDto) {
         Item item = itemService.findById(stockDto.getItemId());
         return ResponseEntity.ok(itemService.removeItem(item, stockDto.getCount()).getCount());
     }
+
 }
