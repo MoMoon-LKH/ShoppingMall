@@ -21,4 +21,19 @@ public class Cart_Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+
+    public Cart_Item() {
+
+    }
+
+    private Cart_Item(int count, Item item, Cart cart){
+        this.count = count;
+        this.item = item;
+        this.cart = cart;
+    }
+
+    public static Cart_Item createCart_Item(int count, Item item, Cart cart) {
+        return new Cart_Item(count, item, cart);
+    }
 }

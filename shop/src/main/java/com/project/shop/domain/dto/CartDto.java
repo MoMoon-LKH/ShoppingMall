@@ -5,21 +5,28 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartDto {
 
-    private Long item_id;
+    @NotNull
+    private Long memberId;
 
-    private String item_name;
+    @NotNull
+    private Long itemId;
 
-    private int item_cost;
+    private String itemName;
 
+    private int itemCost;
+
+    @NotNull
     private int count;
 
-    private String item_imgUrl;
+    private String itemImgUrl;
 
 
 }

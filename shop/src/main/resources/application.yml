@@ -18,6 +18,12 @@ spring:
   sql:
     init:
       mode: always
+  mvc:
+    static-path-pattern: /static/**
+  web:
+    resources:
+      static-locations: classpath:/static/
+      add-mappings: true
 
 logging:
   config: classpath:log4j2.xml

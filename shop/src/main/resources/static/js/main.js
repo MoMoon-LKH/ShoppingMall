@@ -48,7 +48,7 @@ function itemList_rendering(result) {
             let object = result[count];
             html += "<td class='items' >";
             html += "<a href='/item/"+ object.id + "'>";
-            html += "<img id='itemImg' style='width: 200px; height: 225px;' src='../img/" + object.imgUrl + "' onerror='getErrorImg(this);'/>";
+            html += "<img id='itemImg' style='width: 200px; height: 225px;' src='/static/img/" + object.imgUrl + "' onerror='getErrorImg(this);'/>";
             html += "<div class='item_el' id='item_name'>" + object.name + "</div>";
             html += "</a>";
             html += "<div class='item_el' id='item_cost'>" + object.cost+ "원" + "</div>";
@@ -120,6 +120,6 @@ function next_btn(num) {
 
 function getErrorImg(image) {
     image.onerror = "";
-    image.src = "../img/error.png";
+    image.src = "/static/img/error.png";
     return true;
 }

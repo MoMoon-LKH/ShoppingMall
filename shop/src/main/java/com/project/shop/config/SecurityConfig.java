@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
         web.ignoring().antMatchers("/./templates/**");
-        web.ignoring().antMatchers("/img/**");
+        web.ignoring().antMatchers("/static/**");
     }
 
     @Override
@@ -73,4 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(customUserService)
                 .passwordEncoder(passwordEncoder());
     }
+
+
 }
