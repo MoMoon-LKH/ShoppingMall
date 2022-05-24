@@ -34,13 +34,9 @@ public class MemberController {
     }
 
     @GetMapping("/member/cart")
-    public String basketPage(@AuthenticationPrincipal Account account, Model model) {
-        try {
-            model.addAttribute("id", account.getId());
-        } catch (Exception ignored) {
-
-        }
-
+    public String cartPage(@AuthenticationPrincipal Account account, Model model) {
+        model.addAttribute("memberId", account.getId());
         return "/member/cart";
     }
+
 }

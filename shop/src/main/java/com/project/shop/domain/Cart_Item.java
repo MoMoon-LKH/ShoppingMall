@@ -36,4 +36,8 @@ public class Cart_Item {
     public static Cart_Item createCart_Item(int count, Item item, Cart cart) {
         return new Cart_Item(count, item, cart);
     }
+
+    public void addCount(int count) {
+        this.count += count;
+    }
 }

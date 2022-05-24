@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -41,14 +42,26 @@ public class CartService {
         }
     }
 
+    @Transactional
+    public void addCount(Cart_Item cart_item, int count) {
+        cart_item.addCount(count);
+    }
 
-    public Cart findByCart(Long memberId) {
+    public Cart findCartByMemberId(Long memberId) {
         return cartRepository.findByMember_Id(memberId).orElseThrow(NoSuchFieldError::new);
     }
 
+    public Optional<Cart_Item> findByCartItemId(Long cartItemId) {
+        return cart_itemRepository.findById(cartItemId);
+    }
 
-    public List<CartDto> findByMemberId(Long memberId) {
-        return cartRepository.findAllByCartItems(memberId);
+    public Optional<Cart_Item> findByItemIdAndCartId(Long itemId, Long cartId) {
+        return cart_itemRepository.findByItem_IdAndCart_Id(itemId, cartId);
+    }
+
+
+    public List<CartDto> findCartItemAllByCartId(Long cartId) {
+        return cart_itemRepository.findAllByCartId(cartId);
     }
 
     public List<Cart_Item> findAllByCartItemId(List<Long> cartItemIds) {

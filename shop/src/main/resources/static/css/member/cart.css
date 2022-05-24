@@ -18,6 +18,9 @@ tr{
     border-bottom: 1px solid lightgray;
 }
 
+img{
+    float: left;
+}
 
 .container{
     width: 70%;
@@ -28,12 +31,29 @@ tr{
     margin: 20px auto;
 }
 
+.itemImg{
+    width: 80px;
+    height: 100px;
+    margin-left: 15px;
+}
+
 #cart_title{
     font-size: 25px;
     font-weight: bold;
     margin-left: 110px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+#cart_name{
+    text-align: left;
+
+}
+
+#item_name {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 35px;
 }
 
 
