@@ -1,0 +1,39 @@
+table{
+    text-align: center;
+    margin: 15px auto;
+    table-layout: fixed;
+    width: 1000px;
+    border-collapse: collapse;
+
+}
+
+th{
+    font-size: 18px;
+    border-top: 2px solid gray;
+    border-bottom: 1px solid gray;
+    height: 60px;
+}
+
+tr{
+    border-bottom: 1px solid lightgray;
+}
+
+
+.container{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.table_container{
+    margin: 20px auto;
+}
+
+#cart_title{
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 110px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+

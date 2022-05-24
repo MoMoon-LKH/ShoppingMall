@@ -13,8 +13,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CartDto {
 
-    @NotNull
-    private Long memberId;
+    private Long CartItemId;
 
     @NotNull
     private Long itemId;
@@ -28,5 +27,5 @@ public class CartDto {
 
     private String itemImgUrl;
 
-
+    private Long memberId;
 }

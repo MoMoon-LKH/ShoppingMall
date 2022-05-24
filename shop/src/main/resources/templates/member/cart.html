@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/member/cart.css">
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+<div class="container">
+    <input type="hidden" id="memberId" th:value="${id}"/>
+    <div class="table_container">
+        <div id="cart_title">장바구니</div>
+        <table class="table">
+            <thead>
+                <th width="3%"><input type="checkbox" class="check" name="all" value="all" id="checkAll" checked="checked"></th>
+                <th width="57%">상품정보</th>
+                <th width="10%">수량</th>
+                <th width="10%">판매가</th>
+                <th width="10%">소계</th>
+                <th width="10%">배송비</th>
+            </thead>
+
+
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="table_container">
+        <table>
+            <thead>
+                <th>총 상품 가격</th>
+                <th>배송비</th>
+                <th>총 결제금액</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="total_txt"><span id="item_costs">0</span><span>원</span></td>
+                    <td class="total_txt"><span id="delivery_cost">0</span><span>원</span></td>
+                    <td class="total_txt"><span id="total">0</span><span>원</span></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/static/js/member/cart.js"></script>
+</html>

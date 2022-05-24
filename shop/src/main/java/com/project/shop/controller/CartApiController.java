@@ -19,7 +19,6 @@ import java.util.List;
 public class CartApiController {
 
     private final CartService cartService;
-    private final MemberService memberService;
     private final ItemService itemService;
 
 
@@ -36,6 +35,14 @@ public class CartApiController {
         Cart_Item cart_item = Cart_Item.createCart_Item(cartDto.getCount(), item, cart);
 
         return ResponseEntity.ok(cartService.cart_itemSave(cart_item));
+    }
+
+
+    @PostMapping("/item/deletes")
+    public ResponseEntity<?> deleteCartItems(@RequestBody List<Long> cartItemIds) {
+        List<Cart_Item> cartItems = cartService.findAllByCartItemId(cartItemIds);
+
+        return ResponseEntity.ok(cartService.delete_cartItems(cartItems));
     }
 
 

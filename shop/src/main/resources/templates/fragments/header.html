@@ -19,7 +19,7 @@
     <input type="hidden" id="memberId"  >
     <input type="button" value="로그아웃" id="logout_Btn" onclick="logout()"/>
     <a href="/sell/my" sec:authorize="hasAuthority('ADMIN')">판매 관리</a>
-    <a href="/member/basket" sec:authorize="hasAnyAuthority('USER')">장바구니</a>
+    <a href="/member/cart" sec:authorize="hasAnyAuthority('USER')">장바구니</a>
 </div>
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

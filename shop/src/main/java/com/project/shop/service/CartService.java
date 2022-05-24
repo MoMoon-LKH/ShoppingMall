@@ -31,6 +31,16 @@ public class CartService {
         return cart_itemRepository.save(cart_item).getId();
     }
 
+    @Transactional
+    public boolean delete_cartItems(List<Cart_Item> cart_item) {
+        try {
+            cart_itemRepository.deleteAll(cart_item);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
     public Cart findByCart(Long memberId) {
         return cartRepository.findByMember_Id(memberId).orElseThrow(NoSuchFieldError::new);
@@ -39,6 +49,10 @@ public class CartService {
 
     public List<CartDto> findByMemberId(Long memberId) {
         return cartRepository.findAllByCartItems(memberId);
+    }
+
+    public List<Cart_Item> findAllByCartItemId(List<Long> cartItemIds) {
+        return cart_itemRepository.findAllById(cartItemIds);
     }
 
 

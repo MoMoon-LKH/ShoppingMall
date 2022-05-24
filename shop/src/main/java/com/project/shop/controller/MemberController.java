@@ -33,7 +33,7 @@ public class MemberController {
         return "join";
     }
 
-    @GetMapping("/member/basket")
+    @GetMapping("/member/cart")
     public String basketPage(@AuthenticationPrincipal Account account, Model model) {
         try {
             model.addAttribute("id", account.getId());
@@ -41,6 +41,6 @@ public class MemberController {
 
         }
 
-        return "/member/basket";
+        return "/member/cart";
     }
 }
