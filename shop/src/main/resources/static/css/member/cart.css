@@ -37,6 +37,28 @@ img{
     margin-left: 15px;
 }
 
+.total_txt{
+    font-size: 20px;
+    height: 30px;
+}
+
+.cart_btn{
+    float: right;
+    background: white;
+    border: 1px solid lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 120px;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.cart_btn:hover{
+    background: red;
+    color: white;
+}
+
 #cart_title{
     font-size: 25px;
     font-weight: bold;
@@ -54,6 +76,10 @@ img{
     display: inline-block;
     margin-left: 10px;
     margin-top: 35px;
+}
+
+#cost_td{
+    height: 100px;
 }
 
 

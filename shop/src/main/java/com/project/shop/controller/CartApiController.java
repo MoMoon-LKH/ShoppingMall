@@ -50,10 +50,16 @@ public class CartApiController {
 
 
     @PostMapping("/item/deletes")
-    public ResponseEntity<?> deleteCartItems(@RequestBody List<Long> cartItemIds) {
+    public ResponseEntity<?> deleteCartItems(@RequestBody List<Long> cartItemIds, @AuthenticationPrincipal Account account) {
         List<Cart_Item> cartItems = cartService.findAllByCartItemId(cartItemIds);
+        boolean bool = cartService.delete_cartItems(cartItems);
 
-        return ResponseEntity.ok(cartService.delete_cartItems(cartItems));
+        if (bool) {
+            Cart cart = cartService.findCartByMemberId(account.getId());
+            return ResponseEntity.ok(cartService.findCartItemAllByCartId(cart.getId()));
+        }
+
+        return ResponseEntity.ok(bool);
     }
 
 

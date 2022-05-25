@@ -15,7 +15,7 @@
         <div id="cart_title">장바구니</div>
         <table class="table">
             <thead>
-                <th width="3%"><input type="checkbox" class="check" name="all" value="all" id="checkAll" checked="checked"></th>
+                <th width="3%"><input type="checkbox" name="itemAll" id="checkAll" onclick="selectAll(this)" checked="checked"></th>
                 <th width="57%">상품정보</th>
                 <th width="10%">수량</th>
                 <th width="10%">판매가</th>
@@ -27,7 +27,9 @@
 
             </tbody>
         </table>
+        <input class="cart_btn" type="button" id="delete_btn" onclick="cartItem_delete()" value="선택 삭제">
     </div>
+    <div style="clear: both"></div>
     <div class="table_container">
         <table>
             <thead>
@@ -36,7 +38,7 @@
                 <th>총 결제금액</th>
             </thead>
             <tbody>
-                <tr>
+                <tr id="cost_td">
                     <td class="total_txt"><span id="item_costs">0</span><span>원</span></td>
                     <td class="total_txt"><span id="delivery_cost">0</span><span>원</span></td>
                     <td class="total_txt"><span id="total">0</span><span>원</span></td>
@@ -45,6 +47,7 @@
 
         </table>
     </div>
+    <input class="cart_btn" type="button" id="purchase_btn" onclick="items_purchase()" value="주문하기">
 </div>
 </body>
 
