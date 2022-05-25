@@ -18,4 +18,11 @@ public interface Cart_ItemRepository extends JpaRepository<Cart_Item, Long> {
             "join ci.cart c " +
             "where c.id = :cartId")
     List<CartDto> findAllByCartId(@Param("cartId") Long cartId);
+
+
+    @Query("select new com.project.shop.domain.dto.CartDto(ci.id, i.id, i.name, i.cost, ci.count, i.imgUrl) from Cart_Item ci " +
+            "join ci.item i " +
+            "join ci.cart c " +
+            "where ci.id = :id")
+    Optional<CartDto> findCartDtoByCartItemId(@Param("id") Long id);
 }

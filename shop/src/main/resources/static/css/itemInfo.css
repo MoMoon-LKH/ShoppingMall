@@ -1,7 +1,7 @@
 
 .item_container{
     margin: 0 auto;
-    width: 50%;
+    width: 65%;
 }
 
 .item_bottom{
@@ -12,6 +12,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 
 .item_details{
     font-size: 20px;
@@ -24,6 +25,7 @@
     margin-bottom: 8px;
     font-size: 17px;
     font-weight: lighter;
+
 }
 
 .item_btn {
@@ -37,8 +39,12 @@
     background: orangered;
 }
 
+.item_btn:hover{
+    background: red;
+}
+
 #item_name{
-    font-size: 33px;
+    font-size: 28px;
     font-weight: bold;
 }
 

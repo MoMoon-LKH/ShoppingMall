@@ -9,8 +9,7 @@
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
 <div class="container">
-    <input type="hidden" id="memberId" th:value="${memberId}" />
-
+    <form action="/order/form" method="get" onsubmit="return checkSubmit()">
     <div class="table_container">
         <div id="cart_title">장바구니</div>
         <table class="table">
@@ -47,8 +46,11 @@
 
         </table>
     </div>
-    <input class="cart_btn" type="button" id="purchase_btn" onclick="items_purchase()" value="주문하기">
+    <input class="cart_btn" type="submit" id="purchase_btn" value="주문하기">
+    </form>
+
 </div>
+
 </body>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>

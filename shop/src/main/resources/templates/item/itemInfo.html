@@ -14,9 +14,10 @@
         <img class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="float: left; width: 500px; height: 600px; ">
         <div class="item_txt" style="display: inline-block; margin-left: 20px">
             <div class="txt_wrapper">
-                <span id="item_name" class="wrapper_content" type="text" th:name="name" th:text="${item.name}"></span>
-                <hr style="border: solid 1px black; margin-top: 5px; margin-bottom: 30px">
+                <div id="item_name" class="wrapper_content" type="text" th:name="name" th:text="${item.name}"></div>
             </div>
+            <hr style="border: solid 1px black; margin-top: 5px; margin-bottom: 30px">
+
             <div class="txt_wrapper">
                 <label th:for="cost">판매가격: </label>
                 <span class="wrapper_content" id="item_cost" th:text="${item.cost}"></span><span id="item_cost_txt">원</span>

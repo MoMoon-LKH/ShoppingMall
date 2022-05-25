@@ -9,8 +9,12 @@ import java.util.Date;
 @Getter
 public class Delivery {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 50)
+    private String name;
 
     @Column(name = "zip_code")
     private String zipCode;
@@ -23,4 +27,20 @@ public class Delivery {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+
+    public Delivery() {
+
+    }
+
+    private Delivery(String zipCode, String address, Member member) {
+        this.zipCode = zipCode;
+        this.address = address;
+        this.member = member;
+        this.createDate = new Date();
+    }
+
+    public static Delivery createDelivery(String zipCode, String address, Member member) {
+        return new Delivery(zipCode, address, member);
+    }
 }

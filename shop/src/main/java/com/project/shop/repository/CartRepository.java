@@ -14,4 +14,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 
     Optional<Cart> findByMember_Id(@Param("memberId") Long memberId);
 
+
 }

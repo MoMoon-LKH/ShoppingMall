@@ -75,9 +75,6 @@ function cartItem_delete() {
 
 }
 
-function items_purchase() {
-
-}
 
 function selectAll(checkAll){
     let checkboxes = document.getElementsByName('item');
@@ -87,6 +84,7 @@ function selectAll(checkAll){
     })
 }
 
+
 function getCheckboxVal(){
     let checkVal = [];
 
@@ -95,4 +93,12 @@ function getCheckboxVal(){
     });
 
     return checkVal;
+}
+
+
+function checkSubmit() {
+    let checkVal = getCheckboxVal();
+
+    return checkVal.length > 0;
+
 }
