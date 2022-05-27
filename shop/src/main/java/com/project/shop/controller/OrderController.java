@@ -30,7 +30,7 @@ public class OrderController {
     @GetMapping("/form")
     public String orderPage(@RequestParam List<Long> item, @AuthenticationPrincipal Account account, Model model) {
 
-        model.addAttribute("list", cartService.findAllCartDtoByCartItemId(item));
+        model.addAttribute("items", cartService.findAllCartDtoByCartItemId(item));
         model.addAttribute("member", memberService.findById(account.getId()));
         model.addAttribute("delivery", deliveryService.findAllByMemberId(account.getId()));
 
