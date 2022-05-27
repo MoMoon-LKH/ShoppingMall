@@ -9,3 +9,7 @@ function checkOne(el) {
 function search_addr() {
 
 }
+
+function cancelAction() {
+    history.back();
+}

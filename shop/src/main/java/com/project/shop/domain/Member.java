@@ -24,9 +24,9 @@ public class Member {
     @Column(unique = true)
     private String memberId;
 
-
     private String password;
 
+    private String name;
     private String nickname;
 
     @Enumerated(EnumType.STRING)
@@ -63,9 +63,10 @@ public class Member {
     )
     private Set<Authority> authorities;
 
-    private Member(String memberId, String password, String nickname, Gender gender, String phone, Date birthday, Authority authority) {
+    private Member(String memberId, String password, String name, String nickname, Gender gender, String phone, Date birthday, Authority authority) {
         this.memberId = memberId;
         this.password = password;
+        this.name = name;
         this.nickname = nickname;
         this.gender = gender;
         this.phone = phone;
@@ -87,7 +88,7 @@ public class Member {
             gender = Gender.FEMALE;
         }
 
-        return new Member(joinDto.getMemberId(), joinDto.getPw(), joinDto.getNickname(), gender, joinDto.getPhone(), joinDto.getBirthday(), authority);
+        return new Member(joinDto.getMemberId(), joinDto.getPw(), joinDto.getName(), joinDto.getNickname(), gender, joinDto.getPhone(), joinDto.getBirthday(), authority);
     }
 
 }

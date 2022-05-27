@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
 
-    List<Delivery> findAllByMember_Id(@Param("memberId") Long memberId);
+    List<Delivery> findAllByMember_IdOrderByCreateDateAsc(@Param("memberId") Long memberId);
 }

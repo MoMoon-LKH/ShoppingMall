@@ -17,6 +17,10 @@
         <input id="password" type="password"/>
     </div>
     <div class="wrapDiv">
+        <span>이름: </span>
+        <input id="member_name" type="text"/>
+    </div>
+    <div class="wrapDiv">
         <span>닉네임: </span>
         <input id="nickname" type="text"/>
     </div>
@@ -36,7 +40,22 @@
         <span>생년월일: </span>
         <input id="birthday" type="date"/>
     </div>
+    <div class="wrapDiv">
+        <div>주소</div>
+        <div>
+            <input type="text" id="zip_code" placeholder="우편번호"><button>주소 검색</button>
+        </div>
+        <div>
+            <input type="text" id="addr" placeholder="기본 주소를 입력해주세요.">
+        </div>
+        <div>
+            <input type="text" id="addrDetail" placeholder="상세 주소를 입력해주세요.">
+        </div>
+    </div>
+
     <input value="가입" type="button" id="sendJoin">
+
+
 
 </div>
 </body>

@@ -28,6 +28,6 @@ public class DeliveryService {
     }
 
     public List<Delivery> findAllByMemberId(Long memberId) {
-        return deliveryRepository.findAllByMember_Id(memberId);
+        return deliveryRepository.findAllByMember_IdOrderByCreateDateAsc(memberId);
     }
 }

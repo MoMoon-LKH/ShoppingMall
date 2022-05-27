@@ -29,7 +29,9 @@
                 </div>
                 <div class="info">
                     <div class="info_subheading">주소</div>
-                    <input class="input_myInfo" type="text"  th:value="${delivery.size()}" disabled>
+                    <input class="input_myInfo" type="text" style="width: 30%" th:value="${delivery[0].getZipCode()}" disabled>
+                    <input class="input_myInfo" type="text"  th:value="${delivery[0].getAddress()}" disabled>
+                    <input class="input_myInfo" type="text"  th:value="${delivery[0].getAddrDetail()}" disabled>
                 </div>
             </div>
 
@@ -82,7 +84,7 @@
                         <tr th:each="item : ${items}">
                             <td>
                                 <div id="item_img">
-                                    <img th:src="@{/static/img/} + ${item.getItemImgUrl()}">
+                                    <img th:src="@{/static/img/} + ${item.getItemImgUrl()}" onerror="this.onerror=null; this.src='/static/img/error.png'">
                                     <div id="item_name" th:text="${item.getItemName()}"></div>
                                 </div>
                             </td>
@@ -95,6 +97,21 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="info">
+                <div class="cost_info">
+                    <div class="cost_subtitle">총 상품구매금액</div>
+                    <div class="cost_val"><span class="cost">0</span><span>원</span></div>
+                </div>
+                <div class="cost_info">
+                    <div class="cost_subtitle">배송비</div>
+                    <div class="cost_val"><span class="cost">0</span><span>원</span></div>
+                </div>
+                <hr style="border: 1px solid lightgray">
+                <div class="cost_info">
+                    <div class="cost_subtitle">총 결제금액</div>
+                    <div class="cost_val"><span class="cost">0</span><span>원</span></div>
+                </div>
             </div>
         </div>
         <div class="order_info">
@@ -114,12 +131,13 @@
         <div class="order_info">
             <div id="order_btns">
                 <input class="order_btn" id="submit_btn" type="submit" value="주문하기">
-                <input class="order_btn" id="cancel_btn" type="button" value="취소">
+                <input class="order_btn" id="cancel_btn" type="button" onclick="cancelAction()" value="취소">
             </div>
         </div>
     </div>
     </form>
 </div>
 </body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="/static/js/member/order.js"></script>
 </html>

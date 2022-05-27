@@ -27,8 +27,6 @@
             </DefaultRolloverStrategy>
         </RollingFile>
 
-
-
     </Appenders>
 
 
@@ -38,12 +36,6 @@
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Root>
-        <logger name="jdbc.sqlonly" additivity="false">
-            <appender-ref ref="console" level="debug"/>
-        </logger>
-        <logger name="jdbc.sqltiming" additivity="false">
-            <appender-ref ref="console" level="warn"/>
-        </logger>
     </Loggers>
 
 </Configuration>

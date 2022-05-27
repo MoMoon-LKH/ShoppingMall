@@ -21,6 +21,9 @@ public class Delivery {
 
     private String address;
 
+    @Column(name = "addr_detail")
+    private String addrDetail;
+
     @Column(name = "create_date")
     private Date createDate;
 
@@ -33,14 +36,16 @@ public class Delivery {
 
     }
 
-    private Delivery(String zipCode, String address, Member member) {
+    private Delivery(String zipCode, String address, String addrDetail, Member member) {
         this.zipCode = zipCode;
+        this.name = "기본배송지";
         this.address = address;
         this.member = member;
+        this.addrDetail = addrDetail;
         this.createDate = new Date();
     }
 
-    public static Delivery createDelivery(String zipCode, String address, Member member) {
-        return new Delivery(zipCode, address, member);
+    public static Delivery createDelivery(String zipCode, String address, String addrDetail, Member member) {
+        return new Delivery(zipCode, address, addrDetail,member);
     }
 }

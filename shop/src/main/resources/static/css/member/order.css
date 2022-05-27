@@ -36,6 +36,10 @@ td{
 
 }
 
+tr{
+    border-bottom: 1px solid lightgray;
+}
+
 img{
     width: 80px;
     height: 100px;
@@ -91,6 +95,20 @@ img{
 
 .radio_btn{
     margin: 10px 10px;
+}
+
+.cost_info{
+    margin: 25px auto;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.cost_subtitle{
+    display: inline-block;
+}
+
+.cost_val{
+    float: right;
 }
 
 
