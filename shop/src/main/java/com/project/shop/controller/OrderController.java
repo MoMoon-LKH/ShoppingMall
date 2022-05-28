@@ -31,10 +31,18 @@ public class OrderController {
 
     @GetMapping("/form")
     public String orderPage(@RequestParam List<Long> item, @AuthenticationPrincipal Account account, Model model) {
+        int total = 0;
 
-        model.addAttribute("items", cartService.findAllCartDtoByCartItemId(item));
+        List<CartDto> cartDtos = cartService.findAllCartDtoByCartItemId(item);
+
+        model.addAttribute("items", cartDtos);
         model.addAttribute("member", memberService.findById(account.getId()));
         model.addAttribute("delivery", deliveryService.findAllByMemberId(account.getId()));
+
+        for (CartDto cartDto : cartDtos)
+            total += cartDto.getCount() * cartDto.getItemCost();
+
+        model.addAttribute("total", total);
 
         return "/member/order";
     }

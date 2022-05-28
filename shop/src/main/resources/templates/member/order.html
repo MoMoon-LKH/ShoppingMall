@@ -21,7 +21,7 @@
             <div class="info_container">
                 <div class="info">
                     <div class="info_subheading">이름</div>
-                    <input class="input_myInfo" type="text" th:value="${member.nickname}" disabled>
+                    <input class="input_myInfo" type="text" th:value="${member.name}" disabled>
                 </div>
                 <div class="info">
                     <div class="info_subheading">휴대전화</div>
@@ -45,18 +45,18 @@
             <div class="info_container">
                 <div class="info">
                     <div class="info_subheading">수령인</div>
-                    <input id="receive_name" type="text">
+                    <input id="receive_name" type="text" th:value="${member.name}">
                 </div>
                 <div class="info">
                     <div class="info_subheading">휴대전화</div>
-                    <input id="receive_phone" type="text">
+                    <input id="receive_phone" type="text" th:value="${member.phone}">
                 </div>
                 <div class="info">
                     <div class="info_subheading">배송지 주소</div>
-                    <input id="receive_zipcode" type="text">
-                    <button id="addr_search" onclick="search_addr()">주소 검색</button>
-                    <input id="receive_addr" type="text">
-                    <input id="receive_addrDetail" type="text">
+                    <input id="receive_zipcode" type="text" th:value="${delivery[0].getZipCode()}">
+                    <button id="addr_search" type="button" onclick="search_addr()">주소 검색</button>
+                    <input id="receive_addr" type="text" th:value="${delivery[0].getAddress()}">
+                    <input id="receive_addrDetail" type="text" th:value="${delivery[0].getAddrDetail()}">
                 </div>
                 <div class="info">
                     <div class="info_subheading">배송메시지</div>
@@ -101,16 +101,16 @@
             <div class="info">
                 <div class="cost_info">
                     <div class="cost_subtitle">총 상품구매금액</div>
-                    <div class="cost_val"><span class="cost">0</span><span>원</span></div>
+                    <div class="cost_val"><span class="cost" id="item_total" th:text="${total}">0</span><span>원</span></div>
                 </div>
                 <div class="cost_info">
                     <div class="cost_subtitle">배송비</div>
-                    <div class="cost_val"><span class="cost">0</span><span>원</span></div>
+                    <div class="cost_val"><span class="cost" id="delivery_cost" th:text="2500">0</span><span>원</span></div>
                 </div>
                 <hr style="border: 1px solid lightgray">
                 <div class="cost_info">
                     <div class="cost_subtitle">총 결제금액</div>
-                    <div class="cost_val"><span class="cost">0</span><span>원</span></div>
+                    <div class="cost_val"><span class="cost" id="total_cost" th:text="(${total} + 2500)">0</span><span>원</span></div>
                 </div>
             </div>
         </div>
@@ -139,5 +139,6 @@
 </div>
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/static/js/member/order.js"></script>
 </html>

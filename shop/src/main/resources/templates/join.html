@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
 
 </head>
 <body>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
 <div class="joinForm">
-    <a href="/">MAIN</a>
     <div class="wrapDiv">
         <span>아이디: </span>
         <input id="memberId" type="text"/>
@@ -43,7 +44,7 @@
     <div class="wrapDiv">
         <div>주소</div>
         <div>
-            <input type="text" id="zip_code" placeholder="우편번호"><button>주소 검색</button>
+            <input type="text" id="zip_code" placeholder="우편번호"><button id="addr_search" onclick="address_search()">주소 검색</button>
         </div>
         <div>
             <input type="text" id="addr" placeholder="기본 주소를 입력해주세요.">
@@ -60,5 +61,6 @@
 </div>
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/static/js/join.js" ></script>
 </html>
