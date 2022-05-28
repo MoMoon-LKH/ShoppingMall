@@ -1,6 +1,5 @@
 package com.project.shop.controller;
 
-import com.project.shop.domain.Cart_Item;
 import com.project.shop.domain.Delivery;
 import com.project.shop.domain.dto.CartDto;
 import com.project.shop.domain.userDetails.Account;
@@ -17,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/order")

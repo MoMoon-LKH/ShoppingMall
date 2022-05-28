@@ -16,9 +16,11 @@ import java.util.List;
 public class Orders {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int count;
+    @Column(name = "order_id", unique = true)
+    private String orderId;
 
     private int cost;
 
@@ -31,6 +33,16 @@ public class Orders {
     @Column(name = "update_date")
     private Date updateDate;
 
+    @Column(name = "receive_name")
+    private String receiveName;
+
+    @Column(name = "zip_code")
+    private String zipCode;
+
+    private String address;
+
+    @Column(name = "extra_addr")
+    private String extraAddr;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -38,6 +50,27 @@ public class Orders {
 
 
     @OneToMany(mappedBy = "order")
-    private List<Order_Item> order_items = new ArrayList<>();
+    private List<OrderItem> order_items = new ArrayList<>();
+
+    public Orders() {
+
+    }
+
+    private Orders(String orderId, int cost, OrderStatus orderStatus, String name, String zipCode, String address, String exrAddr, Member member) {
+        this.orderId = orderId;
+        this.cost = cost;
+        this.status = orderStatus;
+        this.createDate = new Date();
+        this.updateDate = new Date();
+        this.receiveName = name;
+        this.zipCode = zipCode;
+        this.address = address;
+        this.extraAddr = exrAddr;
+        this.member = member;
+    }
+
+    public static Orders createOrders() {
+        return new Orders();
+    }
 
 }

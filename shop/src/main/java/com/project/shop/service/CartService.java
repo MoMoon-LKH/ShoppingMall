@@ -2,10 +2,10 @@ package com.project.shop.service;
 
 
 import com.project.shop.domain.Cart;
-import com.project.shop.domain.Cart_Item;
+import com.project.shop.domain.CartItem;
 import com.project.shop.domain.dto.CartDto;
 import com.project.shop.repository.CartRepository;
-import com.project.shop.repository.Cart_ItemRepository;
+import com.project.shop.repository.CartItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class CartService {
 
     private final CartRepository cartRepository;
-    private final Cart_ItemRepository cart_itemRepository;
+    private final CartItemRepository cart_itemRepository;
 
 
     @Transactional
@@ -29,12 +29,12 @@ public class CartService {
     }
 
     @Transactional
-    public Long cart_itemSave(Cart_Item cart_item) {
+    public Long cart_itemSave(CartItem cart_item) {
         return cart_itemRepository.save(cart_item).getId();
     }
 
     @Transactional
-    public boolean delete_cartItems(List<Cart_Item> cart_item) {
+    public boolean delete_cartItems(List<CartItem> cart_item) {
         try {
             cart_itemRepository.deleteAll(cart_item);
             return true;
@@ -44,7 +44,7 @@ public class CartService {
     }
 
     @Transactional
-    public void addCount(Cart_Item cart_item, int count) {
+    public void addCount(CartItem cart_item, int count) {
         cart_item.addCount(count);
     }
 
@@ -52,11 +52,11 @@ public class CartService {
         return cartRepository.findByMember_Id(memberId).orElseThrow(NoSuchFieldError::new);
     }
 
-    public Optional<Cart_Item> findByCartItemId(Long cartItemId) {
+    public Optional<CartItem> findByCartItemId(Long cartItemId) {
         return cart_itemRepository.findById(cartItemId);
     }
 
-    public Optional<Cart_Item> findByItemIdAndCartId(Long itemId, Long cartId) {
+    public Optional<CartItem> findByItemIdAndCartId(Long itemId, Long cartId) {
         return cart_itemRepository.findByItem_IdAndCart_Id(itemId, cartId);
     }
 
@@ -65,7 +65,7 @@ public class CartService {
         return cart_itemRepository.findAllByCartId(cartId);
     }
 
-    public List<Cart_Item> findAllByCartItemId(List<Long> cartItemIds) {
+    public List<CartItem> findAllByCartItemId(List<Long> cartItemIds) {
         return cart_itemRepository.findAllById(cartItemIds);
     }
 

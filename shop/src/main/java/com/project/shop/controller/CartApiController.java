@@ -1,13 +1,12 @@
 package com.project.shop.controller;
 
 import com.project.shop.domain.Cart;
-import com.project.shop.domain.Cart_Item;
+import com.project.shop.domain.CartItem;
 import com.project.shop.domain.Item;
 import com.project.shop.domain.dto.CartDto;
 import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.CartService;
 import com.project.shop.service.ItemService;
-import com.project.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -36,13 +35,13 @@ public class CartApiController {
     public ResponseEntity<?> saveCartItem(@RequestBody CartDto cartDto, @AuthenticationPrincipal Account account) {
         Cart cart = cartService.findCartByMemberId(account.getId());
         Item item = itemService.findById(cartDto.getItemId());
-        Optional<Cart_Item> cartItem = cartService.findByItemIdAndCartId(item.getId(), cart.getId());
+        Optional<CartItem> cartItem = cartService.findByItemIdAndCartId(item.getId(), cart.getId());
 
         if (cartItem.isPresent()) {
             cartService.addCount(cartItem.get(), cartDto.getCount());
             return ResponseEntity.ok(cartItem.get().getCount());
         } else{
-            Cart_Item newCartItem = Cart_Item.createCart_Item(cartDto.getCount(), item, cart);
+            CartItem newCartItem = CartItem.createCart_Item(cartDto.getCount(), item, cart);
 
             return ResponseEntity.ok(cartService.cart_itemSave(newCartItem));
         }
@@ -51,7 +50,7 @@ public class CartApiController {
 
     @PostMapping("/item/deletes")
     public ResponseEntity<?> deleteCartItems(@RequestBody List<Long> cartItemIds, @AuthenticationPrincipal Account account) {
-        List<Cart_Item> cartItems = cartService.findAllByCartItemId(cartItemIds);
+        List<CartItem> cartItems = cartService.findAllByCartItemId(cartItemIds);
         boolean bool = cartService.delete_cartItems(cartItems);
 
         if (bool) {

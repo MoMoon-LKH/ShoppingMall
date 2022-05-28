@@ -50,11 +50,11 @@ public class Item {
 
     @OneToMany(mappedBy = "item")
     @JsonIgnore
-    private List<Order_Item> order_items = new ArrayList<>();
+    private List<OrderItem> order_items = new ArrayList<>();
 
     @OneToMany(mappedBy = "item")
     @JsonIgnore
-    private List<Cart_Item> cart_items = new ArrayList<>();
+    private List<CartItem> cart_items = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")

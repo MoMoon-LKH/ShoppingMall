@@ -12322,3 +12322,407 @@ java.lang.NullPointerException: null
 [2022-05-28 14:39:14][INFO][Slf4jSpyLogDelegator.java:568] 10. Connection closed
 [2022-05-28 14:39:14][INFO][Slf4jSpyLogDelegator.java:175] 10. Connection.close() returned 
 [2022-05-28 14:39:14][INFO][HikariDataSource.java:352] HikariPool-1 - Shutdown completed.
+[2022-05-28 23:12:19][INFO][Version.java:21] HV000001: Hibernate Validator 6.2.3.Final
+[2022-05-28 23:12:19][INFO][StartupInfoLogger.java:55] Starting ShopApplication using Java 11.0.8 on DESKTOP-35LBMJ3 with PID 3804 (D:\MyProject\personal_project\ShoppingMall\shop\out\production\classes started by MoMoon in D:\MyProject\personal_project\ShoppingMall\shop)
+[2022-05-28 23:12:19][INFO][SpringApplication.java:640] No active profile set, falling back to 1 default profile: "default"
+[2022-05-28 23:12:19][INFO][DeferredLog.java:255] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-05-28 23:12:19][INFO][DeferredLog.java:255] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-05-28 23:12:20][INFO][RepositoryConfigurationDelegate.java:132] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-05-28 23:12:20][INFO][RepositoryConfigurationDelegate.java:201] Finished Spring Data repository scanning in 44 ms. Found 8 JPA repository interfaces.
+[2022-05-28 23:12:20][INFO][TomcatWebServer.java:108] Tomcat initialized with port(s): 8080 (http)
+[2022-05-28 23:12:20][INFO][DirectJDKLog.java:173] Initializing ProtocolHandler ["http-nio-8080"]
+[2022-05-28 23:12:20][INFO][DirectJDKLog.java:173] Starting service [Tomcat]
+[2022-05-28 23:12:20][INFO][DirectJDKLog.java:173] Starting Servlet engine: [Apache Tomcat/9.0.60]
+[2022-05-28 23:12:20][INFO][DirectJDKLog.java:173] Initializing Spring embedded WebApplicationContext
+[2022-05-28 23:12:20][INFO][ServletWebServerApplicationContext.java:290] Root WebApplicationContext: initialization completed in 1224 ms
+[2022-05-28 23:12:20][INFO][LogHelper.java:31] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-05-28 23:12:20][INFO][Version.java:44] HHH000412: Hibernate ORM core version 5.6.7.Final
+[2022-05-28 23:12:20][INFO][JavaReflectionManager.java:56] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-05-28 23:12:21][INFO][HikariDataSource.java:110] HikariPool-1 - Starting...
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 1. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getNetworkTimeout() returned 0
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.isValid(1) returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getTransactionIsolation() returned 4
+[2022-05-28 23:12:21][INFO][HikariDataSource.java:123] HikariPool-1 - Start completed.
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getMetaData() returned org.mariadb.jdbc.MariaDbDatabaseMetaData@2fe7c328
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getMetaData() returned org.mariadb.jdbc.MariaDbDatabaseMetaData@25d8552b
+[2022-05-28 23:12:21][INFO][Dialect.java:175] HHH000400: Using dialect: org.hibernate.dialect.MariaDB106Dialect
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getCatalog() returned shop
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getSchema() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getSchema() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getMetaData() returned org.mariadb.jdbc.MariaDbDatabaseMetaData@73af6c24
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.createClob() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.clearWarnings() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 2. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 2. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 2. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 2. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 3. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 3. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 3. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 3. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 4. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 4. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 4. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 4. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 5. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 5. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 5. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 5. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 6. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 6. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 6. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 6. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 7. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 7. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 7. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 7. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 8. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 8. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 8. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 8. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 9. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 9. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 9. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 9. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:541] 10. Connection opened
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 10. Connection.new Connection returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 10. Connection.isReadOnly() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 10. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE') returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@b175cc6
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE'
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select table_name from information_schema.tables where table_schema = database() and table_type = 'SEQUENCE'
+ {executed in 1 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@eb76b8f
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|-----------|
+|table_name |
+|-----------|
+|-----------|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.next() returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getMetaData() returned org.mariadb.jdbc.MariaDbDatabaseMetaData@611e23e3
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.new Statement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.createStatement() returned net.sf.log4jdbc.sql.jdbcapi.StatementSpy@4772e098
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table order_item 
+       add column count integer not null
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table order_item 
+       add column count integer not null
+ {executed in 48 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table order_item 
+       add column count integer not null) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       add column address varchar(255)
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       add column address varchar(255)
+ {executed in 42 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       add column address varchar(255)) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       add column extra_addr varchar(255)
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       add column extra_addr varchar(255)
+ {executed in 42 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       add column extra_addr varchar(255)) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       add column order_id varchar(255)
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       add column order_id varchar(255)
+ {executed in 44 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       add column order_id varchar(255)) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       add column receive_name varchar(255)
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       add column receive_name varchar(255)
+ {executed in 53 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       add column receive_name varchar(255)) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       add column zip_code varchar(255)
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       add column zip_code varchar(255)
+ {executed in 46 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       add column zip_code varchar(255)) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       drop index if exists UK_hmsk25beh6atojvle1xuymjj0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       drop index if exists UK_hmsk25beh6atojvle1xuymjj0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       drop index if exists UK_hmsk25beh6atojvle1xuymjj0) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned java.sql.SQLWarning: Can't DROP INDEX `UK_hmsk25beh6atojvle1xuymjj0`; check that it exists
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.clearWarnings() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] alter table orders 
+       add constraint UK_hmsk25beh6atojvle1xuymjj0 unique (order_id)
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] alter table orders 
+       add constraint UK_hmsk25beh6atojvle1xuymjj0 unique (order_id)
+ {executed in 50 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.execute(
+    alter table orders 
+       add constraint UK_hmsk25beh6atojvle1xuymjj0 unique (order_id)) returned false
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.getWarnings() returned null
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`member` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@54bca9db
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`member` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`member` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@38da376c
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@5f5e167e
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|id |birthday |create_date |gender |member_id |nickname |password |phone |status |update_date |name |
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`cart` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@4e0db6c
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`cart` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`cart` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@49abc740
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@65e05bd4
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|------------|----------|
+|id |create_date |member_id |
+|---|------------|----------|
+|---|------------|----------|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`item` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@79648a5c
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`item` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`item` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@7bdd15a7
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@6cdb4c5b
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|-----|------|------------|----------------|--------|--------|-----|------------|------------|----------|
+|id |cost |count |create_date |description_url |etr_txt |img_url |name |update_date |category_id |member_id |
+|---|-----|------|------------|----------------|--------|--------|-----|------------|------------|----------|
+|---|-----|------|------------|----------------|--------|--------|-----|------------|------------|----------|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`member` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@b8294ef
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`member` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`member` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@5669d9a9
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@458a8eee
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|id |birthday |create_date |gender |member_id |nickname |password |phone |status |update_date |name |
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`category` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@7305bb90
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`category` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`category` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@6cbf6cf3
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@7403545c
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|-----|
+|id |name |
+|---|-----|
+|---|-----|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`member` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@656f59cc
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`member` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`member` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@3b68a7ca
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@2c278ca0
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|id |birthday |create_date |gender |member_id |nickname |password |phone |status |update_date |name |
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`authority` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@42e88ccc
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`authority` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`authority` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@5dd60c64
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@23fea6e3
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|----------|
+|id |authority |
+|---|----------|
+|---|----------|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`member` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@332c6cb0
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`member` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`member` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@352418f5
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@587c8719
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|id |birthday |create_date |gender |member_id |nickname |password |phone |status |update_date |name |
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`item` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@e63eb4b
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`item` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`item` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@5efa4fdb
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@4b0c0741
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|-----|------|------------|----------------|--------|--------|-----|------------|------------|----------|
+|id |cost |count |create_date |description_url |etr_txt |img_url |name |update_date |category_id |member_id |
+|---|-----|------|------------|----------------|--------|--------|-----|------------|------------|----------|
+|---|-----|------|------------|----------------|--------|--------|-----|------------|------------|----------|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`orders` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@77741576
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`orders` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`orders` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@665c8160
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@6ad48ee7
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|-----|------|------------|-------|------------|----------|--------|-----------|---------|-------------|---------|
+|id |cost |count |create_date |status |update_date |member_id |address |extra_addr |order_id |receive_name |zip_code |
+|---|-----|------|------------|-------|------------|----------|--------|-----------|---------|-------------|---------|
+|---|-----|------|------------|-------|------------|----------|--------|-----------|---------|-------------|---------|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.new PreparedStatement returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.prepareStatement(select * from `shop`.`member` where 1=0) returned net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy@4149aaf3
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:228] select * from `shop`.`member` where 1=0
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:373] select * from `shop`.`member` where 1=0
+ {executed in 0 msec}
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.new ResultSet returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.executeQuery() returned net.sf.log4jdbc.sql.jdbcapi.ResultSetSpy@16c1d809
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.getMetaData() returned org.mariadb.jdbc.MariaDbResultSetMetaData@14940c30
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:610] 
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|id |birthday |create_date |gender |member_id |nickname |password |phone |status |update_date |name |
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+|---|---------|------------|-------|----------|---------|---------|------|-------|------------|-----|
+
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. ResultSet.close() returned void
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. PreparedStatement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.close() returned 
+[2022-05-28 23:12:21][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.clearWarnings() returned 
+[2022-05-28 23:12:21][INFO][JtaPlatformInitiator.java:52] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-05-28 23:12:21][INFO][AbstractEntityManagerFactoryBean.java:437] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-05-28 23:12:22][WARN][JpaBaseConfiguration.java:219] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-05-28 23:12:22][WARN][WebSecurity.java:294] You are asking Spring Security to ignore org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@10901ac1. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-05-28 23:12:22][INFO][DefaultSecurityFilterChain.java:55] Will secure org.springframework.boot.autoconfigure.security.servlet.StaticResourceRequest$StaticResourceRequestMatcher@10901ac1 with []
+[2022-05-28 23:12:22][WARN][WebSecurity.java:294] You are asking Spring Security to ignore Ant [pattern='/./templates/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-05-28 23:12:22][INFO][DefaultSecurityFilterChain.java:55] Will secure Ant [pattern='/./templates/**'] with []
+[2022-05-28 23:12:22][WARN][WebSecurity.java:294] You are asking Spring Security to ignore Ant [pattern='/static/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-05-28 23:12:22][INFO][DefaultSecurityFilterChain.java:55] Will secure Ant [pattern='/static/**'] with []
+[2022-05-28 23:12:22][INFO][DefaultSecurityFilterChain.java:52] Will not secure any request
+[2022-05-28 23:12:22][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.isValid(5) returned true
+[2022-05-28 23:12:22][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.new Statement returned 
+[2022-05-28 23:12:22][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.createStatement() returned net.sf.log4jdbc.sql.jdbcapi.StatementSpy@252841ba
+[2022-05-28 23:12:22][INFO][Slf4jSpyLogDelegator.java:175] 1. Statement.close() returned 
+[2022-05-28 23:12:22][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.getAutoCommit() returned true
+[2022-05-28 23:12:22][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.clearWarnings() returned 
+[2022-05-28 23:12:22][INFO][OptionalLiveReloadServer.java:58] LiveReload server is running on port 35729
+[2022-05-28 23:12:22][INFO][DirectJDKLog.java:173] Starting ProtocolHandler ["http-nio-8080"]
+[2022-05-28 23:12:22][INFO][TomcatWebServer.java:220] Tomcat started on port(s): 8080 (http) with context path ''
+[2022-05-28 23:12:22][INFO][StartupInfoLogger.java:61] Started ShopApplication in 3.611 seconds (JVM running for 5.296)
+[2022-05-28 23:12:25][INFO][AbstractEntityManagerFactoryBean.java:651] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2022-05-28 23:12:25][INFO][HikariDataSource.java:350] HikariPool-1 - Shutdown initiated...
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 1. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 1. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 2. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 2. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 3. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 3. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 4. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 4. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 5. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 5. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 6. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 6. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 7. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 7. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 8. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 8. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 9. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 9. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:568] 10. Connection closed
+[2022-05-28 23:12:25][INFO][Slf4jSpyLogDelegator.java:175] 10. Connection.close() returned 
+[2022-05-28 23:12:25][INFO][HikariDataSource.java:352] HikariPool-1 - Shutdown completed.

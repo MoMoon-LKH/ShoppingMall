@@ -4,9 +4,8 @@ import com.project.shop.domain.Authority;
 import com.project.shop.domain.Cart;
 import com.project.shop.domain.Member;
 import com.project.shop.domain.dto.JoinDto;
-import com.project.shop.domain.enums.Gender;
 import com.project.shop.repository.CartRepository;
-import com.project.shop.repository.Cart_ItemRepository;
+import com.project.shop.repository.CartItemRepository;
 import com.project.shop.repository.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,13 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class CartServiceTest {
@@ -29,7 +23,7 @@ class CartServiceTest {
     @Mock
     private CartRepository cartRepository;
     @Mock
-    private Cart_ItemRepository cart_itemRepository;
+    private CartItemRepository cart_itemRepository;
     @Mock
     private MemberRepository memberRepository;
 

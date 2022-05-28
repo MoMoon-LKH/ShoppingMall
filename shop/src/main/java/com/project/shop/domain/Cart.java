@@ -22,7 +22,7 @@ public class Cart {
 
 
     @OneToMany(mappedBy = "cart")
-    private List<Cart_Item> cart_items = new ArrayList<>();
+    private List<CartItem> cart_items = new ArrayList<>();
 
 
     @ManyToOne(fetch = FetchType.LAZY)

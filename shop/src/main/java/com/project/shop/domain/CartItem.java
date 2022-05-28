@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-public class Cart_Item {
+@Table(name = "Cart_Item")
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +24,18 @@ public class Cart_Item {
     private Cart cart;
 
 
-    public Cart_Item() {
+    public CartItem() {
 
     }
 
-    private Cart_Item(int count, Item item, Cart cart){
+    private CartItem(int count, Item item, Cart cart){
         this.count = count;
         this.item = item;
         this.cart = cart;
     }
 
-    public static Cart_Item createCart_Item(int count, Item item, Cart cart) {
-        return new Cart_Item(count, item, cart);
+    public static CartItem createCart_Item(int count, Item item, Cart cart) {
+        return new CartItem(count, item, cart);
     }
 
     public void addCount(int count) {
