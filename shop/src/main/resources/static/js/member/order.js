@@ -34,3 +34,55 @@ function cancelAction() {
     history.back();
 }
 
+
+function orderAjax() {
+    let obj = createObj();
+
+    $.ajax({
+        url: "/order/cart/addOrder",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(obj)
+
+    }).done(function (result) {
+        console.log(result);
+        location.href = "/order/successPage";
+    }).error(function (error) {
+        alert("실패했습니다.");
+    });
+}
+
+
+function createObj() {
+
+    let cartDtos = new Array();
+
+    let rows = document.getElementById('item_tbody').getElementsByTagName('tr');
+
+    for (var i = 0; i < rows.length; i++) {
+        let cells = rows[i].getElementsByTagName("td");
+        let count = cells[2].getElementsByTagName("div")[0].textContent;
+        let itemId = cells[3].getElementsByTagName("input")[0].value;
+
+        let item = {
+            "itemId": Number(itemId),
+            "count": Number(count)
+        };
+
+        cartDtos.push(item);
+    }
+
+
+
+    let object = {
+        "total": $("#total_cost").text(),
+        "receiveName": document.getElementById("receive_name").value,
+        "zipcode": document.getElementById("receive_zipcode").value,
+        "address": document.getElementById("receive_addr").value,
+        "extraAddr": document.getElementById("receive_addrDetail").value,
+        "cartDtos": cartDtos
+    }
+
+    return object;
+}
+

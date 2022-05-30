@@ -25,4 +25,5 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             "join ci.cart c " +
             "where ci.id = :id")
     Optional<CartDto> findCartDtoByCartItemId(@Param("id") Long id);
+
 }

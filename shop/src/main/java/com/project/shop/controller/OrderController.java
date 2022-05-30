@@ -1,22 +1,22 @@
 package com.project.shop.controller;
 
-import com.project.shop.domain.Delivery;
+import com.project.shop.domain.*;
 import com.project.shop.domain.dto.CartDto;
+import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.userDetails.Account;
-import com.project.shop.service.CartService;
-import com.project.shop.service.DeliveryService;
-import com.project.shop.service.MemberService;
+import com.project.shop.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.zip.DataFormatException;
 
 @Controller
 @RequestMapping("/order")
@@ -25,6 +25,10 @@ public class OrderController {
     private final CartService cartService;
     private final MemberService memberService;
     private final DeliveryService deliveryService;
+    private final OrderService orderService;
+
+    private final ItemService itemService;
+
 
     @GetMapping("/form")
     public String orderPage(@RequestParam List<Long> item, @AuthenticationPrincipal Account account, Model model) {
@@ -44,10 +48,84 @@ public class OrderController {
         return "/member/order";
     }
 
+    @GetMapping("/successPage")
+    public String successPage() {
+
+        return "/member/orderSuccess";
+    }
+
 
     @ResponseBody
+    @PostMapping("/cart/addOrder")
+    public ResponseEntity<?> AddOrderByCart(@Valid @RequestBody OrderDto orderDto, @AuthenticationPrincipal Account account) {
+
+        List<CartItem> cartItems = new ArrayList<>();
+        List<OrderItem> orderItems = new ArrayList<>();
+
+        Member member = memberService.findById(account.getId());
+        Cart cart = cartService.findCartByMemberId(member.getId());
+        Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, member));
+
+        for (CartDto cartDto : orderDto.getCartDtos()) {
+            Optional<CartItem> cartItem = cartService.findByItemIdAndCartId(cartDto.getItemId(), cart.getId());
+
+            if (cartItem.isPresent()) {
+                Item item = cartItem.get().getItem();
+                OrderItem orderItem = OrderItem.createOrderItem(cartItem.get().getCount(), order, item);
+
+                itemService.removeItem(item, orderItem.getCount());
+
+                cartItems.add(cartItem.get());
+                orderItems.add(orderItem);
+            }
+
+        }
+
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("savedOrderItem", orderService.saveOrderItems(orderItems));
+        map.put("delBool", cartService.deleteCartItems(cartItems));
+
+        return ResponseEntity.ok("map");
+    }
+
+    @ResponseBody
+    @PostMapping("/addOrder")
+    public ResponseEntity<?> addOrder(@Valid @RequestParam OrderDto orderDto, @AuthenticationPrincipal Account account) {
+
+        /*List<OrderItem> orderItems = new ArrayList<>();
+
+        Member member = memberService.findById(account.getId());
+        Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, member));
+
+        for (CartDto cartDto : orderDto.getCartDtos()) {
+
+            OrderItem orderItem = OrderItem.createOrderItem(cartDto.getCount(), order, itemService.findById(cartDto.getItemId()));
+            orderItems.add(orderItem);
+        }
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("savedOrderItem", orderService.saveOrderItems(orderItems));
+*/
+        return ResponseEntity.ok("");
+    }
+
+
+
+
+    public String createOrderId() {
+        int ran = (int) (Math.random() * 100000000);
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String date = dateFormat.format(new Date());
+
+        return date + ran;
+    }
+
+    /*@ResponseBody
     @GetMapping("/member/addresses")
     public ResponseEntity<List<Delivery>> getAddresses(@AuthenticationPrincipal Account account) {
         return ResponseEntity.ok(deliveryService.findAllByMemberId(account.getId()));
-    }
+    }*/
+
 }

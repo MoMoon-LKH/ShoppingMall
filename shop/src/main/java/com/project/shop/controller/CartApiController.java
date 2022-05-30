@@ -43,7 +43,7 @@ public class CartApiController {
         } else{
             CartItem newCartItem = CartItem.createCart_Item(cartDto.getCount(), item, cart);
 
-            return ResponseEntity.ok(cartService.cart_itemSave(newCartItem));
+            return ResponseEntity.ok(cartService.cartItemSave(newCartItem));
         }
     }
 
@@ -51,7 +51,7 @@ public class CartApiController {
     @PostMapping("/item/deletes")
     public ResponseEntity<?> deleteCartItems(@RequestBody List<Long> cartItemIds, @AuthenticationPrincipal Account account) {
         List<CartItem> cartItems = cartService.findAllByCartItemId(cartItemIds);
-        boolean bool = cartService.delete_cartItems(cartItems);
+        boolean bool = cartService.deleteCartItems(cartItems);
 
         if (bool) {
             Cart cart = cartService.findCartByMemberId(account.getId());

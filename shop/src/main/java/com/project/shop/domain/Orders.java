@@ -2,6 +2,7 @@ package com.project.shop.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.enums.OrderStatus;
 import lombok.Getter;
 
@@ -56,10 +57,10 @@ public class Orders {
 
     }
 
-    private Orders(String orderId, int cost, OrderStatus orderStatus, String name, String zipCode, String address, String exrAddr, Member member) {
+    private Orders(String orderId, int cost, String name, String zipCode, String address, String exrAddr, Member member) {
         this.orderId = orderId;
         this.cost = cost;
-        this.status = orderStatus;
+        this.status = OrderStatus.ITEM_READY;
         this.createDate = new Date();
         this.updateDate = new Date();
         this.receiveName = name;
@@ -69,8 +70,8 @@ public class Orders {
         this.member = member;
     }
 
-    public static Orders createOrders() {
-        return new Orders();
+    public static Orders createOrders(String orderId, OrderDto orderDto, Member member) {
+        return new Orders(orderId, orderDto.getTotal(), orderDto.getReceiveName(), orderDto.getZipcode(), orderDto.getAddress(), orderDto.getExtraAddr(), member);
     }
 
 }

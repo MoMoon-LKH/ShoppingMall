@@ -29,12 +29,12 @@ public class CartService {
     }
 
     @Transactional
-    public Long cart_itemSave(CartItem cart_item) {
+    public Long cartItemSave(CartItem cart_item) {
         return cart_itemRepository.save(cart_item).getId();
     }
 
     @Transactional
-    public boolean delete_cartItems(List<CartItem> cart_item) {
+    public boolean deleteCartItems(List<CartItem> cart_item) {
         try {
             cart_itemRepository.deleteAll(cart_item);
             return true;
@@ -61,9 +61,11 @@ public class CartService {
     }
 
 
+
     public List<CartDto> findCartItemAllByCartId(Long cartId) {
         return cart_itemRepository.findAllByCartId(cartId);
     }
+
 
     public List<CartItem> findAllByCartItemId(List<Long> cartItemIds) {
         return cart_itemRepository.findAllById(cartItemIds);

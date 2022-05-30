@@ -54,7 +54,7 @@ public class SellerItemController {
     }
 
     @PostMapping("/new")
-    public String registerItem(@Valid ItemDto itemDto, BindingResult bindingResult) throws IOException {
+    public String registerItem(@Valid ItemDto itemDto, BindingResult bindingResult, @AuthenticationPrincipal Account account) throws IOException {
 
         String imgUrl = " ";
         String descriptionImg = " ";
@@ -67,7 +67,7 @@ public class SellerItemController {
         if(!itemDto.getDescriptionUrl().isEmpty())
             descriptionImg = transferImg(itemDto.getDescriptionUrl(), ran, 1);
 
-        Member member = memberService.findById(itemDto.getMemberId());
+        Member member = memberService.findById(account.getId());
         Category category = categoryService.findById(itemDto.getCategoryId());
 
         Item item = Item.createItem(itemDto, member, category, imgUrl, descriptionImg);

@@ -23,7 +23,6 @@ public class ItemDto {
     private Long id;
 
     @NotNull
-    @NotBlank
     private String name;
 
     @NotNull
@@ -41,8 +40,6 @@ public class ItemDto {
     private Date createDate;
 
     private Date updateDate;
-
-    private Long memberId;
 
     private Long categoryId;
 }

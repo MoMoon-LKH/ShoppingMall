@@ -18,15 +18,19 @@ public class CartDto {
     @NotNull
     private Long itemId;
 
-    @NotNull
     private String itemName;
 
-    @NotNull
     private int itemCost;
 
     @NotNull
     private int count;
 
     private String itemImgUrl;
+
+
+    public CartDto(Long itemId, int count) {
+        this.itemId = itemId;
+        this.count = count;
+    }
 
 }

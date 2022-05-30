@@ -55,6 +55,12 @@ public class ItemService {
     }
 
     @Transactional
+    public Item removeStock(Item item, int count) {
+        item.removeCount(count);
+        return item;
+    }
+
+    @Transactional
     public Item removeItem(Item item, int count) {
         item.removeCount(count);
         return item;
