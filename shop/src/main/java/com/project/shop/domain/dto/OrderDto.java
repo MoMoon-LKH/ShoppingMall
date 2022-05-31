@@ -31,6 +31,7 @@ public class OrderDto {
 
     private String extraAddr;
 
+    private String paymentMethod;
 
     private List<CartDto> cartDtos = new ArrayList<>();
 

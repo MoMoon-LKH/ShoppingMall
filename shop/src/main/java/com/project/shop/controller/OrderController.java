@@ -3,6 +3,7 @@ package com.project.shop.controller;
 import com.project.shop.domain.*;
 import com.project.shop.domain.dto.CartDto;
 import com.project.shop.domain.dto.OrderDto;
+import com.project.shop.domain.enums.PaymentMethod;
 import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.*;
 import lombok.RequiredArgsConstructor;
@@ -87,6 +88,16 @@ public class OrderController {
         return "/member/orderSuccess";
     }
 
+    @GetMapping("/info")
+    public String orderInfoPage(String orderNum, @AuthenticationPrincipal Account account, Model model) {
+
+        Member member = memberService.findById(account.getId());
+
+
+        model.addAttribute("member", member);
+
+        return "/member/orderInfo";
+    }
 
     @ResponseBody
     @PostMapping("/cart/addOrder")
@@ -97,7 +108,15 @@ public class OrderController {
 
         Member member = memberService.findById(account.getId());
         Cart cart = cartService.findCartByMemberId(member.getId());
-        Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, member));
+        PaymentMethod paymentMethod;
+
+        if (orderDto.getPaymentMethod().equals("CARD")) {
+            paymentMethod = PaymentMethod.CARD;
+        } else {
+            paymentMethod = PaymentMethod.PASSBOOK;
+        }
+
+        Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, paymentMethod, member));
 
         for (CartDto cartDto : orderDto.getCartDtos()) {
             Optional<CartItem> cartItem = cartService.findByItemIdAndCartId(cartDto.getItemId(), cart.getId());
@@ -130,11 +149,18 @@ public class OrderController {
 
         List<OrderItem> orderItems = new ArrayList<>();
 
+        PaymentMethod paymentMethod;
+
+        if (orderDto.getPaymentMethod().equals("CARD")) {
+            paymentMethod = PaymentMethod.CARD;
+        } else {
+            paymentMethod = PaymentMethod.PASSBOOK;
+        }
+
         Member member = memberService.findById(account.getId());
-        Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, member));
+        Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, paymentMethod, member));
 
         for (CartDto cartDto : orderDto.getCartDtos()) {
-
             OrderItem orderItem = OrderItem.createOrderItem(cartDto.getCount(), order, itemService.findById(cartDto.getItemId()));
             orderItems.add(orderItem);
         }
@@ -145,7 +171,6 @@ public class OrderController {
 
         return ResponseEntity.ok(map);
     }
-
 
 
     public String createOrderId() {

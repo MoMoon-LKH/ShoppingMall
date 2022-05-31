@@ -70,8 +70,14 @@ function purchaseAjax() {
 function createObj() {
 
     let cartDtos = new Array();
-
+    let payment;
     let rows = document.getElementById('item_tbody').getElementsByTagName('tr');
+    const checkboxes = document.getElementsByName("payment");
+
+    for (var i = 0; checkboxes.length > i; i++) {
+        if(checkboxes[i].checked == true)
+            payment = checkboxes[i].value;
+    }
 
     for (var i = 0; i < rows.length; i++) {
         let cells = rows[i].getElementsByTagName("td");
@@ -94,6 +100,7 @@ function createObj() {
         "zipcode": document.getElementById("receive_zipcode").value,
         "address": document.getElementById("receive_addr").value,
         "extraAddr": document.getElementById("receive_addrDetail").value,
+        "paymentMethod": payment,
         "cartDtos": cartDtos
     }
 

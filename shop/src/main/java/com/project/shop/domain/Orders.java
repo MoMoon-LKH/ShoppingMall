@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.enums.OrderStatus;
+import com.project.shop.domain.enums.PaymentMethod;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -27,6 +28,9 @@ public class Orders {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod paymentMethod;
 
     @Column(name = "create_date")
     private Date createDate;
@@ -57,7 +61,7 @@ public class Orders {
 
     }
 
-    private Orders(String orderId, int cost, String name, String zipCode, String address, String exrAddr, Member member) {
+    private Orders(String orderId, int cost, String name, String zipCode, String address, String exrAddr, PaymentMethod paymentMethod, Member member) {
         this.orderId = orderId;
         this.cost = cost;
         this.status = OrderStatus.ITEM_READY;
@@ -67,11 +71,12 @@ public class Orders {
         this.zipCode = zipCode;
         this.address = address;
         this.extraAddr = exrAddr;
+        this.paymentMethod = paymentMethod;
         this.member = member;
     }
 
-    public static Orders createOrders(String orderId, OrderDto orderDto, Member member) {
-        return new Orders(orderId, orderDto.getTotal(), orderDto.getReceiveName(), orderDto.getZipcode(), orderDto.getAddress(), orderDto.getExtraAddr(), member);
+    public static Orders createOrders(String orderId, OrderDto orderDto, PaymentMethod paymentMethod, Member member) {
+        return new Orders(orderId, orderDto.getTotal(), orderDto.getReceiveName(), orderDto.getZipcode(), orderDto.getAddress(), orderDto.getExtraAddr(), paymentMethod, member);
     }
 
 }
