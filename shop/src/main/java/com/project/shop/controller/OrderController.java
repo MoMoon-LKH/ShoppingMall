@@ -32,6 +32,7 @@ public class OrderController {
 
     @GetMapping("/form")
     public String orderPage(@RequestParam List<Long> item, @AuthenticationPrincipal Account account, Model model) {
+
         int total = 0;
 
         List<CartDto> cartDtos = cartService.findAllCartDtoByCartItemId(item);
@@ -48,9 +49,41 @@ public class OrderController {
         return "/member/order";
     }
 
-    @GetMapping("/successPage")
-    public String successPage() {
 
+    @GetMapping("/purchase")
+    public String purchaseOrderPage(CartDto cartDto, @AuthenticationPrincipal Account account, Model model) {
+
+        int total = 0;
+
+        Item item = itemService.findById(cartDto.getItemId());
+
+        List<CartDto> cartDtos = new ArrayList<>();
+
+        cartDtos.add(CartDto.builder()
+                .itemId(item.getId())
+                .count(cartDto.getCount())
+                .itemCost(item.getCost())
+                .itemImgUrl(item.getImgUrl())
+                .itemName(item.getName())
+                .build());
+
+        model.addAttribute("items", cartDtos);
+        model.addAttribute("member", memberService.findById(account.getId()));
+        model.addAttribute("delivery", deliveryService.findAllByMemberId(account.getId()));
+
+        total += cartDtos.get(0).getCount() * cartDtos.get(0).getItemCost();
+
+        model.addAttribute("total", total);
+
+        return "/member/purchaseOrder";
+    }
+
+
+    @GetMapping("/successPage/{orderNumber}")
+    public String successPage(@PathVariable("orderNumber") String orderNumber, @AuthenticationPrincipal Account account, Model model) {
+
+        model.addAttribute("orderNum", orderNumber);
+        model.addAttribute("memberId", account.getId());
         return "/member/orderSuccess";
     }
 
@@ -83,17 +116,19 @@ public class OrderController {
 
 
         Map<String, Object> map = new HashMap<>();
-        map.put("savedOrderItem", orderService.saveOrderItems(orderItems));
+        map.put("orderNum", order.getOrderId());
+        map.put("savedOrderItemCount", orderService.saveOrderItems(orderItems));
         map.put("delBool", cartService.deleteCartItems(cartItems));
 
         return ResponseEntity.ok("map");
     }
 
+
     @ResponseBody
     @PostMapping("/addOrder")
-    public ResponseEntity<?> addOrder(@Valid @RequestParam OrderDto orderDto, @AuthenticationPrincipal Account account) {
+    public ResponseEntity<?> addOrder(@Valid @RequestBody OrderDto orderDto, @AuthenticationPrincipal Account account) {
 
-        /*List<OrderItem> orderItems = new ArrayList<>();
+        List<OrderItem> orderItems = new ArrayList<>();
 
         Member member = memberService.findById(account.getId());
         Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, member));
@@ -105,11 +140,11 @@ public class OrderController {
         }
 
         Map<String, Object> map = new HashMap<>();
-        map.put("savedOrderItem", orderService.saveOrderItems(orderItems));
-*/
-        return ResponseEntity.ok("");
-    }
+        map.put("orderNum", order.getOrderId());
+        map.put("savedOrderItemCount", orderService.saveOrderItems(orderItems));
 
+        return ResponseEntity.ok(map);
+    }
 
 
 

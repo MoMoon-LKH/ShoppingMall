@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SHOP</title>
@@ -10,34 +10,36 @@
 <div th:replace="fragments/category"></div>
 <div class="item_container" style="margin-top: 100px">
     <div class="item_top">
-        <input type="hidden" id="itemId" th:value="${item.id}"/>
-        <img class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="float: left; width: 500px; height: 600px; ">
-        <div class="item_txt" style="display: inline-block; margin-left: 20px">
-            <div class="txt_wrapper">
-                <div id="item_name" class="wrapper_content" type="text" th:name="name" th:text="${item.name}"></div>
-            </div>
-            <hr style="border: solid 1px black; margin-top: 5px; margin-bottom: 30px">
+        <form action="/order/purchase" method="get">
+            <input type="hidden" id="itemId" name="itemId" th:value="${item.id}"/>
+            <img class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="float: left; width: 500px; height: 600px; ">
+            <div class="item_txt" style="display: inline-block; margin-left: 20px">
+                <div class="txt_wrapper">
+                    <div id="item_name" class="wrapper_content" type="text" th:name="name" th:text="${item.name}"></div>
+                </div>
+                <hr style="border: solid 1px black; margin-top: 5px; margin-bottom: 30px">
 
-            <div class="txt_wrapper">
-                <label th:for="cost">판매가격: </label>
-                <span class="wrapper_content" id="item_cost" th:text="${item.cost}"></span><span id="item_cost_txt">원</span>
-            </div>
-            <div class="txt_wrapper">
-               <label>배송비:</label>
-               <span class="wrapper_content">주문 시 결제</span>
-            </div>
-            <div class="txt_wrapper" style="margin-top: 15px">
-                <div >구매수량</div>
-                <input id="purchase_count" type="number" min="1" value="1" style="width: 50px">
-            </div>
-            <div class="txt_wrapper">
-                <button class="item_btn" id="cart_btn" onclick="cartBtn()">장바구니</button>
-            </div>
+                <div class="txt_wrapper">
+                    <label th:for="cost">판매가격: </label>
+                    <span class="wrapper_content" id="item_cost" th:name="itemCost" th:text="${item.cost}"></span><span id="item_cost_txt">원</span>
+                </div>
+                <div class="txt_wrapper">
+                   <label>배송비:</label>
+                   <span class="wrapper_content">주문 시 결제</span>
+                </div>
+                <div class="txt_wrapper" style="margin-top: 15px">
+                    <div >구매수량</div>
+                    <input id="purchase_count" type="number" th:name="count" min="1" value="1" style="width: 50px">
+                </div>
+                <div class="txt_wrapper">
+                    <button type="button" class="item_btn" id="cart_btn" onclick="cartBtn()">장바구니</button>
+                </div>
 
-            <div class="txt_wrapper">
-                <button class="item_btn" id="purchase_btn">구매하기</button>
+                <div class="txt_wrapper">
+                    <input type="submit" class="item_btn" id="purchase_btn" value="구매하기" />
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <div style="clear: both"></div>
     <div class="item_bottom">

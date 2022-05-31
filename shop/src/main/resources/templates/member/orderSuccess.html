@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SHOP</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/member/orderSuccess.css">
+
 </head>
 <body>
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
-주문 완료
-<a>메인으로 가기</a>
-<a>나의 주문 목록</a>
+<div class="container">
+    <div class="success_title">
+        주문이 완료되었습니다
+    </div>
+
+    <div class="orderNum_div">
+        <div>주문 번호</div> <a id="order_num" th:href="@{/order/info(orderId=${orderNum})}" th:text="${orderNum}">order</a>
+    </div>
+
+    <div class="btn_container">
+        <div class="success_btns">
+            <button class="btns" onclick="location.href='/'">메인으로 가기</button>
+        </div>
+        <div class="success_btns">
+            <button class="btns" th:onclick="'myOrder(' + ${memberId} +')'">나의 주문 목록</button>
+        </div>
+    </div>
+
+</div>
 </body>
+<script type="text/javascript" src="/static/js/member/orderSuccess.js"></script>
 </html>

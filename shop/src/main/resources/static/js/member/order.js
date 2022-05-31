@@ -45,8 +45,22 @@ function orderAjax() {
         data: JSON.stringify(obj)
 
     }).done(function (result) {
-        console.log(result);
-        location.href = "/order/successPage";
+        location.href = "/order/successPage/" + result.orderNum
+    }).error(function (error) {
+        alert("실패했습니다.");
+    });
+}
+
+function purchaseAjax() {
+    let obj = createObj();
+
+    $.ajax({
+        url: "/order/addOrder",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(obj)
+    }).done(function (result) {
+        location.href = "/order/successPage/" + result.orderNum;
     }).error(function (error) {
         alert("실패했습니다.");
     });

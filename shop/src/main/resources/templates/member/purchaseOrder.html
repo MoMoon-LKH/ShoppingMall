@@ -1,0 +1,145 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/member/order.css">
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+<div class="container">
+    <div id="order_title">주문서</div>
+    <div class="leftContainer">
+        <div class="order_info">
+            <div class="heading">
+                <div>주문자 정보</div>
+                <hr>
+            </div>
+            <div class="info_container">
+                <div class="info">
+                    <div class="info_subheading">이름</div>
+                    <input class="input_myInfo" type="text" th:value="${member.name}" disabled>
+                </div>
+                <div class="info">
+                    <div class="info_subheading">휴대전화</div>
+                    <input class="input_myInfo" type="text"  th:value="${member.getPhone()}" disabled>
+                </div>
+                <div class="info">
+                    <div class="info_subheading">주소</div>
+                    <input class="input_myInfo" type="text" style="width: 30%" th:value="${delivery[0].getZipCode()}" disabled>
+                    <input class="input_myInfo" type="text"  th:value="${delivery[0].getAddress()}" disabled>
+                    <input class="input_myInfo" type="text"  th:value="${delivery[0].getAddrDetail()}" disabled>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="order_info">
+            <div class="heading">
+                <div>배송지 정보</div>
+                <hr>
+            </div>
+            <div class="info_container">
+                <div class="info">
+                    <div class="info_subheading">수령인</div>
+                    <input id="receive_name" type="text" th:value="${member.name}">
+                </div>
+                <div class="info">
+                    <div class="info_subheading">휴대전화</div>
+                    <input id="receive_phone" type="text" th:value="${member.phone}">
+                </div>
+                <div class="info">
+                    <div class="info_subheading">배송지 주소</div>
+                    <input id="receive_zipcode" type="text" th:value="${delivery[0].getZipCode()}">
+                    <button id="addr_search" type="button" onclick="search_addr()">주소 검색</button>
+                    <input id="receive_addr" type="text" th:value="${delivery[0].getAddress()}">
+                    <input id="receive_addrDetail" type="text" th:value="${delivery[0].getAddrDetail()}">
+                </div>
+                <div class="info">
+                    <div class="info_subheading">배송메시지</div>
+                    <textarea id="receive_message" rows="5"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="rightContainer">
+        <div class="order_info">
+            <div class="heading">
+                <div>주문상품</div>
+            </div>
+            <input type="hidden" name="items" th:value="${items}">
+            <div id="item_table">
+                <table>
+                    <thead>
+                    <th width="70%">상세정보</th>
+                    <th width="15%">판매가</th>
+                    <th width="15%">수량</th>
+                    <th width="0%"></th>
+                    </thead>
+                    <tbody id="item_tbody">
+                    <tr th:each="item : ${items}">
+                        <td>
+                            <div id="item_img">
+                                <img th:src="@{/static/img/} + ${item.getItemImgUrl()}" onerror="this.onerror=null; this.src='/static/img/error.png'">
+                                <div id="item_name" th:text="${item.getItemName()}"></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:text="${item.getItemCost()}"></div>
+                        </td>
+                        <td>
+                            <div class="items_count" th:text="${item.getCount()}"></div>
+                        </td>
+                        <td style="display: none">
+                            <input type="hidden" class="items_id" th:value="${item.getItemId()}"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info">
+                <div class="cost_info">
+                    <div class="cost_subtitle">총 상품구매금액</div>
+                    <div class="cost_val"><span class="cost" id="item_total" th:text="${total}">0</span><span>원</span></div>
+                </div>
+                <div class="cost_info">
+                    <div class="cost_subtitle">배송비</div>
+                    <div class="cost_val"><span class="cost" id="delivery_cost" th:text="2500">0</span><span>원</span></div>
+                </div>
+                <hr style="border: 1px solid lightgray">
+                <div class="cost_info">
+                    <div class="cost_subtitle">총 결제금액</div>
+                    <div class="cost_val"><span class="cost" id="total_cost" th:text="(${total} + 2500)">0</span><span>원</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="order_info">
+            <div class="heading">
+                <div>결제수단</div>
+                <hr>
+            </div>
+            <div id="payment_method">
+                <label class="payment_check">
+                    <input type="checkbox" name="payment" onclick="checkOne(this)" th:value="card" checked>신용카드
+                </label>
+                <label class="payment_check">
+                    <input type="checkbox" name="payment" onclick="checkOne(this)" th:value="passbook">무통장입금
+                </label>
+            </div>
+        </div>
+        <div class="order_info">
+            <div id="order_btns">
+                <input class="order_btn" id="submit_btn" type="button" onclick="purchaseAjax()" value="주문하기">
+                <input class="order_btn" id="cancel_btn" type="button" onclick="cancelAction()" value="취소">
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/static/js/member/order.js"></script>
+</html>

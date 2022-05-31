@@ -1,0 +1,46 @@
+a{
+    text-decoration: none;
+    display: block;
+}
+
+.btns {
+    border: none;
+    width: 150px;
+    height: 40px;
+    background: gray;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+button:hover{
+    background: black;
+}
+
+.container{
+    width: 70%;
+    text-align: center;
+    margin: auto;
+}
+
+.success_title {
+    font-size: 25px;
+    margin: 50px;
+}
+
+.orderNum_div{
+    font-size: 20px;
+    margin-bottom: 60px;
+}
+
+.btn_container
+
+.success_btns {
+    margin: 15px;
+}
+
+#order_num{
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+}
