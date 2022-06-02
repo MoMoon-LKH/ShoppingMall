@@ -3,6 +3,7 @@ package com.project.shop.controller;
 import com.project.shop.domain.*;
 import com.project.shop.domain.dto.CartDto;
 import com.project.shop.domain.dto.OrderDto;
+import com.project.shop.domain.dto.OrderItemDto;
 import com.project.shop.domain.enums.PaymentMethod;
 import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.*;
@@ -89,12 +90,15 @@ public class OrderController {
     }
 
     @GetMapping("/info")
-    public String orderInfoPage(String orderNum, @AuthenticationPrincipal Account account, Model model) {
+    public String orderInfoPage(String orderId, @AuthenticationPrincipal Account account, Model model) {
 
         Member member = memberService.findById(account.getId());
-
+        Orders order = orderService.findOrderByOrderId(orderId);
+        List<OrderItemDto> orderItems = orderService.findOrderItemByOrderId(orderId);
 
         model.addAttribute("member", member);
+        model.addAttribute("order", order);
+        model.addAttribute("orderItems", orderItems);
 
         return "/member/orderInfo";
     }

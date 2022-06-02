@@ -1,13 +1,17 @@
 package com.project.shop.domain.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderItemDto {
+
+    private Long orderItemId;
 
     private Long itemId;
 
@@ -18,12 +22,4 @@ public class OrderItemDto {
     private int cost;
 
     private int count;
-
-    private String zipcode;
-
-    private String address;
-
-    private String extraAddr;
-
-    private String paymentMethod;
 }

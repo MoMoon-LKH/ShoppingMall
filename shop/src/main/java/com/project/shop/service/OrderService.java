@@ -2,6 +2,8 @@ package com.project.shop.service;
 
 import com.project.shop.domain.OrderItem;
 import com.project.shop.domain.Orders;
+import com.project.shop.domain.dto.OrderItemDto;
+import com.project.shop.exceptions.NoSuchOrderException;
 import com.project.shop.repository.OrderItemRepository;
 import com.project.shop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,4 +32,12 @@ public class OrderService {
         return orderItemRepository.saveAll(orderItems).size();
     }
 
+
+    public Orders findOrderByOrderId(String orderId) {
+        return orderRepository.findByOrderId(orderId).orElseThrow(NoSuchOrderException::new);
+    }
+
+    public List<OrderItemDto> findOrderItemByOrderId(String orderId) {
+        return orderItemRepository.findAllByOrder_Id(orderId);
+    }
 }

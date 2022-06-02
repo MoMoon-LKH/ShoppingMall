@@ -1,11 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SHOP</title>
 </head>
 <body>
-orderInfo
+<div th:replace="/fragments/header"></div>
+<div th:replace="/fragments/category"></div>
+<div class="container">
+    <div class="orderInfo">
+        <div class="info_title">주문 상세정보</div>
+        <div id="info_order">
+            <span >주문일자 <span class="" id="order_date"></span> </span>
+            <span>주문번호 <span id="order_num"></span></span>
+        </div>
+    </div>
+
+    <div class="item_table">
+        <table>
+            <thead>
+                <th>상품정보</th>
+                <th>상품금액</th>
+                <th>수량</th>
+                <th>소계</th>
+                <th>진행상태</th>
+            </thead>
+            <tbody id="item_tbody">
+                <tr th:each="item : ${orderItems}">
+                    <td>
+                        <img th:src="@{/static/img/} + ${item.getImgUrl()}"/>
+                        <div th:text="${item.getName()}"></div>
+                    </td>
+                    <td>
+                        <div th:text="${item.getCost()}"></div>
+                    </td>
+                    <td>
+                        <div th:text="${item.getCount()}"></div>
+                    </td>
+                    <td>
+                        <div th:text="${item.getCost()} * ${item.getCount()}"></div>
+                    </td>
+                    <td>
+                        <div th:text="${order.getStatus()}"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="order_info">
+        <div class="info_title">주문/결제 금액 정보</div>
+        <div>
+            <table>
+                <thead>
+                    <th>결제 정보</th>
+                    <th>총 결제금액</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span>주문금액: </span>
+                            <span th:text="${order.getCost()}"></span>
+                        </td>
+                        <td rowspan="2">
+                            <div th:text="${order.getCost()} + 2500"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>배송비: </span>
+                            <span th:text="2500"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="order_info">
+        <div class="info_title">배송지 정보</div>
+        <div class="del_div">
+            <div class="del_subtitle">주문자</div>
+            <div class="del_info">
+                <span>성함: </span><span th:text="${member.name}"></span>
+                <span>휴대전화: </span><span th:text="${member.getPhone()}"></span>
+            </div>
+        </div>
+        <div class="del_div">
+            <div class="del_subtitle">받으시는 분</div>
+            <div class="del_info">
+                <span>성함: </span><span th:text="${order.getReceiveName()}"></span>
+                <div>주소</div>
+                <div th:text="${order.getZipCode()}"></div>
+                <div th:text="${order.getAddress()}"></div>
+                <div th:text="${order.getExtraAddr()}"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 </body>
 </html>
