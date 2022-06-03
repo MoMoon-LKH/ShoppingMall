@@ -53,6 +53,8 @@ public class Orders {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Column(name = "delivery_message")
+    private String deliveryMessage;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> order_items = new ArrayList<>();
@@ -61,7 +63,7 @@ public class Orders {
 
     }
 
-    private Orders(String orderId, int cost, String name, String zipCode, String address, String exrAddr, PaymentMethod paymentMethod, Member member) {
+    private Orders(String orderId, int cost, String name, String zipCode, String address, String exrAddr, String deliveryMessage, PaymentMethod paymentMethod, Member member) {
         this.orderId = orderId;
         this.cost = cost;
         this.status = OrderStatus.ITEM_READY;
@@ -71,12 +73,13 @@ public class Orders {
         this.zipCode = zipCode;
         this.address = address;
         this.extraAddr = exrAddr;
+        this.deliveryMessage = deliveryMessage;
         this.paymentMethod = paymentMethod;
         this.member = member;
     }
 
     public static Orders createOrders(String orderId, OrderDto orderDto, PaymentMethod paymentMethod, Member member) {
-        return new Orders(orderId, orderDto.getTotal(), orderDto.getReceiveName(), orderDto.getZipcode(), orderDto.getAddress(), orderDto.getExtraAddr(), paymentMethod, member);
+        return new Orders(orderId, orderDto.getTotal(), orderDto.getReceiveName(), orderDto.getZipcode(), orderDto.getAddress(), orderDto.getExtraAddr(), orderDto.getDeliveryMessage(), paymentMethod, member);
     }
 
 }

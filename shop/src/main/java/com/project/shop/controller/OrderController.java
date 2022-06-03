@@ -84,7 +84,7 @@ public class OrderController {
     @GetMapping("/successPage/{orderNumber}")
     public String successPage(@PathVariable("orderNumber") String orderNumber, @AuthenticationPrincipal Account account, Model model) {
 
-        model.addAttribute("orderNum", orderNumber);
+        model.addAttribute("orderId", orderNumber);
         model.addAttribute("memberId", account.getId());
         return "/member/orderSuccess";
     }
@@ -143,7 +143,7 @@ public class OrderController {
         map.put("savedOrderItemCount", orderService.saveOrderItems(orderItems));
         map.put("delBool", cartService.deleteCartItems(cartItems));
 
-        return ResponseEntity.ok("map");
+        return ResponseEntity.ok(map);
     }
 
 

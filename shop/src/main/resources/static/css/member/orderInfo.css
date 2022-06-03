@@ -1,0 +1,101 @@
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 11px;
+}
+
+th{
+    font-size: 18px;
+    border-top: 2px solid gray;
+    height: 30px;
+}
+
+tr{
+    border-bottom: 1px solid lightgray;
+}
+
+img{
+    width: 80px;
+    height: 100px;
+    float: left;
+    margin: 10px;
+}
+
+
+.container{
+    width: 60%;
+    margin: 30px auto;
+}
+
+
+.orderInfo{
+
+}
+
+.info{
+    margin-right: 10px;
+}
+
+.info_title{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.order_info{
+    margin: 20px auto;
+}
+
+.table_info{
+    float: left;
+    margin-left: 20px;
+}
+
+.table_val{
+    float: right;
+    margin-right: 20px;
+}
+
+
+.item_name {
+    text-align: left;
+}
+
+.first_td{
+    border-right: 1px solid lightgray;
+}
+
+.item_img{
+    display: flex;
+    align-items: center;
+}
+
+.del_div{
+    margin-top: 10px;
+
+}
+
+.del_subtitle{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.del_info_div{
+    margin: 5px;
+}
+
+.del_text{height: 100px;
+    width: 50%;
+    resize: none;
+    font-size: 17px;
+
+}
+
+#cost_table{
+    width: 70%;
+}
+
+#order_cost_tr{
+    border-bottom: none;
+}

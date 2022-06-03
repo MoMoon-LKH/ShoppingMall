@@ -33,6 +33,8 @@ public class OrderDto {
 
     private String paymentMethod;
 
+    private String deliveryMessage;
+
     private List<CartDto> cartDtos = new ArrayList<>();
 
 }

@@ -100,6 +100,7 @@ function createObj() {
         "zipcode": document.getElementById("receive_zipcode").value,
         "address": document.getElementById("receive_addr").value,
         "extraAddr": document.getElementById("receive_addrDetail").value,
+        "deliveryMessage": document.getElementById("receive_message").value,
         "paymentMethod": payment,
         "cartDtos": cartDtos
     }

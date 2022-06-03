@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SHOP</title>
+    <link rel="stylesheet" href="/static/css/member/orderInfo.css">
 </head>
 <body>
 <div th:replace="/fragments/header"></div>
@@ -11,25 +12,27 @@
     <div class="orderInfo">
         <div class="info_title">주문 상세정보</div>
         <div id="info_order">
-            <span >주문일자 <span class="" id="order_date"></span> </span>
-            <span>주문번호 <span id="order_num"></span></span>
+            <span> 주문번호 <span class="info" id="order_num" th:text="${order.getOrderId()}"> </span></span>
+            <span >주문일자 <span class="info" id="order_date" th:text="${order.getCreateDate()}"> </span> </span>
         </div>
     </div>
 
     <div class="item_table">
         <table>
             <thead>
-                <th>상품정보</th>
-                <th>상품금액</th>
-                <th>수량</th>
-                <th>소계</th>
-                <th>진행상태</th>
+                <th width="60%">상품정보</th40>
+                <th width="10%">상품금액</th>
+                <th width="10%">수량</th>
+                <th width="10%">소계</th>
+                <th width="10%">진행상태</th>
             </thead>
             <tbody id="item_tbody">
-                <tr th:each="item : ${orderItems}">
+                <tr class="img_tr" th:each="item : ${orderItems}">
                     <td>
-                        <img th:src="@{/static/img/} + ${item.getImgUrl()}"/>
-                        <div th:text="${item.getName()}"></div>
+                        <div class="item_img">
+                            <img th:src="@{/static/img/} + ${item.getImgUrl()}"/>
+                            <div class="item_name" th:text="${item.getName()}"></div>
+                        </div>
                     </td>
                     <td>
                         <div th:text="${item.getCost()}"></div>
@@ -50,31 +53,29 @@
 
     <div class="order_info">
         <div class="info_title">주문/결제 금액 정보</div>
-        <div>
-            <table>
-                <thead>
-                    <th>결제 정보</th>
-                    <th>총 결제금액</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span>주문금액: </span>
-                            <span th:text="${order.getCost()}"></span>
-                        </td>
-                        <td rowspan="2">
-                            <div th:text="${order.getCost()} + 2500"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>배송비: </span>
-                            <span th:text="2500"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table id="cost_table">
+            <thead>
+                <th width="50%">결제 정보</th>
+                <th width="50%">총 결제금액</th>
+            </thead>
+            <tbody>
+                <tr id="order_cost_tr">
+                    <td class="first_td">
+                        <div class="table_info">주문금액 </div>
+                        <div class="table_val" th:text="${order.getCost()} - 2500">1</div>
+                    </td>
+                    <td rowspan="2">
+                        <div th:text="${order.getCost()}">1</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="first_td">
+                        <div class="table_info">배송비 </div>
+                        <div class="table_val" th:text="2500">1</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="order_info">
@@ -82,18 +83,21 @@
         <div class="del_div">
             <div class="del_subtitle">주문자</div>
             <div class="del_info">
-                <span>성함: </span><span th:text="${member.name}"></span>
-                <span>휴대전화: </span><span th:text="${member.getPhone()}"></span>
+                <div class="del_info_div">성함: <span th:text="${member.name}"></span></div>
+                <div class="del_info_div">휴대전화: <span th:text="${member.getPhone()}"></span></div>
             </div>
         </div>
         <div class="del_div">
             <div class="del_subtitle">받으시는 분</div>
             <div class="del_info">
-                <span>성함: </span><span th:text="${order.getReceiveName()}"></span>
-                <div>주소</div>
-                <div th:text="${order.getZipCode()}"></div>
-                <div th:text="${order.getAddress()}"></div>
-                <div th:text="${order.getExtraAddr()}"></div>
+                <div class="del_info_div">성함: <span th:text="${order.getReceiveName()}"></span></div>
+                <div class="del_info_div">주소</div>
+                <div class="del_info_div" th:text="${order.getZipCode()}"></div>
+                <div class="del_info_div" th:text="${order.getAddress()}"></div>
+                <div class="del_info_div" th:text="${order.getExtraAddr()}"></div>
+                <div class="del_info_div" >배송메시지</div>
+                <textarea class="del_text" th:text="${order.deliveryMessage}" readonly></textarea>
+
             </div>
         </div>
     </div>
