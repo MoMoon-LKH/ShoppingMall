@@ -1,0 +1,15 @@
+.container{
+    width: 70%;
+
+    margin: 10px auto;
+}
+
+table{
+    margin: auto;
+}
+
+img{
+    width: 125px;
+    height: 150px;
+    margin: 30px;
+}

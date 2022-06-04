@@ -22,4 +22,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     Long countAllBy();
 
     Long countAllByCategory_Id(@Param("categoryId") Long categoryId);
+
+    @Query("select i.imgUrl from Item i where i.name = :name")
+    String getImgUrlByItemName(@Param("name") String itemName);
 }
+

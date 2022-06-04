@@ -4,10 +4,14 @@ import com.project.shop.domain.*;
 import com.project.shop.domain.dto.CartDto;
 import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.dto.OrderItemDto;
+import com.project.shop.domain.dto.OrderListDto;
 import com.project.shop.domain.enums.PaymentMethod;
 import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -103,6 +107,11 @@ public class OrderController {
         return "/member/orderInfo";
     }
 
+    @GetMapping("/my")
+    public String mypage() {
+        return "/member/myOrders";
+    }
+
     @ResponseBody
     @PostMapping("/cart/addOrder")
     public ResponseEntity<?> AddOrderByCart(@Valid @RequestBody OrderDto orderDto, @AuthenticationPrincipal Account account) {
@@ -174,6 +183,25 @@ public class OrderController {
         map.put("savedOrderItemCount", orderService.saveOrderItems(orderItems));
 
         return ResponseEntity.ok(map);
+    }
+
+
+    @ResponseBody
+    @GetMapping("/my/list")
+    public ResponseEntity<?> getMyOrderList(
+            @AuthenticationPrincipal Account account,
+            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC, size = 5) Pageable pageable) {
+
+
+        List<OrderListDto> orderList = orderService.findOrderListByMemberId(account.getId(), pageable);
+
+        for (OrderListDto order : orderList) {
+            order.setItemName(orderService.findItemNameByOrder_Id(order.getId()));
+            order.setImgUrl(itemService.getImgUrlByItemName(order.getItemName()));
+
+        }
+
+        return ResponseEntity.ok(orderList);
     }
 
 

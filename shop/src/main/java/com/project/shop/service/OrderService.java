@@ -3,10 +3,12 @@ package com.project.shop.service;
 import com.project.shop.domain.OrderItem;
 import com.project.shop.domain.Orders;
 import com.project.shop.domain.dto.OrderItemDto;
+import com.project.shop.domain.dto.OrderListDto;
 import com.project.shop.exceptions.NoSuchOrderException;
 import com.project.shop.repository.OrderItemRepository;
 import com.project.shop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +39,20 @@ public class OrderService {
         return orderRepository.findByOrderId(orderId).orElseThrow(NoSuchOrderException::new);
     }
 
+    public List<Orders> findAllByMemberId(Long memberId, Pageable pageable) {
+        return orderRepository.findAllByMember_Id(memberId, pageable);
+    }
+
     public List<OrderItemDto> findOrderItemByOrderId(String orderId) {
         return orderItemRepository.findAllByOrder_Id(orderId);
     }
+
+    public List<OrderListDto> findOrderListByMemberId(Long memberId, Pageable pageable) {
+        return orderRepository.findAllByOrdersList(memberId, pageable);
+    }
+
+    public String findItemNameByOrder_Id(Long orderId) {
+        return orderItemRepository.findByItemName(orderId);
+    }
+
 }

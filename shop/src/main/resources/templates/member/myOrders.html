@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link rel="stylesheet" href="/static/css/member/myOrders.css">
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+<div class="container">
+    <div class="orders_status">
+
+    </div>
+    <div class="order_search">
+
+    </div>
+
+    <div class="orders_table">
+        <table>
+            <thead>
+            </thead>
+            <tbody id="orders_tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="order_more">
+        <button id="more_btn">더보기</button>
+    </div>
+</div>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/static/js/member/myOrders.js"></script>
+</html>

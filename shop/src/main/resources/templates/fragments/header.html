@@ -15,7 +15,7 @@
 </div>
 <div class="on_login" sec:authorize="isAuthenticated()">
     <a href="/">MAIN</a>
-    <span id="user_nickname" > </span><span>님</span>
+    <a href="/order/my"><span id="user_nickname"> </span><span>님</span></a>
     <input type="hidden" id="memberId"  >
     <button id="logout_Btn" onclick="logout()">로그아웃</button>
     <a href="/sell/my" sec:authorize="hasAuthority('ADMIN')">판매 관리</a>

@@ -91,5 +91,7 @@ public class ItemService {
         return itemRepository.countAllByCategory_Id(categoryId).intValue();
     }
 
-
+    public String getImgUrlByItemName(String itemName) {
+        return itemRepository.getImgUrlByItemName(itemName);
+    }
 }
