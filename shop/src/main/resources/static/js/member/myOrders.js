@@ -28,22 +28,20 @@ function list_rendering(list) {
 
         let obj = list[i];
 
-        console.log(obj);
-
-        var html ="<tr><td><img src='/static/img/" + obj.imgUrl + "'></td>";
+        var html ="<tr><td><a class='order_a' href='/order/info?orderId="+ obj.orderId +"'><img src='/static/img/" + obj.imgUrl + "'></a></td>";
 
         if(obj.itemCount - 1 > 0)
-            html += "<td><div className='order_name'>" + obj.itemName + " 외 " + (obj.itemCount - 1) + "</div>";
+            html += "<td><a class='order_a' href='/order/info?orderId="+ obj.orderId +"'><div class='order_name'>" + obj.itemName + " 외 " + (obj.itemCount - 1) + "</div></a>";
         else{
-            html += "<td><div className='order_name'>" + obj.itemName + "</div>";
+            html += "<td><a class='order_a' href='/order/info?orderId="+ obj.orderId +"'><div class='order_name'>" + obj.itemName + "</div></a>";
         }
 
-        html += "<div className='order_infos'>";
-        html += "<div><span className='order_cost'>" + obj.total + "</span><span>원</span></div>";
-        html += "<div className='order_date'>" + obj.createDate + "</div></div>"
-        html += "<div className='order_status'>" + obj.orderState + "</div></td>"
-        html += "<td><div><button>주문 취소</button></div>";
-        html += "<div><button > 교환 요청</button></div></td></tr>";
+        html += "<div class='order_infos'>";
+        html += "<div><span class='order_cost'>" + obj.total + "</span><span>원</span></div>";
+        html += "<div class='order_date'>" + obj.createDate + "</div></div>"
+        html += "<div class='order_status'>" + obj.orderState + "</div></td>"
+        html += "<td><div><button class='order_btns'>주문 취소</button></div>";
+        html += "<div><button class='order_btns'> 교환 요청</button></div></td></tr>";
         table.append(html);
     }
 }

@@ -9,8 +9,8 @@
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
 <div class="container">
-    <div class="orders_status">
-
+    <div class="orders_title">
+        주문 목록
     </div>
     <div class="order_search">
 
@@ -19,6 +19,9 @@
     <div class="orders_table">
         <table>
             <thead>
+                <th width="20%"></th>
+                <th width="60%"></th>
+                <th width="20%"></th>
             </thead>
             <tbody id="orders_tbody">
 
@@ -27,7 +30,7 @@
     </div>
 
     <div class="order_more">
-        <button id="more_btn">더보기</button>
+        <button id="more_btn" onclick="ajaxOrders()">더보기</button>
     </div>
 </div>
 </body>
