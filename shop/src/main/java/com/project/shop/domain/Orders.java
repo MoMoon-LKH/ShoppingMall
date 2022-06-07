@@ -1,6 +1,8 @@
 package com.project.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.enums.OrderStatus;
@@ -60,7 +62,6 @@ public class Orders {
     private List<OrderItem> order_items = new ArrayList<>();
 
     public Orders() {
-
     }
 
     private Orders(String orderId, int cost, String name, String zipCode, String address, String exrAddr, String deliveryMessage, PaymentMethod paymentMethod, Member member) {
@@ -80,6 +81,11 @@ public class Orders {
 
     public static Orders createOrders(String orderId, OrderDto orderDto, PaymentMethod paymentMethod, Member member) {
         return new Orders(orderId, orderDto.getTotal(), orderDto.getReceiveName(), orderDto.getZipcode(), orderDto.getAddress(), orderDto.getExtraAddr(), orderDto.getDeliveryMessage(), paymentMethod, member);
+    }
+
+
+    public void orderStatesUpdate(OrderStatus orderStatus) {
+        this.status = orderStatus;
     }
 
 }

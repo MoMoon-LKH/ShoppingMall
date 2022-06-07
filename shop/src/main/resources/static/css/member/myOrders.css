@@ -4,6 +4,8 @@
     margin: 10px auto;
 }
 
+
+
 table{
     margin: auto;
 }
@@ -25,6 +27,7 @@ img{
 
 .order_a:hover{
     color: gray;
+    cursor: pointer;
 }
 
 .order_name{
@@ -47,6 +50,11 @@ img{
 
 }
 
+.order_btns:hover{
+    cursor: pointer;
+    background: black;
+}
+
 #more_btn{
     display: block;
     width: 150px;
@@ -60,4 +68,5 @@ img{
 
 #more_btn:hover{
     background: black;
+    cursor: pointer;
 }

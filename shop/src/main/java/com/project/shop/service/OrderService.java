@@ -4,6 +4,7 @@ import com.project.shop.domain.OrderItem;
 import com.project.shop.domain.Orders;
 import com.project.shop.domain.dto.OrderItemDto;
 import com.project.shop.domain.dto.OrderListDto;
+import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.exceptions.NoSuchOrderException;
 import com.project.shop.repository.OrderItemRepository;
 import com.project.shop.repository.OrderRepository;
@@ -34,6 +35,11 @@ public class OrderService {
         return orderItemRepository.saveAll(orderItems).size();
     }
 
+    @Transactional
+    public Orders updateOrderState(Orders orders, OrderStatus orderStatus) {
+        orders.orderStatesUpdate(orderStatus);
+        return orders;
+    }
 
     public Orders findOrderByOrderId(String orderId) {
         return orderRepository.findByOrderId(orderId).orElseThrow(NoSuchOrderException::new);

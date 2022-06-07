@@ -5,6 +5,7 @@ import com.project.shop.domain.dto.CartDto;
 import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.dto.OrderItemDto;
 import com.project.shop.domain.dto.OrderListDto;
+import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.domain.enums.PaymentMethod;
 import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.*;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -202,6 +204,16 @@ public class OrderController {
         }
 
         return ResponseEntity.ok(orderList);
+    }
+
+    @ResponseBody
+    @PostMapping("/cancel")
+    public ResponseEntity<?> cancelOrder(@RequestParam String orderId, @AuthenticationPrincipal Account account) {
+        Orders orders = orderService.findOrderByOrderId(orderId);
+
+        orderService.updateOrderState(orders, OrderStatus.CANCEL);
+
+        return ResponseEntity.ok(orders.getStatus());
     }
 
 

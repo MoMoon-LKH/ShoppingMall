@@ -39,9 +39,42 @@ function list_rendering(list) {
         html += "<div class='order_infos'>";
         html += "<div><span class='order_cost'>" + obj.total + "</span><span>원</span></div>";
         html += "<div class='order_date'>" + obj.createDate + "</div></div>"
-        html += "<div class='order_status'>" + obj.orderState + "</div></td>"
-        html += "<td><div><button class='order_btns'>주문 취소</button></div>";
-        html += "<div><button class='order_btns'> 교환 요청</button></div></td></tr>";
+
+        if(obj.orderState != "CANCEL") {
+            html += "<div class='order_status'>" + obj.orderState + "</div></td>"
+            html += "<td><div><button class='order_btns' onclick='order_cancel(this, " + obj.orderId + ")'>주문 취소</button></div>";
+            html += "<div><button class='order_btns'> 교환 요청</button></div></td></tr>";
+        } else{
+            html += "</td>";
+            html += "<td><div class='orderStatus_txt'>주문취소</div></td>";
+        }
+
         table.append(html);
     }
+
+}
+
+
+function order_cancel(btn, orderId) {
+    let order = $(btn).parentsUntil("tbody").children('td');
+    let orderStatus = order[1].querySelector('.order_status');
+    let order_tr = $(btn).parentsUntil("tbody");
+
+    $.ajax({
+        url: "/order/cancel?orderId=" + orderId,
+        type: "POST",
+    }).done(function (result) {
+        if (result == "CANCEL") {
+
+            orderStatus.remove();
+            order[2].remove('div');
+
+            let string = "<td><div class='orderStatus_txt'>주문취소</div></td>";
+
+            order_tr.append(string);
+        }
+    }).error(function (error) {
+        alert("주문 취소에 실패했습니다.")
+    });
+
 }
