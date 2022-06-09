@@ -3,61 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
-
+    <link rel="stylesheet" href="/static/css/join.css">
 </head>
 <body>
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
-<div class="joinForm">
-    <div class="wrapDiv">
-        <span>아이디: </span>
-        <input id="memberId" type="text"/>
-    </div>
-    <div class="wrapDiv">
-        <span>비밀번호: </span>
-        <input id="password" type="password"/>
-    </div>
-    <div class="wrapDiv">
-        <span>이름: </span>
-        <input id="member_name" type="text"/>
-    </div>
-    <div class="wrapDiv">
-        <span>닉네임: </span>
-        <input id="nickname" type="text"/>
-    </div>
-    <div class="wrapDiv">
-        <span>성별: </span>
-        <input id="male" name="gender" value="MALE" type="radio" checked/>
-        <label for="male">남성</label>
-        <input id="female" name="gender" value="FEMALE" type="radio" />
-        <label for="female">여성</label>
-
-    </div>
-    <div class="wrapDiv">
-        <span>전화번호: </span>
-        <input id="phone" type="text"/>
-    </div>
-    <div class="wrapDiv">
-        <span>생년월일: </span>
-        <input id="birthday" type="date"/>
-    </div>
-    <div class="wrapDiv">
-        <div>주소</div>
-        <div>
-            <input type="text" id="zip_code" placeholder="우편번호"><button id="addr_search" onclick="address_search()">주소 검색</button>
+<div class="container">
+    <div class="joinForm">
+        <div class="wrapDiv">
+            <div class="input_label">아이디 </div>
+            <div class="input_wrap"><input id="memberId" type="text"/></div>
         </div>
-        <div>
-            <input type="text" id="addr" placeholder="기본 주소를 입력해주세요.">
+        <div class="wrapDiv">
+            <div class="input_label">비밀번호</div>
+            <div class="input_wrap"><input id="password" type="password"/></div>
         </div>
-        <div>
-            <input type="text" id="addrDetail" placeholder="상세 주소를 입력해주세요.">
+        <div class="wrapDiv">
+            <div class="input_label">이름 </div>
+            <div class="input_wrap"><input id="member_name" type="text"/></div>
         </div>
+        <div class="wrapDiv">
+            <div class="input_label">닉네임 </div>
+            <div class="input_wrap"><input id="nickname" type="text"/></div>
+        </div>
+        <div class="wrapDiv">
+            <div class="input_label">전화번호 </div>
+            <div class="input_wrap"><input id="phone" type="text"/></div>
+        </div>
+        <div class="wrapDiv">
+            <div class="input_wrap"><div class="input_label">성별 </div> </div>
+            <input id="male" name="gender" value="MALE" type="radio" checked/>
+            <label for="male">남성</label>
+            <input id="female" name="gender" value="FEMALE" type="radio" />
+            <label for="female">여성</label>
+       </div>
+
+        <div class="wrapDiv">
+            <div class="input_label">생년월일 </div>
+            <div class="input_wrap"><input id="birthday" type="date"/></div>
+        </div>
+
+        <div class="wrapDiv">
+            <div>주소</div>
+            <div>
+                <input class="addr_input" type="text" id="zip_code" placeholder="우편번호"><button id="addr_search" onclick="address_search()">주소 검색</button>
+            </div>
+            <div>
+                <input class="addr_input" type="text" id="addr" placeholder="기본 주소를 입력해주세요.">
+            </div>
+            <div>
+                <input class="addr_input" type="text" id="addrDetail" placeholder="상세 주소를 입력해주세요.">
+            </div>
+        </div>
+
+        <input value="가입" type="button" id="sendJoin">
+
+
     </div>
-
-    <input value="가입" type="button" id="sendJoin">
-
-
-
 </div>
 </body>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

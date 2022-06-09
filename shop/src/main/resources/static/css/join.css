@@ -1,0 +1,68 @@
+input[type=text] {
+    height: 20px;
+    width: 200px;
+}
+
+input[type=password] {
+    height: 20px;
+    width: 200px;
+
+}
+
+input[type=date] {
+    height: 25px;
+    font-size: 15px;
+}
+
+.container{
+    width: 25%;
+    margin: 30px auto;
+}
+
+.input_label{
+    display: inline-block;
+    width: 100px;
+}
+
+.input_wrap{
+    display: inline-block;
+}
+
+.wrapDiv{
+    margin: 15px;
+}
+
+.addr_input{
+    margin: 5px 0;
+    height: 20px;
+
+}
+
+#addr_search{
+    margin-left: 10px;
+    height: 30px;
+    width: 90px;
+    font-weight: bold;
+    background: gray;
+    color: white;
+    border: none;
+}
+
+#addr_search:hover{
+    background: black;
+}
+
+#sendJoin{
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #dc143c;
+    color: white;
+    border: none;
+}
+
+#sendJoin:hover{
+    background: red;
+}

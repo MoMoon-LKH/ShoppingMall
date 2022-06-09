@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>SHOP</title>
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-
-<a href="/">MAIN</a>
-<div class="loginForm">
-    <form action="/api/member/login" method="POST">
-        <div class="wrapDiv">
-            <span>아이디: </span>
-            <input id="memberId" name="memberId" type="text"/>
-        </div>
-        <div class="wrapDiv">
-            <span>비밀번호: </span>
-            <input id="password" name="password" type="password"/>
-        </div>
-        <input type="submit" value="로그인" >
-    </form>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+<div class="container">
+    <div class="loginForm">
+        <form action="/api/member/login" method="POST">
+            <div class="login_con">
+                <div class="wrapDiv">
+                    <input id="memberId" name="memberId" type="text" placeholder="아이디"/>
+                </div>
+                <div class="wrapDiv">
+                    <input id="password" name="password" type="password" placeholder="비밀번호"/>
+                </div>
+            </div>
+            <div class="login_btn">
+                <input id="submit_btn" type="submit" value="로그인" >
+            </div>
+        </form>
+        <div class="wrapDiv"><a href="/member/join">회원가입</a></div>
+    </div>
 </div>
 
 </body>
