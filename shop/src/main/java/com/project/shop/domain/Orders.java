@@ -87,5 +87,4 @@ public class Orders {
     public void orderStatesUpdate(OrderStatus orderStatus) {
         this.status = orderStatus;
     }
-
 }

@@ -9,24 +9,51 @@
 </head>
 <body>
 <div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
 <div class="container">
-    <input type="hidden" id="get_memberId" th:value="${id}"/>
-    <a href="/sell/new">상품 등록</a>
-    <div class="list_container">
-        <div class="div_list">
-            <table  border="1">
-                <tbody id="item_list">
+    <div class="item_container">
+        <input type="hidden" id="get_memberId" th:value="${id}"/>
+        <div>상품 목록</div>
+        <a href="/sell/new">상품 등록</a>
+        <div class="list_container">
+            <div class="div_list">
+                <table>
+                    <tbody id="item_list">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="wrapper-pages">
+                <ul class="paging-num" id="pages">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="order_container">
+        <div>주문상품 목록</div>
+        <div class="list_container">
+            <table>
+                <thead>
+                    <th width="10%">주문번호</th>
+                    <th width="40%">상품 정보</th>
+                    <th width="10%">금액</th>
+                    <th width="30%">주문일자</th>
+                    <th width="10%">상태</th>
+                </thead>
+                <tbody id="order_list">
 
                 </tbody>
             </table>
         </div>
         <div class="wrapper-pages">
-            <ul class="paging-num" id="pages">
+            <ul class="paging-num" id="order_pages">
 
             </ul>
         </div>
     </div>
 </div>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/static/js/seller/mySell.js"></script>
 </body>

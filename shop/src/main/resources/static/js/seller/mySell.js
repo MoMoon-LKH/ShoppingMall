@@ -1,10 +1,13 @@
 let currentPage = 0;
+let orderCurrentPage = 0;
 const dataPerPage = 5;
 let id = document.getElementById("get_memberId").value;
 let total;
+let orderTotal;
 
 $(document).ready(function () {
     getTotal(id);
+    getOrderTotal();
 
     if (total !== 0) {
         getList(currentPage, dataPerPage);
@@ -13,15 +16,28 @@ $(document).ready(function () {
 
 });
 
-function getTotal(memberId) {
+function getTotal() {
     $.ajax({
         url: "/api/item/total",
         type: "GET",
         success: function (result) {
             total = result;
-            paging(result);
+            paging(result, 0);
         },
     })
+}
+
+function getOrderTotal() {
+    $.ajax({
+        url: "/api/order/total",
+        type: "GET"
+    }).done(function (result) {
+        orderTotal = result;
+        paging(result, 1);
+
+    }).error(function (error) {
+        alert("불러오기에 실패했습니다");
+    });
 }
 
 
@@ -40,7 +56,7 @@ function getList(page, size) {
     });
 }
 
-function paging(total) {
+function paging(total, kind) {
 
     const pageCount = 5;
     const now = currentPage + 1;
@@ -61,36 +77,65 @@ function paging(total) {
         first = last;
     }
 
+    if(kind === 0) {
+        const pages = $("#pages");
+        pages.empty();
 
-    const pages = $("#pages");
-    pages.empty();
-
-
-    if (first > 5) {
-        pages.append("<li class='page_num' onclick='prev_btn(this.value)' value='" + (first - 1) + "'>이전</li>");
-    }
-    if(last > 0) {
-        for (var i = first; i <= last; i++) {
-            pages.append("<li class='page_num' onclick='getList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
+        if (first > 5) {
+            pages.append("<li class='page_num' onclick='prev_btn(this.value)' value='" + (first - 1) + "'>이전</li>");
         }
-    }
+        if (last > 0) {
+            for (var i = first; i <= last; i++) {
+                pages.append("<li class='page_num' onclick='getList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
+            }
+        }
 
-    if (last < totalPage) {
-        pages.append("<li class='page_num' onclick='next_btn(this.value)' value='" + (last) + "'>다음</li>");
+        if (last < totalPage) {
+            pages.append("<li class='page_num' onclick='next_btn(this.value)' value='" + (last) + "'>다음</li>");
+        }
+
+    } else{
+        const pages = $("#order_pages");
+        pages.empty();
+
+        if (first > 5) {
+            pages.append("<li class='page_num' onclick='order_prevBtn(this.value)' value='" + (first - 1) + "'>이전</li>");
+        }
+        if (last > 0) {
+            for (var i = first; i <= last; i++) {
+                pages.append("<li class='page_num' onclick='getList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
+            }
+        }
+
+        if (last < totalPage) {
+            pages.append("<li class='page_num' onclick='order_nextBtn(this.value)' value='" + (last) + "'>다음</li>");
+        }
+
     }
 
 }
 
 function prev_btn(num) {
     currentPage = num - 1;
-    paging(total);
+    paging(total, 0);
     getList(currentPage, dataPerPage);
 }
 
 function next_btn(num) {
     currentPage = num;
-    paging(total);
+    paging(total, 0);
     getList(num, dataPerPage);
+}
+
+function order_prevBtn(num) {
+    orderCurrentPage = num - 1;
+    paging(orderTotal, 1);
+
+}
+
+function order_nextBtn(num) {
+    orderCurrentPage = num;
+    paging(orderTotal, 1);
 }
 
 
@@ -117,6 +162,30 @@ function list_rendering(result) {
         }
     } else{
         table.append("<tr><td>데이터가 없습니다.</td></tr>")
+    }
+
+}
+
+function orderList_rendering(result) {
+    const table = $("#order_list");
+
+    for (let i = 0; i < result.length; i++) {
+        let obj = result[i];
+        let html = "<tr>";
+
+        html += "<td>" + obj.orderId + "</td>";
+
+        if(obj.itemCount - 1 > 0)
+            html += "<td>" + obj.itemName + " 외 " + (obj.itemCount - 1) + "</td>";
+        else{
+            html += "<td>" + obj.itemName + "</td>";
+        }
+
+        html += "<td>" + obj.itemCost + "</td>";
+        html += "<td>" + obj.createDate + "</td>";
+        html += "<td>" + obj.orderState + "</td>";
+
+        table.append(html);
     }
 
 }

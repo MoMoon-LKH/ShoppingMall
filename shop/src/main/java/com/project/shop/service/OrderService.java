@@ -36,9 +36,8 @@ public class OrderService {
     }
 
     @Transactional
-    public Orders updateOrderState(Orders orders, OrderStatus orderStatus) {
+    public void updateOrderState(Orders orders, OrderStatus orderStatus) {
         orders.orderStatesUpdate(orderStatus);
-        return orders;
     }
 
     public Orders findOrderByOrderId(String orderId) {
@@ -49,6 +48,7 @@ public class OrderService {
         return orderRepository.findAllByMember_Id(memberId, pageable);
     }
 
+
     public List<OrderItemDto> findOrderItemByOrderId(String orderId) {
         return orderItemRepository.findAllByOrder_Id(orderId);
     }
@@ -57,8 +57,17 @@ public class OrderService {
         return orderRepository.findAllByOrdersList(memberId, pageable);
     }
 
+    public List<OrderListDto> findAllOrder(Pageable pageable) {
+        return orderRepository.findAllOrder(pageable);
+    }
+
+
     public String findItemNameByOrder_Id(Long orderId) {
         return orderItemRepository.findByItemName(orderId);
+    }
+
+    public Long getTotal() {
+        return orderRepository.count();
     }
 
 }

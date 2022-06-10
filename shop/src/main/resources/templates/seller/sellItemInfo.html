@@ -6,6 +6,7 @@
 </head>
 <body>
 <div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
 <div class="item_container">
     <div class="item_top">
         <input type="hidden" th:value="${item.id}"/>
@@ -42,7 +43,7 @@
         </div>
         <div class="item_bottom_content">
             <div id="item_etr" th:text="${item.etrTxt}"></div>
-            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/./img/${item.descriptionUrl}|" style="width: 500px">
+            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/static/img/${item.descriptionUrl}|" style="width: 500px">
         </div>
     </div>
 </div>

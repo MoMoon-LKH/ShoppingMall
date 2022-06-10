@@ -22,4 +22,9 @@ public interface OrderRepository extends JpaRepository<Orders, Long> {
             "where o.member.id = :memberId")
     List<OrderListDto> findAllByOrdersList(@Param("memberId") Long memberId, Pageable pageable);
 
+
+    @Query("select " +
+            "new com.project.shop.domain.dto.OrderListDto(o.id, o.orderId, o.orderId, o.orderId, o.order_items.size, o.cost, o.createDate, o.status) " +
+            "from Orders o ")
+    List<OrderListDto> findAllOrder( Pageable pageable);
 }
