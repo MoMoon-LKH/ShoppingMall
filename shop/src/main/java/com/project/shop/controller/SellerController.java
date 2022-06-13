@@ -27,7 +27,7 @@ import java.util.Date;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/sell")
-public class SellerItemController {
+public class SellerController {
 
     private final ItemService itemService;
     private final CategoryService categoryService;
@@ -38,13 +38,23 @@ public class SellerItemController {
     private String imgPath;
 
     @GetMapping("/my")
-    public String sellMain(@AuthenticationPrincipal Account account, Model model) {
-        model.addAttribute("id", account.getId());
+    public String sellMain(Model model) {
 
         return "/seller/mySell";
     }
 
-    @GetMapping("/new")
+
+    @GetMapping("/my/item")
+    public String itemManagement() {
+        return "/seller/itemManage";
+    }
+
+    @GetMapping("/my/order")
+    public String orderManagement() {
+        return "/seller/orderManage";
+    }
+
+    @GetMapping("/item/new")
     public String registerPage(@AuthenticationPrincipal Account account, Model model) {
 
         model.addAttribute("id", account.getId());
@@ -53,7 +63,7 @@ public class SellerItemController {
         return "/seller/registerItem";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/item/new")
     public String registerItem(@Valid ItemDto itemDto, BindingResult bindingResult, @AuthenticationPrincipal Account account) throws IOException {
 
         String imgUrl = " ";

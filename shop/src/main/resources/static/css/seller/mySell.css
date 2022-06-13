@@ -1,18 +1,25 @@
-table{
-    margin: auto;
-}
-
-tr {
-    cursor: pointer;
-}
-
 .container{
     width: 50%;
-    margin: 0 auto;
+    margin: auto;
+
 }
 
-
-.list_container{
+.btn_div{
     text-align: center;
+    margin: 70px auto;
 }
 
+.manage_btns{
+    width: 250px;
+    height: 70px;
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    background: #dc143c;
+    border: 1px gray solid;
+}
+
+.manage_btns:hover{
+    cursor: pointer;
+    background: red;
+}

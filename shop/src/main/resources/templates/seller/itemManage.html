@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link rel="stylesheet" href="/static/css/seller/itemManage.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/paging.css">
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+<div th:replace="fragments/category"></div>
+<div class="container">
+    <div class="item_container">
+        <div>상품 목록</div>
+        <div class="list_container">
+            <div class="div_list">
+                <table>
+                    <tbody id="item_list">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="list_functions">
+                <button id="newItem" type="button" onclick="location.href = '/sell/item/new'">상품 등록</button>
+            </div>
+            <div class="wrapper-pages">
+                <ul class="paging-num" id="pages">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/static/js/seller/itemManage.js"></script>
+</body>
+</html>

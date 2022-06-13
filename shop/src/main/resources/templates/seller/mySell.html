@@ -2,55 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>나의 판매 정보</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/paging.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/seller/mySell.css">
-
+    <title>SHOP</title>
+    <link rel="stylesheet" href="/static/css/seller/mySell.css">
 </head>
 <body>
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
 <div class="container">
-    <div class="item_container">
-        <input type="hidden" id="get_memberId" th:value="${id}"/>
-        <div>상품 목록</div>
-        <a href="/sell/new">상품 등록</a>
-        <div class="list_container">
-            <div class="div_list">
-                <table>
-                    <tbody id="item_list">
-
-                    </tbody>
-                </table>
-            </div>
-            <div class="wrapper-pages">
-                <ul class="paging-num" id="pages">
-
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="order_container">
-        <div>주문상품 목록</div>
-        <div class="list_container">
-            <table>
-                <thead>
-                    <th width="10%">주문번호</th>
-                    <th width="40%">상품 정보</th>
-                    <th width="10%">금액</th>
-                    <th width="30%">주문일자</th>
-                    <th width="10%">상태</th>
-                </thead>
-                <tbody id="order_list">
-
-                </tbody>
-            </table>
-        </div>
-        <div class="wrapper-pages">
-            <ul class="paging-num" id="order_pages">
-
-            </ul>
-        </div>
+   <div class="btn_div">
+        <button class="manage_btns" type="button" onclick="itemManagePage()">상품 관리</button>
+   </div>
+    <div class="btn_div">
+        <button class="manage_btns" type="button" onclick="orderManagePage()">주문 관리</button>
     </div>
 </div>
 

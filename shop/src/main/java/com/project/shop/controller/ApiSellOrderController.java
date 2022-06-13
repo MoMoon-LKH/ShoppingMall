@@ -1,6 +1,8 @@
 package com.project.shop.controller;
 
 import com.project.shop.domain.Orders;
+import com.project.shop.domain.dto.ItemNameDto;
+import com.project.shop.domain.dto.OrderListDto;
 import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/order")
@@ -27,8 +32,15 @@ public class ApiSellOrderController {
     public ResponseEntity<?> getList(
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable
             ) {
+        List<OrderListDto> allOrder = orderService.findAllOrder(pageable);
 
-        return ResponseEntity.ok(orderService.findAllOrder(pageable));
+        for (OrderListDto order : allOrder) {
+            ItemNameDto itemName = orderService.findItemNameByOrder_Id(order.getId());
+            order.setItemName(itemName.getName());
+            order.setImgUrl(itemName.getImg());
+        }
+
+        return ResponseEntity.ok(allOrder);
     }
 
 

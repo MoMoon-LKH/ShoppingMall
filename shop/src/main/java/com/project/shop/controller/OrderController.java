@@ -1,10 +1,7 @@
 package com.project.shop.controller;
 
 import com.project.shop.domain.*;
-import com.project.shop.domain.dto.CartDto;
-import com.project.shop.domain.dto.OrderDto;
-import com.project.shop.domain.dto.OrderItemDto;
-import com.project.shop.domain.dto.OrderListDto;
+import com.project.shop.domain.dto.*;
 import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.domain.enums.PaymentMethod;
 import com.project.shop.domain.userDetails.Account;
@@ -198,8 +195,9 @@ public class OrderController {
         List<OrderListDto> orderList = orderService.findOrderListByMemberId(account.getId(), pageable);
 
         for (OrderListDto order : orderList) {
-            order.setItemName(orderService.findItemNameByOrder_Id(order.getId()));
-            order.setImgUrl(itemService.getImgUrlByItemName(order.getItemName()));
+            ItemNameDto itemName = orderService.findItemNameByOrder_Id(order.getId());
+            order.setItemName(itemName.getName());
+            order.setImgUrl(itemName.getImg());
 
         }
 

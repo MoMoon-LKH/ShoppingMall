@@ -2,6 +2,8 @@ package com.project.shop.service;
 
 import com.project.shop.domain.OrderItem;
 import com.project.shop.domain.Orders;
+import com.project.shop.domain.dto.ItemDto;
+import com.project.shop.domain.dto.ItemNameDto;
 import com.project.shop.domain.dto.OrderItemDto;
 import com.project.shop.domain.dto.OrderListDto;
 import com.project.shop.domain.enums.OrderStatus;
@@ -13,7 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -62,8 +66,14 @@ public class OrderService {
     }
 
 
-    public String findItemNameByOrder_Id(Long orderId) {
-        return orderItemRepository.findByItemName(orderId);
+    public ItemNameDto findItemNameByOrder_Id(Long orderId) {
+       /* Map<String, String> map = new HashMap<>();
+        String str = orderItemRepository.findItemNameAndImgUrlByOrderId(orderId);
+        String[] strings = str.split(",");
+        map.put("name", strings[0]);
+        map.put("img", strings[1]);*/
+
+        return orderItemRepository.findItemNameDtoByOrderId(orderId);
     }
 
     public Long getTotal() {

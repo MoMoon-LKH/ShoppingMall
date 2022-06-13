@@ -9,7 +9,7 @@
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
 
-<form th:action="@{/sell/new}" th:object="${itemDto}" method="post" enctype="multipart/form-data">
+<form th:action="@{/sell/item/new}" th:object="${itemDto}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:value="${id}" th:name="memberId">
     <div class="form-div">
         <label th:for="category">카테고리</label>
