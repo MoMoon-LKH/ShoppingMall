@@ -2,10 +2,7 @@ package com.project.shop.service;
 
 import com.project.shop.domain.OrderItem;
 import com.project.shop.domain.Orders;
-import com.project.shop.domain.dto.ItemDto;
-import com.project.shop.domain.dto.ItemNameDto;
-import com.project.shop.domain.dto.OrderItemDto;
-import com.project.shop.domain.dto.OrderListDto;
+import com.project.shop.domain.dto.*;
 import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.exceptions.NoSuchOrderException;
 import com.project.shop.repository.OrderItemRepository;
@@ -74,6 +71,14 @@ public class OrderService {
         map.put("img", strings[1]);*/
 
         return orderItemRepository.findItemNameDtoByOrderId(orderId);
+    }
+
+    public List<OrderListDto> findAllOrderBySearch(OrderSearchDto orderSearchDto, Pageable pageable) {
+        return orderRepository.findAllOrderBySearch(orderSearchDto, pageable);
+    }
+
+    public Long countOrderBySearch(OrderSearchDto orderSearchDto) {
+        return orderRepository.countOrderBySearch(orderSearchDto);
     }
 
     public Long getTotal() {

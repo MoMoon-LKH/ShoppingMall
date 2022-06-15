@@ -1,6 +1,8 @@
 let orderTotal;
 let currentPage = 0;
 const dataPerPage = 10;
+let searchBool = false;
+let obj = {};
 
 $(document).ready(function () {
     getOrderTotal();
@@ -9,15 +11,18 @@ $(document).ready(function () {
 
 
 function getOrderTotal() {
+
+
     $.ajax({
         url: "/api/order/total",
         type: "GET"
+
     }).done(function (result) {
         orderTotal = result;
         paging(result);
 
         if (result > 0) {
-            getOrderList(currentPage, dataPerPage);
+            getOrderList(currentPage, dataPerPage)
 
         }
 
@@ -27,9 +32,14 @@ function getOrderTotal() {
 }
 
 function getOrderList(page, size) {
+
+
+
     $.ajax({
-        url: "/api/order/list?page=" + page + "&size=" + size,
-        type: "GET"
+        url: "/api/order/list/search?page=" + page + "&size=" + size,
+        type: "GET",
+        contentType: "application/json",
+        data: JSON.stringify(obj)
     }).success(function (result) {
         orderList_rendering(result);
     }).error(function (error) {
@@ -37,7 +47,7 @@ function getOrderList(page, size) {
     });
 }
 
-function paging(total) {
+function paging(total, obj) {
 
     const pageCount = 5;
     const now = currentPage + 1;
@@ -62,8 +72,12 @@ function paging(total) {
         pages.append("<li class='page_num' onclick='order_prevBtn(this.value)' value='" + (first - 1) + "'>이전</li>");
     }
     if (last > 0) {
-        for (var i = first; i <= last; i++) {
-            pages.append("<li class='page_num' onclick='getOrderList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
+        if(searchBool){
+
+        }else {
+            for (var i = first; i <= last; i++) {
+                pages.append("<li class='page_num' onclick='getOrderList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
+            }
         }
     }
 
@@ -94,6 +108,7 @@ function orderList_rendering(result) {
 
     for (let i = 0; i < result.length; i++) {
         let obj = result[i];
+        let create_date = new Date(obj.createDate);
         let html = "<tr>";
 
         html += "<td>" + obj.orderId + "</td>";
@@ -105,10 +120,23 @@ function orderList_rendering(result) {
         }
 
         html += "<td>" + obj.total + "</td>";
-        html += "<td>" + obj.createDate + "</td>";
+        html += "<td>" + create_date.getFullYear() + "-" + (create_date.getMonth() + 1) + "-" + (create_date.getDate() < 10 ? "0" + create_date.getDate() : create_date.getDate()) + "</td>";
         html += "<td>" + obj.orderState + "</td>";
 
         table.append(html);
     }
+
+}
+
+function search() {
+    currentPage = 0;
+    searchBool = true;
+
+    obj = {
+        "searchWord": document.getElementById("search_word").value,
+        "startDate": document.getElementById("start_date").value,
+        "endDate": document.getElementById("end_date").value
+    }
+
 
 }

@@ -17,12 +17,13 @@
             <div class="search_title">검색 조건</div>
             <div>
                 <div class="search_word">
-                    <input id="search_word" type="text"/>
+                    <input id="search_word" type="text" placeholder="주문번호 혹은 상품명을 입력해주세요"/>
                 </div>
                 <div class="search_date">
-                    <input id="first_date" type="date"/>
-                    <input id="last_date" type="date"/>
+                    <input id="start_date" type="date"/>
+                    <input id="end_date" type="date"/>
                 </div>
+                <button type="button" onclick="search()">검색</button>
             </div>
         </div>
         <div class="list_container">
@@ -46,6 +47,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/static/js/seller/orderManage.js"></script>
