@@ -1,53 +1,31 @@
-let orderTotal;
 let currentPage = 0;
 const dataPerPage = 10;
-let searchBool = false;
 let obj = {};
 
 $(document).ready(function () {
-    getOrderTotal();
+    getOrderList(currentPage, dataPerPage);
 
 });
 
 
-function getOrderTotal() {
-
-
-    $.ajax({
-        url: "/api/order/total",
-        type: "GET"
-
-    }).done(function (result) {
-        orderTotal = result;
-        paging(result);
-
-        if (result > 0) {
-            getOrderList(currentPage, dataPerPage)
-
-        }
-
-    }).error(function (error) {
-        alert("불러오기에 실패했습니다");
-    });
-}
-
 function getOrderList(page, size) {
 
-
-
     $.ajax({
-        url: "/api/order/list/search?page=" + page + "&size=" + size,
-        type: "GET",
+        url: "/api/order/list/search/?page="+ page + "&size=" + size,
+        type: "POST",
         contentType: "application/json",
+        dataType: "json",
         data: JSON.stringify(obj)
     }).success(function (result) {
-        orderList_rendering(result);
+        paging(result.total);
+        orderList_rendering(result.list);
+
     }).error(function (error) {
         alert("불러오기에 실패했습니다.");
     });
 }
 
-function paging(total, obj) {
+function paging(total) {
 
     const pageCount = 5;
     const now = currentPage + 1;
@@ -72,13 +50,10 @@ function paging(total, obj) {
         pages.append("<li class='page_num' onclick='order_prevBtn(this.value)' value='" + (first - 1) + "'>이전</li>");
     }
     if (last > 0) {
-        if(searchBool){
-
-        }else {
-            for (var i = first; i <= last; i++) {
-                pages.append("<li class='page_num' onclick='getOrderList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
-            }
+        for (var i = first; i <= last; i++) {
+            pages.append("<li class='page_num' onclick='getOrderList(this.value, dataPerPage)' value='" + (i - 1) + "'>" + i + "</li>");
         }
+
     }
 
     if (last < totalPage) {
@@ -130,13 +105,19 @@ function orderList_rendering(result) {
 
 function search() {
     currentPage = 0;
-    searchBool = true;
 
     obj = {
-        "searchWord": document.getElementById("search_word").value,
-        "startDate": document.getElementById("start_date").value,
-        "endDate": document.getElementById("end_date").value
-    }
+        "search_word": document.getElementById("search_word").value,
+        "start_day": document.getElementById("start_date").value,
+        "end_day": document.getElementById("end_date").value
+    };
+
+    getOrderList(currentPage, dataPerPage);
 
 
+}
+
+function searchReset() {
+    currentPage = 0;
+    let obj = {};
 }

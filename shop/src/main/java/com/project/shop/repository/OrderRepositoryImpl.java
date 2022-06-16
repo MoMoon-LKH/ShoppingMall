@@ -9,11 +9,13 @@ import com.project.shop.domain.dto.QOrderListDto;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Sort;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -41,8 +43,9 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 ))
                 .from(order)
                 .where(
-                    builder
+                        builder
                 )
+                .orderBy(order.createDate.desc())
                 .offset((long) pageable.getPageNumber() * pageable.getPageSize())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -75,19 +78,20 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     public BooleanBuilder createSearchWhere(OrderSearchDto orderSearchDto) {
         QOrders order = QOrders.orders;
         BooleanBuilder builder = new BooleanBuilder();
+        if(orderSearchDto != null) {
+            if (orderSearchDto.getSearchWord() != null) {
+                builder.and(
+                        order.orderId.startsWith(orderSearchDto.getSearchWord())
+                );
 
-        if (orderSearchDto.getSearchWord() != null) {
-            builder.and(
-                    order.orderId.startsWith(orderSearchDto.getSearchWord())
-            );
+            }
+            if (orderSearchDto.getStartDay() != null)
+                builder.and(order.createDate.goe(orderSearchDto.getStartDay()));
+
+            if (orderSearchDto.getEndDay() != null)
+                builder.and(order.createDate.loe(orderSearchDto.getEndDay()));
 
         }
-        if(orderSearchDto.getStartDate() != null)
-            builder.and(order.createDate.goe(orderSearchDto.getStartDate()));
-
-        if(orderSearchDto.getEndDate() != null)
-            builder.and(order.createDate.loe(orderSearchDto.getEndDate()));
-
-        return builder;
+            return builder;
     }
 }

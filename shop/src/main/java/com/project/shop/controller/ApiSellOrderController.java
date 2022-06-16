@@ -13,6 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,11 +52,12 @@ public class ApiSellOrderController {
     }
 
 
-    @GetMapping("/list/search")
+    @PostMapping("/list/search")
     public ResponseEntity<?> getListSearch(
-            @RequestBody(required = false) OrderSearchDto orderSearchDto,
-            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable
+            @Valid @RequestBody(required = false) OrderSearchDto orderSearchDto,
+            @PageableDefault Pageable pageable
     ) {
+
 
         Long total = orderService.countOrderBySearch(orderSearchDto);
 

@@ -93,7 +93,6 @@ function createObj() {
     }
 
 
-
     let object = {
         "total": $("#total_cost").text(),
         "receiveName": document.getElementById("receive_name").value,
@@ -103,7 +102,7 @@ function createObj() {
         "deliveryMessage": document.getElementById("receive_message").value,
         "paymentMethod": payment,
         "cartDtos": cartDtos
-    }
+    };
 
     return object;
 }

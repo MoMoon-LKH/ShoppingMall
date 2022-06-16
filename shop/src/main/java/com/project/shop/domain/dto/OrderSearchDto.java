@@ -1,24 +1,29 @@
 package com.project.shop.domain.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+import org.springframework.lang.Nullable;
 
 import java.util.Date;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class OrderSearchDto {
 
-    private String orderId;
-
+    @Nullable
+    @JsonProperty("search_word")
     private String searchWord;
 
-    private Date startDate;
+    @Nullable
+    @JsonProperty("start_day")
+    private Date startDay;
 
-    private Date endDate;
+    @Nullable
+    @JsonProperty("end_day")
+    private Date endDay;
+
 }
