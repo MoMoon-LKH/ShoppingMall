@@ -17,23 +17,26 @@
             <div class="search_title">검색 조건</div>
             <div>
                 <div class="search_word">
-                    <input id="search_word" type="text" placeholder="주문번호 혹은 상품명을 입력해주세요"/>
+                    <input id="search_word" type="text" placeholder="주문번호를 입력해주세요"/>
                 </div>
                 <div class="search_date">
+                    <div>날짜</div>
                     <input id="start_date" type="date"/>
+                    <span> ~ </span>
                     <input id="end_date" type="date"/>
                 </div>
-                <button type="button" onclick="search()">검색</button>
+                <button class="search_btns" type="button" onclick="search()">검색</button>
+                <button class="search_btns" type="button" onclick="searchReset()">초기화</button>
             </div>
         </div>
         <div class="list_container">
             <table>
                 <thead>
-                <th width="10%">주문번호</th>
-                <th width="40%">상품 정보</th>
+                <th width="20%">주문번호</th>
+                <th width="46%">상품 정보</th>
                 <th width="10%">금액</th>
-                <th width="30%">주문일자</th>
-                <th width="10%">상태</th>
+                <th width="12%">주문일자</th>
+                <th width="12%">상태</th>
                 </thead>
                 <tbody id="order_list">
 

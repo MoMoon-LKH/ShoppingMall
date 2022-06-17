@@ -9,6 +9,7 @@ import com.project.shop.domain.userDetails.Account;
 import com.project.shop.service.CategoryService;
 import com.project.shop.service.ItemService;
 import com.project.shop.service.MemberService;
+import com.project.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,6 +33,7 @@ public class SellerController {
     private final ItemService itemService;
     private final CategoryService categoryService;
     private final MemberService memberService;
+    private final OrderService orderService;
 
 
     @Value("${imagePath}")
@@ -61,6 +63,15 @@ public class SellerController {
         model.addAttribute("itemDto", new ItemDto());
         model.addAttribute("category", categoryService.findAll());
         return "/seller/registerItem";
+    }
+
+
+    @GetMapping("/order/manage/{orderId}")
+    public String orderManagePage(@PathVariable String orderId, Model model) {
+
+        model.addAttribute("order", orderService.findOrderByOrderId(orderId));
+
+        return "/seller/orderManagePage";
     }
 
     @PostMapping("/item/new")

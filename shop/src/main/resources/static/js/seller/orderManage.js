@@ -84,19 +84,19 @@ function orderList_rendering(result) {
     for (let i = 0; i < result.length; i++) {
         let obj = result[i];
         let create_date = new Date(obj.createDate);
-        let html = "<tr>";
+        let html = "<tr class='list_tr' onclick='managePage(" + obj.orderId + ")'>";
 
         html += "<td>" + obj.orderId + "</td>";
 
         if(obj.itemCount - 1 > 0)
-            html += "<td>" + obj.itemName + " 외 " + (obj.itemCount - 1) + "</td>";
+            html += "<td class='item_name'>" + obj.itemName + " 외 " + (obj.itemCount - 1) + "</td>";
         else{
-            html += "<td>" + obj.itemName + "</td>";
+            html += "<td class='item_name'>" + obj.itemName + "</td>";
         }
 
         html += "<td>" + obj.total + "</td>";
         html += "<td>" + create_date.getFullYear() + "-" + (create_date.getMonth() + 1) + "-" + (create_date.getDate() < 10 ? "0" + create_date.getDate() : create_date.getDate()) + "</td>";
-        html += "<td>" + obj.orderState + "</td>";
+        html += "<td>" + obj.orderState + "</td></tr>";
 
         table.append(html);
     }
@@ -119,5 +119,15 @@ function search() {
 
 function searchReset() {
     currentPage = 0;
-    let obj = {};
+    document.getElementById("search_word").value = null
+    document.getElementById("start_date").value = null
+    document.getElementById("end_date").value = null
+
+    obj = {};
+
+    getOrderList(currentPage, dataPerPage);
+}
+
+function managePage(orderId) {
+    location.href = "/sell/order/manage/" + orderId;
 }
