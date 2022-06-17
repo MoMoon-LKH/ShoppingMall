@@ -1,6 +1,7 @@
 package com.project.shop.domain;
 
 import com.fasterxml.jackson.annotation.*;
+import com.project.shop.domain.dto.DeliveryDto;
 import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.domain.enums.PaymentMethod;
@@ -83,5 +84,11 @@ public class Orders {
 
     public void orderStatesUpdate(OrderStatus orderStatus) {
         this.status = orderStatus;
+    }
+
+    public void deliveryUpdate(DeliveryDto deliveryDto) {
+        this.zipCode = deliveryDto.getZipcode();
+        this.address = deliveryDto.getAddress();
+        this.extraAddr = deliveryDto.getDetailAddr();
     }
 }

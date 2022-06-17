@@ -39,6 +39,13 @@ public class OrderService {
     @Transactional
     public void updateOrderState(Orders orders, OrderStatus orderStatus) {
         orders.orderStatesUpdate(orderStatus);
+
+    }
+
+    @Transactional
+    public void updateOrderDelivery(Orders orders, DeliveryDto deliveryDto) {
+        orders.deliveryUpdate(deliveryDto);
+
     }
 
     public Orders findOrderByOrderId(String orderId) {

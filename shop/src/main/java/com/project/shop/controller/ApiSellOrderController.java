@@ -1,6 +1,7 @@
 package com.project.shop.controller;
 
 import com.project.shop.domain.Orders;
+import com.project.shop.domain.dto.DeliveryDto;
 import com.project.shop.domain.dto.ItemNameDto;
 import com.project.shop.domain.dto.OrderListDto;
 import com.project.shop.domain.dto.OrderSearchDto;
@@ -88,14 +89,40 @@ public class ApiSellOrderController {
 
     }
 
+    @PostMapping("/delivery/update")
+    public ResponseEntity<?> changeDelivery(
+            @RequestBody DeliveryDto deliveryDto
+            ) {
+
+        Orders order = orderService.findOrderByOrderId(deliveryDto.getOrderId());
+
+        orderService.updateOrderDelivery(order, deliveryDto);
+
+        return ResponseEntity.ok(order);
+    }
+
 
     public OrderStatus convertOrderStatus(String state) {
 
-        return OrderStatus.DELIVERY_READY;
+        switch (state) {
+            case "ITEM_READY":
+                return OrderStatus.ITEM_READY;
+            case "DELIVERY_READY":
+                return OrderStatus.DELIVERY_READY;
+            case "DELIVERY":
+                return OrderStatus.DELIVERY;
+            case "COMPLETE":
+                return OrderStatus.COMPLETE;
+            case "CANCEL":
+                return OrderStatus.CANCEL;
+        }
+
+        return OrderStatus.CANCEL;
     }
 
     public Date dateFormat(Date date) throws ParseException {
         return new SimpleDateFormat("yyyy-MM-dd").parse(date.toString());
     }
+
 
 }
