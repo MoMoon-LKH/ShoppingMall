@@ -78,27 +78,27 @@ public class ApiSellOrderController {
     }
 
 
-    @PostMapping("/state/{state}")
-    public ResponseEntity<?> changeState(@PathVariable("state") String state, @RequestParam String orderId) {
+    @PostMapping("/state")
+    public ResponseEntity<?> changeState(@RequestParam String state, @RequestParam String orderId) {
 
         Orders order = orderService.findOrderByOrderId(orderId);
 
-        order.orderStatesUpdate(convertOrderStatus(state));
+        orderService.updateOrderState(order, convertOrderStatus(state));
 
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok(order.getStatus());
 
     }
 
     @PostMapping("/delivery/update")
     public ResponseEntity<?> changeDelivery(
-            @RequestBody DeliveryDto deliveryDto
+            @Valid @RequestBody DeliveryDto deliveryDto
             ) {
 
         Orders order = orderService.findOrderByOrderId(deliveryDto.getOrderId());
 
         orderService.updateOrderDelivery(order, deliveryDto);
 
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok(convertDeliveryDto(order));
     }
 
 
@@ -118,6 +118,16 @@ public class ApiSellOrderController {
         }
 
         return OrderStatus.CANCEL;
+    }
+
+    public DeliveryDto convertDeliveryDto(Orders order) {
+        return DeliveryDto.builder()
+                .orderId(order.getOrderId())
+                .name(order.getReceiveName())
+                .zipcode(order.getZipCode())
+                .address(order.getAddress())
+                .detailAddr(order.getExtraAddr())
+                .build();
     }
 
     public Date dateFormat(Date date) throws ParseException {

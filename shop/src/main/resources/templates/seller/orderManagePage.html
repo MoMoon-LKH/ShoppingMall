@@ -10,18 +10,23 @@
 <div th:replace="fragments/header"></div>
 <div th:replace="fragments/category"></div>
 <div class="container">
-    <div class="state_div">
+    <div class=order_info>
+        <div class="info_title">주문 번호</div>
+        <div id="order_id" th:text="${order.orderId}" th:value="${order.orderId}"></div>
+    </div>
+
+    <div class="order_info">
         <div class="info_title">주문 상태</div>
-        <div class="info" th:text="${order.status}"></div>
+        <div class="info" id="state_txt" th:text="${order.status}"></div>
         <div>
-            <select>
-                <option>상품 준비</option>
-                <option>배송 준비</option>
-                <option>배송중</option>
-                <option>배송 완료</option>
-                <option>취소</option>
+            <select id="state_select">
+                <option value="ITEM_READY">상품 준비</option>
+                <option value="DELIVERY_READY">배송 준비</option>
+                <option value="DELIVERY">배송중</option>
+                <option value="COMPLETE">배송 완료</option>
+                <option value="CANCEL">취소</option>
             </select>
-            <button type="button">변경</button>
+            <button type="button" onclick="update_state()">변경</button>
         </div>
     </div>
     <div class="item_table">
@@ -93,11 +98,11 @@
         <div class="del_div">
             <div class="del_subtitle">받으시는 분</div>
             <div class="del_info">
-                <div class="del_info_div">성함: <span th:text="${order.getReceiveName()}"></span></div>
+                <div class="del_info_div">성함: <span id="name" th:text="${order.getReceiveName()}"></span></div>
                 <div class="del_info_div">주소</div>
-                <div class="del_info_div" th:text="${order.getZipCode()}"></div>
-                <div class="del_info_div" th:text="${order.getAddress()}"></div>
-                <div class="del_info_div" th:text="${order.getExtraAddr()}"></div>
+                <div class="del_info_div" id="zipcode" th:text="${order.getZipCode()}"></div>
+                <div class="del_info_div" id="address" th:text="${order.getAddress()}"></div>
+                <div class="del_info_div" id="details" th:text="${order.getExtraAddr()}"></div>
                 <div class="del_info_div" >배송메시지</div>
                 <textarea class="del_text" th:text="${order.deliveryMessage}" readonly></textarea>
 
@@ -106,13 +111,13 @@
         <div class="del_update">
             <div class="info_title">배송지 수정</div>
             <div class="del_info">
-                <div class="del_info_div">성함: <input type="text" th:value="${order.getReceiveName()}"></div>
-                <div class="del_info_div">주소</div>
-                <div class="del_info_div"><input type="text"  th:value="${order.getZipCode()}"></div>
-                <div class="del_info_div"><input type="text"  th:value="${order.getAddress()}"></div>
-                <div class="del_info_div"><input type="text" th:value="${order.getExtraAddr()}"></div>
+                <div class="del_info_div">성함: <input id="update_name" type="text" ></div>
+                <div class="del_info_div">주소 <button type="button" onclick="search_addr()">주소 찾기</button></div>
+                <div class="del_info_div"><input id="update_zipcode" type="text"  ></div>
+                <div class="del_info_div"><input id="update_address" type="text"  ></div>
+                <div class="del_info_div"><input id="update_detailAddr" type="text" ></div>
             </div>
-            <div><button type="button">배송지 변경</button></div>
+            <div><button type="button" onclick="update_delivery()">배송지 변경</button></div>
 
         </div>
     </div>
@@ -120,6 +125,7 @@
 
 </div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="/static/js/seller/orderManagePage.jsr"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/static/js/seller/orderManagePage.js"></script>
 </body>
 </html>

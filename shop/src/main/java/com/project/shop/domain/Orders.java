@@ -6,6 +6,7 @@ import com.project.shop.domain.dto.OrderDto;
 import com.project.shop.domain.enums.OrderStatus;
 import com.project.shop.domain.enums.PaymentMethod;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Orders {
 
     @Id
@@ -87,6 +88,7 @@ public class Orders {
     }
 
     public void deliveryUpdate(DeliveryDto deliveryDto) {
+        this.receiveName = deliveryDto.getName();
         this.zipCode = deliveryDto.getZipcode();
         this.address = deliveryDto.getAddress();
         this.extraAddr = deliveryDto.getDetailAddr();
