@@ -6,13 +6,17 @@ import com.project.shop.domain.dto.ItemDto;
 import com.project.shop.exceptions.NoSuchItemException;
 import com.project.shop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -27,9 +31,9 @@ public class ItemService {
     }
 
     @Transactional
-    public boolean update(Item item, String img, String descriptionImg) {
+    public boolean update(Item item ,ItemDto itemdto, String img, String descriptionImg) {
         try {
-            item.update(item, img, descriptionImg);
+            item.update(itemdto, img, descriptionImg);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,8 +65,13 @@ public class ItemService {
     }
 
     @Transactional
-    public Item removeItem(Item item, int count) {
+    public void removeItem(Item item, int count) {
         item.removeCount(count);
+    }
+
+    @Transactional
+    public Item updateStock(Item item, int count) {
+        item.updateCount(count);
         return item;
     }
 
@@ -94,4 +103,10 @@ public class ItemService {
     public String getImgUrlByItemName(String itemName) {
         return itemRepository.getImgUrlByItemName(itemName);
     }
+
+
+
+
+
+
 }

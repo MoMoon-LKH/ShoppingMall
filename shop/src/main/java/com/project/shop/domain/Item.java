@@ -83,11 +83,10 @@ public class Item {
     }
 
 
-    public void update(Item item, String imgUrl, String descriptionUrl) {
+    public void update(ItemDto item, String imgUrl, String descriptionUrl) {
         this.name = item.getName();
-        this.count = item.getCount();
         this.cost = item.getCost();
-        this.etrTxt = item.getEtrTxt();
+        //this.etrTxt = item.getEtrTxt();
         this.updateDate = new Date();
 
         if (!imgUrl.isEmpty()) {
@@ -113,6 +112,10 @@ public class Item {
         }
 
         this.count = result;
+    }
+
+    public void updateCount(int count) {
+        this.count = count;
     }
 
 

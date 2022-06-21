@@ -42,4 +42,6 @@ public class ItemDto {
     private Date updateDate;
 
     private Long categoryId;
+
+
 }

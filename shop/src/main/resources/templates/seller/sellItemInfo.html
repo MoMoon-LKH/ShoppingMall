@@ -9,29 +9,31 @@
 <div th:replace="fragments/category"></div>
 <div class="item_container">
     <div class="item_top">
-        <input type="hidden" th:value="${item.id}"/>
+        <input id="item_id" type="hidden" th:value="${item.id}"/>
         <img class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="display: inline-block; width: 250px; height: 300px">
         <div class="item_txt" style="display: inline-block">
             <div class="txt_wrapper">
                 <label th:for="name">상품명: </label>
-                <input type="text" th:name="name" th:value="${item.name}">
+                <span id="item_name_div" th:text="${item.name}"></span>
+                <div><input type="text" id="item_name" th:name="name" placeholder="수정할 이름을 입력해주세요."></div>
             </div>
             <div class="txt_wrapper">
                 <label th:for="cost">가격: </label>
-                <input type="number" th:name="cost" th:value="${item.cost}">
+                <span id="item_cost_div" th:text="${item.cost}"></span>
+                <div><input type="number" min="0" id="item_cost" th:name="cost" placeholder="수정할 가격을 입력해주세요."></div>
             </div>
             <div class="txt_wrapper">
                 <label th:for="count">재고량: </label>
-                <span th:name="count" th:text="${item.count}"></span>
+                <span id="stock_count_div" th:name="count" th:text="${item.count}"></span>
             </div>
             <div class="txt_wrapper">
-                <input id="stock_count" type="number" placeholder="수정할 재고수량을 입력해주세요"/>
+                <input id="stock_count" min="0" type="number" placeholder="수정할 재고수량을 입력해주세요"/>
                 <div class="stock_btns">
-                    <button onclick="">추가</button><button onclick="">감소</button><button onclick="">재고 수정</button>
+                    <button onclick="addStock()">추가</button><button onclick="removeStock()">감소</button><button onclick="updateStock()">재고 수정</button>
                 </div>
             </div>
             <div class="txt_wrapper">
-                <a href="">상품 수정</a>
+                <button type="button" onclick="updateItem()">상품 수정</button>
             </div>
         </div>
     </div>

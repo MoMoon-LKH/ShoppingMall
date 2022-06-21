@@ -1,7 +1,9 @@
 package com.project.shop.controller;
 
 import com.project.shop.domain.Item;
+import com.project.shop.domain.dto.ItemDto;
 import com.project.shop.domain.dto.StockDto;
+import com.project.shop.service.ImageService;
 import com.project.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +28,8 @@ import java.util.stream.Collectors;
 public class ItemApiController {
 
     private final ItemService itemService;
+
+    private ImageService imageService;
 
 
     @GetMapping("/{memberId}")
@@ -67,16 +72,51 @@ public class ItemApiController {
 
 
     @PostMapping("/stock/add")
-    public ResponseEntity<?> addStock(@Valid StockDto stockDto) {
+    public ResponseEntity<?> addStock(@Valid @RequestBody StockDto stockDto) {
+
         Item item = itemService.findById(stockDto.getItemId());
         return ResponseEntity.ok(itemService.addStock(item, stockDto.getCount()).getCount());
     }
 
 
     @PostMapping("/stock/remove")
-    public ResponseEntity<?> removeStock(@Valid StockDto stockDto) {
+    public ResponseEntity<?> removeStock(@Valid @RequestBody StockDto stockDto) {
         Item item = itemService.findById(stockDto.getItemId());
-        return ResponseEntity.ok(itemService.removeItem(item, stockDto.getCount()).getCount());
+        return ResponseEntity.ok(itemService.removeStock(item, stockDto.getCount()).getCount());
+    }
+
+    @PostMapping("/stock/update")
+    public ResponseEntity<?> updateStock(@Valid @RequestBody StockDto stockDto) {
+        Item item = itemService.findById(stockDto.getItemId());
+        return ResponseEntity.ok(itemService.updateStock(item, stockDto.getCount()).getCount());
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> updateItem(@Valid @RequestBody ItemDto itemDto) throws IOException {
+        String img = "";
+        String descriptionImg = "";
+        int ran = (int) (Math.random()*10000);
+
+        Item item = itemService.findById(itemDto.getId());
+
+        if (itemDto.getImgUrl() != null) {
+            imageService.imgDelete(item.getImgUrl());
+            img = imageService.transferImg(itemDto.getImgUrl(), ran, 0);
+        }
+
+        if (itemDto.getDescriptionUrl() != null) {
+            imageService.imgDelete(item.getDescriptionUrl());
+            descriptionImg = imageService.transferImg(itemDto.getDescriptionUrl(), ran, 1);
+        }
+
+        itemService.update(item, itemDto, img, descriptionImg);
+
+        return ResponseEntity.ok(
+                ItemDto.builder()
+                        .name(item.getName())
+                        .cost(item.getCost())
+                        .build()
+        );
     }
 
 }

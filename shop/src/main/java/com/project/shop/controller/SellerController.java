@@ -6,10 +6,7 @@ import com.project.shop.domain.Member;
 import com.project.shop.domain.dto.ItemDto;
 import com.project.shop.domain.dto.StockDto;
 import com.project.shop.domain.userDetails.Account;
-import com.project.shop.service.CategoryService;
-import com.project.shop.service.ItemService;
-import com.project.shop.service.MemberService;
-import com.project.shop.service.OrderService;
+import com.project.shop.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -35,9 +32,8 @@ public class SellerController {
     private final MemberService memberService;
     private final OrderService orderService;
 
+    private ImageService imageService;
 
-    @Value("${imagePath}")
-    private String imgPath;
 
     @GetMapping("/my")
     public String sellMain(Model model) {
@@ -83,10 +79,10 @@ public class SellerController {
 
 
         if(!itemDto.getImgUrl().isEmpty())
-            imgUrl = transferImg(itemDto.getImgUrl(), ran,0);
+            imgUrl = imageService.transferImg(itemDto.getImgUrl(), ran,0);
 
         if(!itemDto.getDescriptionUrl().isEmpty())
-            descriptionImg = transferImg(itemDto.getDescriptionUrl(), ran, 1);
+            descriptionImg = imageService.transferImg(itemDto.getDescriptionUrl(), ran, 1);
 
         Member member = memberService.findById(account.getId());
         Category category = categoryService.findById(itemDto.getCategoryId());
@@ -109,62 +105,6 @@ public class SellerController {
         return "/seller/sellItemInfo";
     }
 
-
-    @PostMapping("/item/update") //api 고려
-    public String updateItem(@Valid ItemDto itemDto) throws IOException{
-        String img = "";
-        String descriptionImg = "";
-        int ran = (int) (Math.random()*10000);
-
-        Item item = itemService.findById(itemDto.getId());
-
-        if (!itemDto.getImgUrl().isEmpty()) {
-            imgDelete(item.getImgUrl());
-            img = transferImg(itemDto.getImgUrl(), ran, 0);
-        }
-
-        if (!itemDto.getDescriptionUrl().isEmpty()) {
-            imgDelete(item.getDescriptionUrl());
-            descriptionImg = transferImg(itemDto.getDescriptionUrl(), ran, 1);
-        }
-
-        boolean update = itemService.update(item, img, descriptionImg);
-
-        return "redirect:/seller/sellItemInfo";
-    }
-
-
-
-
-    public String transferImg(MultipartFile file, int ran, int type) throws IOException {
-
-        String originName = file.getOriginalFilename();
-        String ext = originName.substring(originName.lastIndexOf("."));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-
-
-        String fname = "";
-
-
-        if (type == 0) {
-            fname = dateFormat.format(new Date()) + "_" + ran + ext;
-        } else {
-            fname = dateFormat.format(new Date()) + "_" + ran + "d" + ext;
-        }
-        file.transferTo(new File(imgPath + "/" + fname));
-
-        return fname;
-    }
-
-    public void imgDelete(String img) {
-        if (!imgPath.isEmpty()) {
-            File file = new File(imgPath + img);
-
-            if (file.exists()) {
-                file.delete();
-            }
-        }
-    }
 
 
 }

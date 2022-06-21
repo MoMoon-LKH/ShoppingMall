@@ -39,7 +39,7 @@ public class ApiSellOrderController {
     @GetMapping("/list")
     public ResponseEntity<?> getList(
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable
-            ) throws ParseException {
+            ) {
         List<OrderListDto> allOrder = orderService.findAllOrder(pageable);
 
         for (OrderListDto order : allOrder) {
