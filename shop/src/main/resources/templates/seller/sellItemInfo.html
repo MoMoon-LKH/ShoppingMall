@@ -10,7 +10,8 @@
 <div class="item_container">
     <div class="item_top">
         <input id="item_id" type="hidden" th:value="${item.id}"/>
-        <img class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="display: inline-block; width: 250px; height: 300px">
+        <img id="item_img" class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="display: inline-block; width: 250px; height: 300px">
+        <div><input id="input_img" type="file"></div>
         <div class="item_txt" style="display: inline-block">
             <div class="txt_wrapper">
                 <label th:for="name">상품명: </label>

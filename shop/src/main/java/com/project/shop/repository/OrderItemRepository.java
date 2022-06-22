@@ -15,7 +15,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
 
     @Query("select new com.project.shop.domain.dto.OrderItemDto(" +
-            "oi.id, oi.item.id, oi.item.name, oi.item.imgUrl, oi.item.cost, oi.count" +
+            "oi.id, oi.item.id, oi.item.name, oi.item.imgUrl, oi.cost, oi.count" +
             ") from OrderItem oi where oi.order.orderId = :orderId")
     List<OrderItemDto> findAllByOrder_Id(@Param("orderId") String orderId);
 

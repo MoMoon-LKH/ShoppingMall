@@ -135,7 +135,7 @@ public class OrderController {
 
             if (cartItem.isPresent()) {
                 Item item = cartItem.get().getItem();
-                OrderItem orderItem = OrderItem.createOrderItem(cartItem.get().getCount(), order, item);
+                OrderItem orderItem = OrderItem.createOrderItem(cartItem.get().getCount(), item.getCost(), order, item);
 
                 itemService.removeItem(item, orderItem.getCount());
 
@@ -173,7 +173,8 @@ public class OrderController {
         Orders order = orderService.saveOrder(Orders.createOrders(createOrderId(), orderDto, paymentMethod, member));
 
         for (CartDto cartDto : orderDto.getCartDtos()) {
-            OrderItem orderItem = OrderItem.createOrderItem(cartDto.getCount(), order, itemService.findById(cartDto.getItemId()));
+            Item item = itemService.findById(cartDto.getItemId());
+            OrderItem orderItem = OrderItem.createOrderItem(cartDto.getCount(), item.getCost(), order, item);
             orderItems.add(orderItem);
         }
 

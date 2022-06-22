@@ -1,3 +1,4 @@
-function myOrder(id) {
-    location.href = "/order/my/" + id;
+function myOrder() {
+    location.href = "/order/my";
+
 }
