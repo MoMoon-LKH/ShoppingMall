@@ -31,14 +31,19 @@ public class ItemService {
     }
 
     @Transactional
-    public boolean update(Item item ,ItemDto itemdto, String img, String descriptionImg) {
+    public boolean update(Item item ,ItemDto itemdto) {
         try {
-            item.update(itemdto, img, descriptionImg);
+            item.update(itemdto);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Transactional
+    public void imgUpdate(Item item, String img, String description) {
+        item.imgUpdate(img, description);
     }
 
     @Transactional

@@ -13,6 +13,10 @@ public class ImageService {
     @Value("${imagePath}")
     private String imgPath;
 
+    public String getImgPath() {
+        return imgPath;
+    }
+
     public String transferImg(MultipartFile file, int ran, int type) throws IOException {
 
         String originName = file.getOriginalFilename();

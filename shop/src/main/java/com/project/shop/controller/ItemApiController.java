@@ -14,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -46,12 +47,10 @@ public class ItemApiController {
     }
 
 
-
     @GetMapping("/category/total/{categoryId}")
     public ResponseEntity<?> getCategoryTotal(@PathVariable("categoryId") Long categoryId) {
         return ResponseEntity.ok(itemService.getCategoryTotal(categoryId));
     }
-
 
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -62,11 +61,10 @@ public class ItemApiController {
     }
 
 
-
     @GetMapping("/category/list/{categoryId}")
     public ResponseEntity<List<Item>> getItemListByCategory(
             @PathVariable("categoryId") Long categoryId,
-            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC)Pageable pageable) {
+            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(itemService.findByCategory(categoryId, pageable));
     }
 
@@ -92,24 +90,11 @@ public class ItemApiController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<?> updateItem(@Valid @RequestBody ItemDto itemDto) throws IOException {
-        String img = "";
-        String descriptionImg = "";
-        int ran = (int) (Math.random()*10000);
+    public ResponseEntity<?> updateItem(@Valid @RequestBody ItemDto itemDto) {
 
         Item item = itemService.findById(itemDto.getId());
 
-        if (itemDto.getImgUrl() != null) {
-            imageService.imgDelete(item.getImgUrl());
-            img = imageService.transferImg(itemDto.getImgUrl(), ran, 0);
-        }
-
-        if (itemDto.getDescriptionUrl() != null) {
-            imageService.imgDelete(item.getDescriptionUrl());
-            descriptionImg = imageService.transferImg(itemDto.getDescriptionUrl(), ran, 1);
-        }
-
-        itemService.update(item, itemDto, img, descriptionImg);
+        itemService.update(item, itemDto);
 
         return ResponseEntity.ok(
                 ItemDto.builder()
@@ -119,4 +104,31 @@ public class ItemApiController {
         );
     }
 
+
+    @PostMapping("/update/img/{itemId}")
+    public ResponseEntity<?> updateImg(@PathVariable("itemId") Long itemId, @RequestPart("file") List<MultipartFile> file) throws IOException {
+        int ran = (int) (Math.random() * 10000);
+        String img = "";
+        String description = "";
+
+        Item item = itemService.findById(itemId);
+
+        if (file.get(0) != null) {
+            imageService.imgDelete(item.getImgUrl());
+            img = imageService.transferImg(file.get(0), ran, 0);
+        }
+
+        if (file.get(1) != null) {
+            imageService.imgDelete(item.getDescriptionUrl());
+            description = imageService.transferImg(file.get(1), ran, 1);
+        }
+
+        itemService.imgUpdate(item, img, description);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("imgUrl", item.getImgUrl());
+        map.put("description", item.getDescriptionUrl());
+
+        return ResponseEntity.ok(map);
+    }
 }
