@@ -84,19 +84,27 @@ public class Item {
 
 
     public void update(ItemDto item) {
-        this.name = item.getName();
-        this.cost = item.getCost();
-        this.etrTxt = item.getEtrTxt();
+        if (!item.getName().isEmpty()) {
+            this.name = item.getName();
+        }
+
+        if (item.getCost() != 0) {
+            this.cost = item.getCost();
+        }
+
+        if (!item.getEtrTxt().isEmpty()) {
+            this.etrTxt = item.getEtrTxt();
+        }
         this.updateDate = new Date();
 
     }
 
     public void imgUpdate(String imgUrl, String descriptionUrl) {
 
-        if (imgUrl.isEmpty())
+        if (!imgUrl.isEmpty())
             this.imgUrl = imgUrl;
 
-        if (descriptionUrl.isEmpty())
+        if (!descriptionUrl.isEmpty())
             this.descriptionUrl = descriptionUrl;
 
     }

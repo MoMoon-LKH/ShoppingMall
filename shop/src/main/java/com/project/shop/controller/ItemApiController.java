@@ -16,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class ItemApiController {
 
     private final ItemService itemService;
 
-    private ImageService imageService;
+    private final ImageService imageService;
 
 
     @GetMapping("/{memberId}")
@@ -94,6 +95,7 @@ public class ItemApiController {
 
         Item item = itemService.findById(itemDto.getId());
 
+
         itemService.update(item, itemDto);
 
         return ResponseEntity.ok(
@@ -106,22 +108,33 @@ public class ItemApiController {
 
 
     @PostMapping("/update/img/{itemId}")
-    public ResponseEntity<?> updateImg(@PathVariable("itemId") Long itemId, @RequestPart("file") List<MultipartFile> file) throws IOException {
+    public ResponseEntity<?> updateImg(@PathVariable("itemId") Long itemId,
+                                       @RequestParam(value = "img" , required = false) MultipartFile imgFile,
+                                       @RequestParam(value = "description", required = false) MultipartFile descriptionFile
+                                       ) throws IOException {
         int ran = (int) (Math.random() * 10000);
         String img = "";
         String description = "";
-
         Item item = itemService.findById(itemId);
 
-        if (file.get(0) != null) {
-            imageService.imgDelete(item.getImgUrl());
-            img = imageService.transferImg(file.get(0), ran, 0);
+        if (!imgFile.isEmpty()) {
+            if (!item.getImgUrl().isBlank() && item.getImgUrl() != null) {
+                imageService.imgDelete(item.getImgUrl());
+            }
+
+            img = imageService.transferImg(imgFile, ran, 0);
         }
 
-        if (file.get(1) != null) {
-            imageService.imgDelete(item.getDescriptionUrl());
-            description = imageService.transferImg(file.get(1), ran, 1);
+        if (!descriptionFile.isEmpty()) {
+            if (!item.getDescriptionUrl().isBlank() && item.getDescriptionUrl() != null) {
+                imageService.imgDelete(item.getDescriptionUrl());
+            }
+            description = imageService.transferImg(descriptionFile, ran, 1);
         }
+
+        System.out.println("=================================");
+        System.out.println("img = " + img);
+        System.out.println("description = " + description);
 
         itemService.imgUpdate(item, img, description);
 

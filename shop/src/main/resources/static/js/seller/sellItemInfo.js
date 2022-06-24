@@ -70,10 +70,11 @@ function updateItem() {
         "etrTxt": $("#update_etr").val()
     }
 
-    for (var i = 0; i < imgArray.length; i++) {
-        imgForm.append("file", imgArray[i]);
-    }
+    imgForm.append("img", imgArray[0]);
+    imgForm.append("description", imgArray[1]);
 
+    console.log(imgForm.get("img"));
+    console.log(imgForm.get("description"))
 
     $.ajax({
         url: "/api/item/update/img/" + itemId,
@@ -115,7 +116,8 @@ function changeImgUrl(input, type) {
                 imgArray[0] = input.files[0];
             } else{
                 document.getElementById('descriptionImg').src = e.target.result;
-                imgArray[1] = input.files[0];
+                document.getElementById('descriptionImg').style.display = "block";
+                    imgArray[1] = input.files[0];
             }
         };
         reader.readAsDataURL(input.files[0]);
