@@ -20,6 +20,7 @@ spring:
       mode: always
   mvc:
     static-path-pattern: /static/**
+
   web:
     resources:
       static-locations: classpath:/static/
@@ -35,4 +36,5 @@ server:
       tracking-modes: cookie
       timeout: 1800
 
-imagePath: D:\MyProject\personal_project\ShoppingMall\shop\src\main\resources\static\img
+imagePath: /MyProject/Image/shop/
+getImgPath: /image/**

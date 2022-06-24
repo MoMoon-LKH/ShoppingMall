@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/api/item/total", "/api/item/list").permitAll()
                 .antMatchers("/api/item/category/**").permitAll()
                 .antMatchers("/member/cart").hasAuthority("USER")
-                .antMatchers("/sell/**", "/api/**").hasAuthority("ADMIN")
+                .antMatchers("/sell/**").hasAuthority("ADMIN")
                 .antMatchers( "/api/item/**").authenticated()
                 .anyRequest().authenticated()
 
@@ -67,6 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
         web.ignoring().antMatchers("/./templates/**");
         web.ignoring().antMatchers("/static/**");
+        web.ignoring().antMatchers("/image/**");
     }
 
     @Override

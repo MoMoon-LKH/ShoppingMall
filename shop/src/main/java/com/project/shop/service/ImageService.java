@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class ImageService {
 
-    @Value("${imagePath}")
+    @Value("D:/MyProject/Image/shop")
     private String imgPath;
 
     public String getImgPath() {
@@ -39,13 +39,19 @@ public class ImageService {
         return fname;
     }
 
-    public void imgDelete(String img) {
+    public boolean imgDelete(String img) {
         if (!imgPath.isEmpty()) {
-            File file = new File(imgPath + img);
+            File file = new File(imgPath + "/" + img);
 
             if (file.exists()) {
-                file.delete();
+                if (file.delete()) {
+                    return true;
+                } else{
+                    return false;
+                }
             }
         }
+
+        return false;
     }
 }

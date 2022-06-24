@@ -41,7 +41,7 @@
             <tr class="img_tr" th:each="item : ${order.getOrder_items()}">
                 <td>
                     <div class="item_img">
-                        <img th:src="@{/static/img/} + ${item.getItem().getImgUrl()}"/>
+                        <img th:src="@{/image/} + ${item.getItem().getImgUrl()}"/>
                         <div class="item_name" th:text="${item.getItem().getName()}"></div>
                     </div>
                 </td>

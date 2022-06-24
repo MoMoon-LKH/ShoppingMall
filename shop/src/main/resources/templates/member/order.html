@@ -83,7 +83,7 @@
                         <tr th:each="item : ${items}">
                             <td>
                                 <div id="item_img">
-                                    <img th:src="@{/static/img/} + ${item.getItemImgUrl()}" onerror="this.onerror=null; this.src='/static/img/error.png'">
+                                    <img th:src="@{/image/} + ${item.getItemImgUrl()}" onerror="this.onerror=null; this.src='/static/img/error.png'">
                                     <div id="item_name" th:text="${item.getItemName()}"></div>
                                 </div>
                             </td>
@@ -109,6 +109,18 @@
                     <div class="cost_subtitle">배송비</div>
                     <div class="cost_val"><span class="cost" id="delivery_cost" th:text="2500">0</span><span>원</span></div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
                 <hr style="border: 1px solid lightgray">
                 <div class="cost_info">
                     <div class="cost_subtitle">총 결제금액</div>

@@ -10,7 +10,7 @@
 <div class="item_container">
     <div class="item_top">
         <input id="item_id" type="hidden" th:value="${item.id}"/>
-        <img id="item_img" class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="display: inline-block; width: 250px; height: 300px">
+        <img id="item_img" class="itemImg" onerror="onerror=null; src='/image/error.png'" th:src="|/image/${item.imgUrl}|" style="display: inline-block; width: 250px; height: 300px">
         <div><input id="input_img" type="file" onchange="changeImgUrl(this, 0)" /></div>
         <div class="item_txt" style="display: inline-block">
             <div class="txt_wrapper">
@@ -48,7 +48,7 @@
             <div id="item_etr" th:text="${item.etrTxt}"></div>
             <div><input type="text" id="update_etr" placeholder="추가적으로 필요한 내용을 입력해주세요."> </div>
             <div><input id="input_description" type="file" onchange="changeImgUrl(this, 1)"/></div>
-            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/static/img/${item.descriptionUrl}|" style="width: 500px">
+            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/image/${item.descriptionUrl}|" style="width: 500px">
         </div>
     </div>
 </div>

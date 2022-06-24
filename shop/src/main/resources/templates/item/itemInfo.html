@@ -12,7 +12,7 @@
     <div class="item_top">
         <form action="/order/purchase" method="get">
             <input type="hidden" id="itemId" name="itemId" th:value="${item.id}"/>
-            <img class="itemImg" onerror="onerror=null; src='/static/img/error.png'" th:src="|/static/img/${item.imgUrl}|" style="float: left; width: 500px; height: 600px; ">
+            <img class="itemImg" onerror="onerror=null; src='/image/error.png'" th:src="|/image/${item.imgUrl}|" style="float: left; width: 500px; height: 600px; ">
             <div class="item_txt" style="display: inline-block; margin-left: 20px">
                 <div class="txt_wrapper">
                     <div id="item_name" class="wrapper_content" type="text" th:name="name" th:text="${item.name}"></div>
@@ -52,7 +52,7 @@
         <hr style="border: solid 1px gray;">
         <div class="item_bottom_content">
             <div id="item_etr" th:text="${item.etrTxt}"></div>
-            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/static/img/${item.descriptionUrl}|">
+            <img id="descriptionImg" onerror="this.style.display='none'" th:src="|/image/${item.descriptionUrl}|">
         </div>
     </div>
 </div>

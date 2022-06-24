@@ -82,7 +82,7 @@
                     <tr th:each="item : ${items}">
                         <td>
                             <div id="item_img">
-                                <img th:src="@{/static/img/} + ${item.getItemImgUrl()}" onerror="this.onerror=null; this.src='/static/img/error.png'">
+                                <img th:src="@{/image/} + ${item.getItemImgUrl()}" onerror="this.onerror=null; this.src='/static/img/error.png'">
                                 <div id="item_name" th:text="${item.getItemName()}"></div>
                             </div>
                         </td>

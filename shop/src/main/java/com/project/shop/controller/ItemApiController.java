@@ -117,7 +117,7 @@ public class ItemApiController {
         String description = "";
         Item item = itemService.findById(itemId);
 
-        if (!imgFile.isEmpty()) {
+        if (imgFile != null) {
             if (!item.getImgUrl().isBlank() && item.getImgUrl() != null) {
                 imageService.imgDelete(item.getImgUrl());
             }
@@ -125,16 +125,12 @@ public class ItemApiController {
             img = imageService.transferImg(imgFile, ran, 0);
         }
 
-        if (!descriptionFile.isEmpty()) {
+        if (descriptionFile != null) {
             if (!item.getDescriptionUrl().isBlank() && item.getDescriptionUrl() != null) {
                 imageService.imgDelete(item.getDescriptionUrl());
             }
             description = imageService.transferImg(descriptionFile, ran, 1);
         }
-
-        System.out.println("=================================");
-        System.out.println("img = " + img);
-        System.out.println("description = " + description);
 
         itemService.imgUpdate(item, img, description);
 

@@ -28,7 +28,7 @@ function list_rendering(list) {
 
         let obj = list[i];
 
-        var html ="<tr><td><a class='order_a' href='/order/info?orderId="+ obj.orderId +"'><img src='/static/img/" + obj.imgUrl + "'></a></td>";
+        var html ="<tr><td><a class='order_a' href='/order/info?orderId="+ obj.orderId +"'><img src='/image/" + obj.imgUrl + "'></a></td>";
 
         if(obj.itemCount - 1 > 0)
             html += "<td><a class='order_a' href='/order/info?orderId="+ obj.orderId +"'><div class='order_name'>" + obj.itemName + " 외 " + (obj.itemCount - 1) + "</div></a>";

@@ -27,7 +27,7 @@ function listRendering(list) {
 
         var html = "<tr class='cart_item'>";
         html += "<td><input class='item_check' name='item' type='checkbox' value='" + obj.cartItemId + "' checked></td>";
-        html += "<td id='cart_name'><img class='itemImg' src='/static/img/" + obj.itemImgUrl + "'><span id='item_name'>" + obj.itemName + "</span></td>";
+        html += "<td id='cart_name'><img class='itemImg' src='/image/" + obj.itemImgUrl + "'><span id='item_name'>" + obj.itemName + "</span></td>";
         html += "<td>" + obj.count + "</td>";
         html += "<td>" + obj.itemCost + "</td>";
         html += "<td>" + (obj.count * obj.itemCost) + "</td>";

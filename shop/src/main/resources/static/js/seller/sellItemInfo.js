@@ -73,9 +73,6 @@ function updateItem() {
     imgForm.append("img", imgArray[0]);
     imgForm.append("description", imgArray[1]);
 
-    console.log(imgForm.get("img"));
-    console.log(imgForm.get("description"))
-
     $.ajax({
         url: "/api/item/update/img/" + itemId,
         type: "POST",
@@ -104,6 +101,7 @@ function updateItem() {
         alert("상품 수정에 실패했습니다.");
     });
 
+    window.location.href = "/sell/item/" + itemId;
 }
 
 function changeImgUrl(input, type) {

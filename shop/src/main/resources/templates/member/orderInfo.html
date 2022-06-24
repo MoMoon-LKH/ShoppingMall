@@ -30,7 +30,7 @@
                 <tr class="img_tr" th:each="item : ${orderItems}">
                     <td>
                         <div class="item_img">
-                            <img th:src="@{/static/img/} + ${item.getImgUrl()}"/>
+                            <img th:src="@{/image/} + ${item.getImgUrl()}"/>
                             <div class="item_name" th:text="${item.getName()}"></div>
                         </div>
                     </td>
